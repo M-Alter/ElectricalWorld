@@ -43,5 +43,15 @@ namespace DO
         /// </summary>
         public string Category2 { get; set; }
 
+        /// <summary>
+        /// is the item still active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// price of the item
+        /// </summary>
+        public double Price { get; set; }
+
     }
 }

@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="IDL.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockItem.cs" />
     <Compile Include="Order.cs" />
