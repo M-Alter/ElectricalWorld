@@ -9,7 +9,7 @@ namespace DO
     public class Item
     {
         /// <summary>
-        /// private id of the item <br>for internal use</br>
+        /// private ID of the item <br>for internal use</br>
         /// </summary>
         public int ItemID { get; set; }
 
