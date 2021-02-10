@@ -51,6 +51,6 @@ namespace DO
         /// <summary>
         /// email address of the customer
         /// </summary>
-        public string email { get; set; }
+        public string Email { get; set; }
     }
 }
