@@ -54,6 +54,64 @@ namespace DLAPI
         void RemoveItem(Item item);
 
         /// <summary>
+        /// add an image to an item
+        /// </summary>
+        /// <param name="itemID">of the item </param>
+        /// <param name="image">string of the image</param>
+        void AddImage(int itemID, string image);
+
+        /// <summary>
+        /// Edit an image to an item
+        /// </summary>
+        /// <param name="itemID">ID of the item </param>
+        /// <param name="image">string of the image</param>
+        void EditImage(int itemID, string image);
+
+        /// <summary>
+        /// Remove an image to an item
+        /// </summary>
+        /// <param name="itemID">ID of the item </param>
+        /// <param name="image">string of the image</param>
+        void RemoveImage(int itemID, string image);
+
+        /// <summary>
+        /// get item images 
+        /// </summary>
+        /// <param name="filter">filter the images</param>
+        /// <returns>a collection of all the images that comply to the filter</returns>
+        IEnumerable<ItemImage> GetItemImages(Predicate<ItemImage> filter);
+
+        /// <summary>
+        /// add a new category
+        /// </summary>
+        /// <param name="category"></param>
+        void AddCategory(string category);
+
+        /// <summary>
+        /// get all the categories
+        /// </summary>
+        /// <param name="filter">remove categories that dont comply to the filter</param>
+        /// <returns>a collecion of the categories that comply to the filter</returns>
+        IEnumerable<Category> GetCategories(Predicate<Category> filter);
+
+        /// <summary>
+        /// add a category to an item
+        /// </summary>
+        /// <param name="itemID">itemID</param>
+        /// <param name="categoryID">categoryID</param>
+        void AddItemCategory(int itemID, int categoryID);
+
+
+        /// <summary>
+        /// remove a category from an item
+        /// </summary>
+        /// <param name="itemID">itemID</param>
+        /// <param name="categoryID">categoryID</param>
+        void RemoveItemCategory(int itemID, int categoryID);
+
+
+
+        /// <summary>
         /// get all the order items the comply to the filter
         /// </summary>
         /// <param name="filter">filter to apply to the collection</param>
@@ -67,20 +125,6 @@ namespace DLAPI
         /// <param name="itemID">Id of the Item</param>
         /// <param name="price">price of the item</param>
         void AddOrderItem(int orderID, int itemID, double price);
-
-        /// <summary>
-        /// get all the stock items that comply to the filter
-        /// </summary>
-        /// <param name="filter">filter to apply to the collection</param>
-        /// <returns>a collection of all the item that comply to the filter</returns>
-        IEnumerable<StockItem> GetStockItems(Predicate<StockItem> filter);
-
-        /// <summary>
-        /// update the quantity in the stock
-        /// </summary>
-        /// <param name="itemID">ID of the item to update</param>
-        /// <param name="qnt">how much to add (or remove if negative)</param>
-        void UpdateStock(int itemID, int qnt);
 
         /// <summary>
         /// add a new order 

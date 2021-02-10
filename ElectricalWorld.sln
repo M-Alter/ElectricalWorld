@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLAPI", "DLAPI\DLAPI.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLXML", "DLXML\DLXML.csproj", "{ABB4468B-2DD5-455C-87C3-9E49267800F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{1B76C313-9CBE-4F98-9610-60ED5F7AC9EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ABB4468B-2DD5-455C-87C3-9E49267800F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABB4468B-2DD5-455C-87C3-9E49267800F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABB4468B-2DD5-455C-87C3-9E49267800F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B76C313-9CBE-4F98-9610-60ED5F7AC9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B76C313-9CBE-4F98-9610-60ED5F7AC9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B76C313-9CBE-4F98-9610-60ED5F7AC9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B76C313-9CBE-4F98-9610-60ED5F7AC9EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

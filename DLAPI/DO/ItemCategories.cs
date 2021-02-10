@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public class StockItem
+    public class ItemCategories
     {
         /// <summary>
         /// private ID of the item <br>for internal use</br>
@@ -14,8 +14,8 @@ namespace DO
         public int ItemID { get; set; }
 
         /// <summary>
-        /// quantity of the item in stock
+        /// private ID of the category <br>for internal use</br>
         /// </summary>
-        public int Quantity { get; set; }
+        public int CategoryID { get; set; }
     }
 }

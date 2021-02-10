@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO
+namespace BO
 {
     public class Item
     {
@@ -36,12 +36,7 @@ namespace DO
         /// <summary>
         /// category of the item
         /// </summary>
-        public string Category1 { get; set; }
-
-        /// <summary>
-        /// secondary category of the item
-        /// </summary>
-        public string Category2 { get; set; }
+        public IEnumerable<Dictionary<int, string>> Category { get; set; }
 
         /// <summary>
         /// is the item still active
@@ -52,6 +47,13 @@ namespace DO
         /// price of the item
         /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// quantity of the item in stock
+        /// </summary>
+        public int Quantity { get; set; }
+
+
 
     }
 }
