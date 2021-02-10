@@ -136,7 +136,7 @@ namespace DLAPI
         /// <param name="customerID">customer of the order</param>
         /// <param name="time">time of the order</param>
         /// <param name="price">price of the order</param>
-        void AddOrder(int customerID, DateTime time, double price);
+        void AddOrder(Order order);
 
         /// <summary>
         /// get all the orders

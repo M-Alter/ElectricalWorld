@@ -45,7 +45,14 @@ namespace BL
 
         public void AddOrder(Order order)
         {
-            dl.AddOrder(order.CustomerID, DateTime.Now, order.TotalPrice);
+            dl.AddOrder(new DO.Order
+            {
+                OrderID = order.OrderID,
+                CustomerID = order.CustomerID,
+                OrderTime = DateTime.Now,
+                TotalPrice = order.TotalPrice,
+                Paid = order.Paid
+            });
             foreach (var item in order.Items)
             {
                 dl.AddOrderItem(order.OrderID, item.ItemID, item.Price);
