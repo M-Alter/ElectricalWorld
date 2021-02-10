@@ -36,7 +36,7 @@ namespace BO
         /// <summary>
         /// category of the item
         /// </summary>
-        public IEnumerable<Dictionary<int, string>> Category { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
 
         /// <summary>
         /// is the item still active

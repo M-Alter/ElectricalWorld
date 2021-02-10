@@ -59,6 +59,13 @@ namespace BL
         /// <param name="order">order to add</param>
         void AddOrder(Order order);
 
+        /// <summary>
+        /// get orders 
+        /// </summary>
+        /// <param name="filter">filter the orders</param>
+        /// <returns>return a collection of all the orders that comply to the filter</returns>
+        IEnumerable<Order> GetOrders(Predicate<Order> filter);
+
 
 
     }

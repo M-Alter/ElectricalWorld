@@ -16,11 +16,10 @@ namespace DLAPI
         void AddCustomer(Customer cust);
 
         /// <summary>
-        /// get customers that comply to the filter
+        /// get customers
         /// </summary>
-        /// <param name="filter">filter of the collection</param>
-        /// <returns>a collction of all the customers that comply to the filter</returns>
-        IEnumerable<Customer> GetCutomers(Predicate<Customer> filter);
+        /// <returns>a collction of all the customers</returns>
+        IEnumerable<Customer> GetCutomers();
 
         /// <summary>
         /// update details of the customer
@@ -41,11 +40,10 @@ namespace DLAPI
         void EditItem(Item item);
 
         /// <summary>
-        /// get all the items that comply to the filter
+        /// get all the items 
         /// </summary>
-        /// <param name="filter">filter the items</param>
-        /// <returns>a collection of the items that comply to the filter</returns>
-        IEnumerable<Item> GetItems(Predicate<Item> filter);
+        /// <returns>a collection of the items</returns>
+        IEnumerable<Item> GetItems();
 
         /// <summary>
         /// marks an item as InActive
@@ -77,9 +75,8 @@ namespace DLAPI
         /// <summary>
         /// get item images 
         /// </summary>
-        /// <param name="filter">filter the images</param>
-        /// <returns>a collection of all the images that comply to the filter</returns>
-        IEnumerable<ItemImage> GetItemImages(Predicate<ItemImage> filter);
+        /// <returns>a collection of all the images</returns>
+        IEnumerable<ItemImage> GetItemImages();
 
         /// <summary>
         /// add a new category
@@ -90,9 +87,9 @@ namespace DLAPI
         /// <summary>
         /// get all the categories
         /// </summary>
-        /// <param name="filter">remove categories that dont comply to the filter</param>
-        /// <returns>a collecion of the categories that comply to the filter</returns>
-        IEnumerable<Category> GetCategories(Predicate<Category> filter);
+        /// <returns>a collecion of the categories</returns>
+        IEnumerable<Category> GetCategories();
+
 
         /// <summary>
         /// add a category to an item
@@ -110,13 +107,20 @@ namespace DLAPI
         void RemoveItemCategory(int itemID, int categoryID);
 
 
+        /// <summary>
+        /// get the category IDs of an item
+        /// </summary>
+        /// <param name="itemID">item </param>
+        /// <returns>a collection of the category IDs</returns>
+        IEnumerable<int> GetItemCategories(int itemID);
+
+
 
         /// <summary>
-        /// get all the order items the comply to the filter
+        /// get all the order items
         /// </summary>
-        /// <param name="filter">filter to apply to the collection</param>
-        /// <returns>a collection of all the orderItems that comply to the filter</returns>
-        IEnumerable<OrderItem> GetOrderItems(Predicate<OrderItem> filter);
+        /// <returns>a collection of all the orderItems</returns>
+        IEnumerable<OrderItem> GetOrderItems();
 
         /// <summary>
         /// add an orderItem 
@@ -137,8 +141,7 @@ namespace DLAPI
         /// <summary>
         /// get all the orders
         /// </summary>
-        /// <param name="filter">filter the orders</param>
-        /// <returns>a collection of all the orders that comply to the filter</returns>
-        IEnumerable<Order> GetOrders(Predicate<Order> filter);
+        /// <returns>a collection of all the orders</returns>
+        IEnumerable<Order> GetOrders();
     }
 }
