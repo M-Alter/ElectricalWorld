@@ -143,5 +143,11 @@ namespace DLAPI
         /// </summary>
         /// <returns>a collection of all the orders</returns>
         IEnumerable<Order> GetOrders();
+
+        /// <summary>
+        /// generates a new customerID
+        /// </summary>
+        /// <returns></returns>
+        int GetNewCustomerID();
     }
 }

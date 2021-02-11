@@ -102,5 +102,11 @@ namespace ElectricalWorld
             }
             lvItems.DataContext = items;
         }
+
+        private void btnAddCust_Click(object sender, RoutedEventArgs e)
+        {
+            AddCustomer addCustomer = new AddCustomer();
+            addCustomer.Show();
+        }
     }
 }

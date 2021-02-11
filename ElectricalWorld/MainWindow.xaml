@@ -67,7 +67,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                 </GridView>
-                            </ListView.View> 
+                            </ListView.View>
                         </ListView>
                     </StackPanel>
                 </Grid>
@@ -84,36 +84,41 @@
                         <TextBox x:Name="tboxCustSearch" Width="250" FontSize="20"/>
                         <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click" />
                     </WrapPanel>
-                    <ListView x:Name="lvCusts" Height="490">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding CustomerID}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <TextBlock Text="ID"/>
-                                </GridViewColumn>
-                                <GridViewColumn>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Firstname}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <TextBlock Text="First Name"/>
-                                </GridViewColumn>
-                                <GridViewColumn>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Lastname}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                    <TextBlock Text="Last Name"/>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <WrapPanel>
+                        <ListView x:Name="lvCusts" Height="400" Width="400" ItemsSource="{Binding}" HorizontalAlignment="Left">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding CustomerID}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                        <TextBlock Text="ID"/>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding FirstName}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                        <TextBlock Text="First Name"/>
+                                    </GridViewColumn>
+                                    <GridViewColumn>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding LastName}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                        <TextBlock Text="Last Name"/>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <StackPanel>
+                            <Button x:Name="btnAddCust" Content="Add a Customer" Click="btnAddCust_Click"/>
+                        </StackPanel>
+                    </WrapPanel>
                 </StackPanel>
             </TabItem>
 
