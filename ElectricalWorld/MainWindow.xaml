@@ -76,8 +76,45 @@
 
             <TabItem Height="100" Width="100">
                 <TabItem.Header>
-                    <Label Content="Quotes"/>
+                    <Label Content="Customers" FontSize="16"/>
                 </TabItem.Header>
+                <StackPanel>
+                    <WrapPanel>
+                        <Label Content="Search: "/>
+                        <TextBox x:Name="tboxCustSearch" Width="250" FontSize="20"/>
+                        <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click" />
+                    </WrapPanel>
+                    <ListView x:Name="lvCusts" Height="490">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding CustomerID}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <TextBlock Text="ID"/>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Firstname}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <TextBlock Text="First Name"/>
+                                </GridViewColumn>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Lastname}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    <TextBlock Text="Last Name"/>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
             </TabItem>
 
 
@@ -86,50 +123,57 @@
                 <TabItem.Header>
                     <Label Content="Products"/>
                 </TabItem.Header>
-                <WrapPanel>
-                    <ListView x:Name="lvItems" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Width="550" ItemsSource="{Binding}" HorizontalAlignment="Left" MouseDoubleClick="lvItems_MouseDoubleClick">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" Width="100">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding ItemID}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Brand" Width="100">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding Brand}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Model#" Width="150">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding ModelNumber}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Price" Width="100">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding Price}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Qnt" Width="100">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Label Content="{Binding Quantity}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Button x:Name="btnAddItem" Content="Add" Height="200" Margin="5" Click="btnAddItem_Click"/>
-                </WrapPanel>
+                <StackPanel>
+                    <WrapPanel>
+                        <Label Content="Search: "/>
+                        <TextBox x:Name="tboxProdSearch" Width="250" FontSize="20"/>
+                        <Button x:Name="btnProdSearch" Content="Search" Click="btnProdSearch_Click"/>
+                    </WrapPanel>
+                    <WrapPanel Height="490">
+                        <ListView x:Name="lvItems" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Width="550" ItemsSource="{Binding}" HorizontalAlignment="Left" MouseDoubleClick="lvItems_MouseDoubleClick">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" Width="100">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ItemID}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Brand" Width="100">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding Brand}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Model#" Width="150">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ModelNumber}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Price" Width="100">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding Price}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Qnt" Width="100">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding Quantity}"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Button x:Name="btnAddItem" Content="Add" Height="200" Margin="5" Click="btnAddItem_Click"/>
+                    </WrapPanel>
+                </StackPanel>
             </TabItem>
 
 
