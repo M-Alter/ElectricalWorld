@@ -1,27 +1,104 @@
 ﻿<Window x:Class="ElectricalWorld.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ElectricalWorld"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         mc:Ignorable="d"
         Title="Electrical World" ResizeMode="NoResize">
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Grid Margin="5">
+        <!--<Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Button x:Name="btnSale" Content="New Order" Height="250" Background="Green" Click="btnSale_Click"/>
-        <Button x:Name="btnFind" Content="Find" Grid.Column="1" Height="250" Background="Gray" Click="btnFind_Click"/>
-        <Button x:Name="btnCustomers" Content="Customers" Grid.Column="0" Grid.Row="1" Height="250" Background="Aqua"/>
-        <Button x:Name="btnAdmin" Content="Admin" Grid.Column="1" Grid.Row="1" Height="250" Background="Magenta" Click="btnAdmin_Click"/>
+            <Button x:Name="btnSale" Content="New Order" Height="250" Background="Green" Click="btnSale_Click"/>
+            <Button x:Name="btnFind" Content="Find" Grid.Column="1" Height="250" Background="Gray" Click="btnFind_Click"/>
+            <Button x:Name="btnCustomers" Content="Customers" Grid.Column="0" Grid.Row="1" Height="250" Background="Aqua"/>
+            <Button x:Name="btnAdmin" Content="Admin" Grid.Column="1" Grid.Row="1" Height="250" Background="Magenta" Click="btnAdmin_Click"/>
+
+        </Grid>-->
+
+        <TabControl TabStripPlacement="Left">
+            <TabItem Height="75" Width="75">
+                <TabItem.Header>
+                    <Label Content="Register"/>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Height="75" Width="75">
+                <TabItem.Header>
+                    <Label Content="Sales"/>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem Height="75" Width="75">
+                <TabItem.Header>
+                    <Label Content="Quotations"/>
+                </TabItem.Header>
+            </TabItem>
+
+
+
+            <TabItem Height="75" Width="75">
+                <TabItem.Header>
+                    <Label Content="Products"/>
+                </TabItem.Header>
+                <WrapPanel>
+                    <ListView x:Name="lvItems" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Width="600" ItemsSource="{Binding}" HorizontalAlignment="Left">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ItemID}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Brand" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Brand}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Model#" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ModelNumber}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Price" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Price}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Qnt" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Quantity}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Add" Height="200" Margin="5"/>
+                </WrapPanel>
+            </TabItem>
+
+
+
+            <TabItem Height="75" Width="75">
+                <TabItem.Header>
+                    <Label Content="Invoices"/>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
     </Grid>
-    
 </Window>
