@@ -1,13 +1,12 @@
-﻿<Window x:Class="ElectricalWorld.AddItem"
+﻿<Window x:Class="ElectricalWorld.ItemInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         xmlns:local="clr-namespace:ElectricalWorld"
         mc:Ignorable="d"
-        Title="Add Item" Height="400" Width="600">
-    <Grid>
+        Title="Item Info" Height="450" Width="600">
+    <Grid DataContext="{Binding}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="*"/>
@@ -28,6 +27,7 @@
             <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="80" FontSize="12"  Width="150"/>
             <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" HorizontalAlignment="Left" Width="150"/>
             <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150"/>
+            <ListBox x:Name="tboxCtg" ItemsSource="{Binding Categories, Mode=TwoWay}" HorizontalAlignment="Left" Height="70"  Width="150"/>
         </StackPanel>
 
         <StackPanel>
@@ -37,6 +37,7 @@
             <Label Content="Description: " Height="80"/>
             <Label Content="Price: "/>
             <Label Content="Quantity: "/>
+            <Label Content="Categories: "/>
         </StackPanel>
 
         <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">

@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using DLXML;
 using System.IO;
+using System.Windows.Media.Imaging;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 
 namespace DL
 {
-    class DLXML: IDL
+    class DLXML : IDL
     {
         #region Singleton
         private static readonly DLXML instance = new DLXML();
@@ -20,7 +24,7 @@ namespace DL
         public static DLXML Instance { get => instance; }// The public Instance property to use
 
         #region Files
-        string imagesFolderPath = @"images/";
+        string imagesFolderPath = @"images\";
         string categoriesFilePath = @"categories.xml";
         string itemCategoriesFilePath = @"itemCategories.xml";
         string customersFilePath = @"customers.xml";
@@ -80,23 +84,34 @@ namespace DL
         //=========================================================================================
         public void AddImage(int itemID, string image)
         {
-           try
-            {
-                File.Copy(image, imagesFolderPath + itemID);
-                XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+            //try
+            //{
 
-                rootElem.Add(new XElement("Image",
-                    new XElement("ItemID", itemID),
-                    new XElement("Image", imagesFolderPath + itemID)
-                    )
-                    );
 
-                XMLTools.SaveFile(rootElem, imagesFilePath);
-            }
-            catch
-            {
+            //var file = File.Create(imagesFolderPath + itemID + @".bmp");
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(image);
+            bitmap.EndInit();
+            Bitmap bitmap1 = new Bitmap(image);
+            bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
+           
+            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-            }
+            rootElem.Add(new XElement("Image",
+                new XElement("ItemID", itemID),
+                new XElement("Image", imagesFolderPath + itemID + @".png")
+                )
+                );
+
+            XMLTools.SaveFile(rootElem, imagesFilePath);
+            //}
+            //catch(Exception e)
+            //{
+
+            //}
+
+            
         }
         //=========================================================================================
 
@@ -128,7 +143,7 @@ namespace DL
                 )
                 );
 
-            XMLTools.SaveFile(rootElem, itemCategoriesFilePath);      
+            XMLTools.SaveFile(rootElem, itemCategoriesFilePath);
         }
 
         public void AddOrder(Order order)
@@ -169,9 +184,9 @@ namespace DL
             XElement rootElem = XMLTools.LoadFile(customersFilePath);
 
             XElement customerElem = (from elem in rootElem.Elements("Customer")
-                             let cur = XMLTools.CreateCustomerInstance(elem)
-                             where cur.CustomerID == cust.CustomerID
-                             select elem).FirstOrDefault();
+                                     let cur = XMLTools.CreateCustomerInstance(elem)
+                                     where cur.CustomerID == cust.CustomerID
+                                     select elem).FirstOrDefault();
 
             customerElem.Remove();
 
@@ -195,12 +210,12 @@ namespace DL
 
         public void EditImage(int itemID, string image)
         {
-            //XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-            //XElement imageElem = (from im in rootElem.Elements()
-            //                      let cur = XMLTools.CreateImageInstance(im)
-            //                      where cur.ItemID == itemID
-            //                      select im).FirstOrDefault();
+            XElement imageElem = (from im in rootElem.Elements()
+                                  let cur = XMLTools.CreateImageInstance(im)
+                                  where cur.ItemID == itemID
+                                  select im).FirstOrDefault();
 
             File.Copy(image, imagesFolderPath + itemID, true);
 
@@ -333,7 +348,7 @@ namespace DL
             XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
 
             XElement itemCatElem = (from cat in rootElem.Elements()
-                                    where int.Parse(cat.Element("ItemID").Value) == itemID && int.Parse(cat.Element("CategoryID").Value)  == categoryID
+                                    where int.Parse(cat.Element("ItemID").Value) == itemID && int.Parse(cat.Element("CategoryID").Value) == categoryID
                                     select cat).FirstOrDefault();
 
             itemCatElem.Remove();

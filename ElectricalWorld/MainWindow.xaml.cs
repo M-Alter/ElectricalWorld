@@ -24,6 +24,8 @@ namespace ElectricalWorld
     {
         IBL bl = BLAPI.BLFactory.GetBL();
         ObservableCollection<BO.Item> items = new ObservableCollection<BO.Item>();
+        ObservableCollection<BO.Order> sales = new ObservableCollection<BO.Order>();
+
 
         public MainWindow()
         {
@@ -34,23 +36,44 @@ namespace ElectricalWorld
                 items.Add(item);
             }
             lvItems.DataContext = items;
+
         }
 
-        //private void btnSale_Click(object sender, RoutedEventArgs e)
-        //{
-        //    OrderWindow orderWindow = new OrderWindow();
-        //    orderWindow.Show();
-        //}
+        private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.Item item = lvItems.SelectedItem as BO.Item;
+            if (item is BO.Item)
+            {
+                ItemInfo itemInfo = new ItemInfo(item);
+                itemInfo.Show();
+            }
+        }
 
-        //private void btnFind_Click(object sender, RoutedEventArgs e)
-        //{
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            AddItem addItem = new AddItem();
+            addItem.Show();
+        }
 
-        //}
+        private void btnSalesSearch_Click(object sender, RoutedEventArgs e)
+        {
 
-        //private void btnAdmin_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ItemsWindow itemsWindow = new ItemsWindow();
-        //    itemsWindow.Show();
-        //}
+            foreach (var item in bl.GetOrders(
+                ord => ord.Customer.CustomerID.ToString() == tboxSalesSearch.Text ||
+                ord.Customer.FirstName.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.LastName.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.Phone.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.Mobile.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.PostCode.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.Address.Contains(tboxSalesSearch.Text) ||
+                ord.Customer.Email.Contains(tboxSalesSearch.Text) ||
+                ord.OrderID.ToString().StartsWith(tboxSalesSearch.Text)
+                 )
+                )
+            {
+                sales.Add(item);
+            }
+            lvSales.DataContext = sales;
+        }
     }
 }

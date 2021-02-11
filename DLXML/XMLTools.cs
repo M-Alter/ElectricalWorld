@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using DO;
 
@@ -90,10 +91,12 @@ namespace DLXML
 
         internal static ItemImage CreateImageInstance(XElement image)
         {
+            FileInfo fi = new FileInfo(image.Element("Image").Value);
+
             return new ItemImage
             {
                 ItemID = int.Parse(image.Element("ItemID").Value),
-                Image = image.Element("Image").Value
+                Image = fi.FullName
             };
         }
 

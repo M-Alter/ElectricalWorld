@@ -39,8 +39,11 @@ namespace BL
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
                 Price = item.Price,
-                Quantity = item.Quantity
+                Quantity = item.Quantity,
+                IsActive = item.IsActive
+                
             });
+            dl.AddImage(item.ItemID, item.Image);
         }
 
         public void AddOrder(Order order)
@@ -48,7 +51,7 @@ namespace BL
             dl.AddOrder(new DO.Order
             {
                 OrderID = order.OrderID,
-                CustomerID = order.CustomerID,
+                CustomerID = order.Customer.CustomerID,
                 OrderTime = DateTime.Now,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid
@@ -146,7 +149,7 @@ namespace BL
                    let temp = new Order
                    {
                        OrderID = order.OrderID,
-                       CustomerID = order.CustomerID,
+                       Customer = GetCutomers(id => id.CustomerID == order.CustomerID).FirstOrDefault(),
                        OrderTime = order.OrderTime,
                        TotalPrice = order.TotalPrice,
                        Paid = order.Paid,

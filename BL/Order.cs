@@ -14,9 +14,9 @@ namespace BO
         public int OrderID { get; set; }
 
         /// <summary>
-        /// private ID of the Customer <br>for internal use</br>
+        /// customer of the order
         /// </summary>
-        public int CustomerID { get; set; }
+        public Customer Customer { get; set; }
 
         /// <summary>
         /// time of the order

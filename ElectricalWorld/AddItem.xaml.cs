@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLAPI;
+using Microsoft.Win32;
 
 namespace ElectricalWorld
 {
@@ -19,15 +21,40 @@ namespace ElectricalWorld
     /// </summary>
     public partial class AddItem : Window
     {
+        BL.IBL bl = BLFactory.GetBL();
+        BO.Item item = new BO.Item();
+        
         public AddItem()
         {
             InitializeComponent();
-            
+            DataContext = item;
         }
 
-        private void imgItemImage_Drop(object sender, DragEventArgs e)
-        {
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            item.IsActive = true;
+            bl.AddItem(item);
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnChhoseImg_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.DefaultExt = ".png";
+            fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            fileDialog.ShowDialog();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(fileDialog.FileName);
+            bitmap.EndInit();
+            imgItemImage.Source = bitmap;
+            item.Image = fileDialog.FileName;
         }
     }
 }
