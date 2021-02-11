@@ -1,0 +1,45 @@
+﻿<Window x:Class="ElectricalWorld.AddItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        xmlns:local="clr-namespace:ElectricalWorld"
+        mc:Ignorable="d"
+        Title="Add Item" Height="400" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="imgItemImage" Source="{Binding Image, Mode=TwoWay}" AllowDrop="True" Drop="imgItemImage_Drop" Width="200" Height="300" Grid.Column="2"/>
+        <StackPanel Grid.Column="1">
+            <Label Content="{Binding ItemID}" Width="100"/>
+            <TextBox x:Name="tboxBrand" Text="{Binding Brand, Mode=TwoWay}"  Width="150"/>
+            <TextBox x:Name="tboxModelNumber" Text="{Binding ModelNumber, Mode=TwoWay}"  Width="150"/>
+            <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" Height="80"  Width="250"/>
+            <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" Width="150"/>
+            <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" Height="80"  Width="250"/>
+        </StackPanel>
+        
+        <StackPanel>
+            <Label Content="ID: "/>
+            <Label Content="Brand: "/>
+            <Label Content="Model#: "/>
+            <Label Content="Description: " Height="80"/>
+            <Label Content="Price: "/>
+            <Label Content="Quantity: "/>
+        </StackPanel>
+    </Grid>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Window.Resources>
+</Window>

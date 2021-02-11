@@ -69,8 +69,7 @@ namespace DLAPI
         /// Remove an image to an item
         /// </summary>
         /// <param name="itemID">ID of the item </param>
-        /// <param name="image">string of the image</param>
-        void RemoveImage(int itemID, string image);
+        void RemoveImage(int itemID);
 
         /// <summary>
         /// get item images 

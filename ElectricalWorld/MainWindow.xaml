@@ -1,0 +1,27 @@
+﻿<Window x:Class="ElectricalWorld.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectricalWorld"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        mc:Ignorable="d"
+        Title="Electrical World" ResizeMode="NoResize">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnSale" Content="New Order" Height="250" Background="Green" Click="btnSale_Click"/>
+        <Button x:Name="btnFind" Content="Find" Grid.Column="1" Height="250" Background="Gray" Click="btnFind_Click"/>
+        <Button x:Name="btnCustomers" Content="Customers" Grid.Column="0" Grid.Row="1" Height="250" Background="Aqua"/>
+        <Button x:Name="btnAdmin" Content="Admin" Grid.Column="1" Grid.Row="1" Height="250" Background="Magenta" Click="btnAdmin_Click"/>
+    </Grid>
+    
+</Window>

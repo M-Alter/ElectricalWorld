@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using DO;
 
 namespace DLXML
 {
@@ -62,11 +63,92 @@ namespace DLXML
                 rootElem.Save(dir + path);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
             return false;
         }
+
+
+        internal static Customer CreateCustomerInstance(XElement cust)
+        {
+            return new Customer
+            {
+                CustomerID = int.Parse(cust.Element("CustomerID").Value),
+                FirstName = cust.Element("FirstName").Value,
+                LastName = cust.Element("LastName").Value,
+                HouseNumber = cust.Element("HouseNumber").Value,
+                Address = cust.Element("Address").Value,
+                PostCode = cust.Element("PostCode").Value,
+                Email = cust.Element("Email").Value,
+                Phone = cust.Element("Phone").Value,
+                Mobile = cust.Element("Mobile").Value
+            };
+        }
+
+
+        internal static ItemImage CreateImageInstance(XElement image)
+        {
+            return new ItemImage
+            {
+                ItemID = int.Parse(image.Element("ItemID").Value),
+                Image = image.Element("Image").Value
+            };
+        }
+
+
+        internal static Item CreateItemInstance(XElement item)
+        {
+            return new Item
+            {
+                ItemID = int.Parse(item.Element("ItemID").Value),
+                Brand = item.Element("Brand").Value,
+                ModelNumber = item.Element("ModelNumber").Value,
+                Description = item.Element("Description").Value,
+                Quantity = int.Parse(item.Element("Quantity").Value),
+                Price = double.Parse(item.Element("Price").Value),
+                IsActive = bool.Parse(item.Element("IsActive").Value)
+            };
+        }
+
+
+        internal static Order CreateOrderInstance(XElement order)
+        {
+            return new Order
+            {
+                CustomerID = int.Parse(order.Element("CustomerID").Value),
+                OrderID = int.Parse(order.Element("OrderID").Value),
+                OrderTime = DateTime.Parse(order.Element("OrderTime").Value),
+                TotalPrice = double.Parse(order.Element("TotalPrice").Value),
+                Paid = bool.Parse(order.Element("Paid").Value)
+            };
+        }
+
+
+        internal static OrderItem CreateOrderItemInstance(XElement orderItem)
+        {
+            return new OrderItem
+            {
+                ItemID = int.Parse(orderItem.Element("ItemID").Value),
+                OrderID = int.Parse(orderItem.Element("OrderID").Value),
+                Price = double.Parse(orderItem.Element("Price").Value)
+            };
+        }
+
+
+        internal static Category CreateCategoryInstance(XElement category)
+        {
+            return new Category
+            {
+                CategoryID = int.Parse(category.Element("CategoryID").Value),
+                CategoryName = category.Element("CategoryName").Value
+            };
+        }
+
+
+
+
+
     }
 }

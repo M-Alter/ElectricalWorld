@@ -41,12 +41,12 @@ namespace DO
         /// <summary>
         /// phone number of the customer
         /// </summary>
-        public long Phone { get; set; }
+        public string Phone { get; set; }
 
         /// <summary>
         /// mobile number of the customer
         /// </summary>
-        public long Mobile { get; set; }
+        public string Mobile { get; set; }
 
         /// <summary>
         /// email address of the customer

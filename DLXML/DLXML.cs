@@ -82,12 +82,12 @@ namespace DL
         {
            try
             {
-                File.Copy(image, imagesFolderPath + image);
+                File.Copy(image, imagesFolderPath + itemID);
                 XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
                 rootElem.Add(new XElement("Image",
                     new XElement("ItemID", itemID),
-                    new XElement("Image", imagesFolderPath + image)
+                    new XElement("Image", imagesFolderPath + itemID)
                     )
                     );
 
@@ -161,69 +161,184 @@ namespace DL
             XMLTools.SaveFile(rootElem, orderItemsFilePath);
         }
 
+        //========================================================================
+        //need to make sure that temp is actually a reference
+        //========================================================================
         public void EditCustomer(Customer cust)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(customersFilePath);
+
+            XElement customerElem = (from elem in rootElem.Elements("Customer")
+                             let cur = XMLTools.CreateCustomerInstance(elem)
+                             where cur.CustomerID == cust.CustomerID
+                             select elem).FirstOrDefault();
+
+            customerElem.Remove();
+
+            customerElem = new XElement("Customer",
+                new XElement("CustomerID", cust.CustomerID),
+                new XElement("FirstName", cust.FirstName),
+                new XElement("LastName", cust.LastName),
+                new XElement("HouseNumber", cust.HouseNumber),
+                new XElement("Address", cust.Address),
+                new XElement("PostCode", cust.PostCode),
+                new XElement("Phone", cust.Phone),
+                new XElement("Mobile", cust.Mobile),
+                new XElement("Email", cust.Email)
+                );
+
+            rootElem.Add(customerElem);
+
+            XMLTools.SaveFile(rootElem, customersFilePath);
         }
+        //========================================================================
 
         public void EditImage(int itemID, string image)
         {
-            throw new NotImplementedException();
+            //XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+
+            //XElement imageElem = (from im in rootElem.Elements()
+            //                      let cur = XMLTools.CreateImageInstance(im)
+            //                      where cur.ItemID == itemID
+            //                      select im).FirstOrDefault();
+
+            File.Copy(image, imagesFolderPath + itemID, true);
+
         }
 
         public void EditItem(Item item)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(itemsFilePath);
+
+            XElement itemElem = (from it in rootElem.Elements()
+                                 let temp = XMLTools.CreateItemInstance(it)
+                                 where temp.ItemID == item.ItemID
+                                 select it).FirstOrDefault();
+
+            itemElem.Remove();
+
+            rootElem.Add(new XElement("Item",
+                new XElement("ItemID", item.ItemID),
+                new XElement("Brand", item.Brand),
+                new XElement("ModelNumber", item.ModelNumber),
+                new XElement("Description", item.Description),
+                new XElement("IsActive", item.IsActive),
+                new XElement("Price", item.Price),
+                new XElement("Quantity", item.Quantity)
+                )
+                );
+
+            XMLTools.SaveFile(rootElem, itemsFilePath);
+
         }
 
         public IEnumerable<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(categoriesFilePath);
+
+            return from cat in rootElem.Elements()
+                   let temp = XMLTools.CreateCategoryInstance(cat)
+                   select temp;
         }
 
         public IEnumerable<Customer> GetCutomers()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(customersFilePath);
+
+            return from cus in rootElem.Elements()
+                   let temp = XMLTools.CreateCustomerInstance(cus)
+                   select temp;
         }
 
         public IEnumerable<int> GetItemCategories(int itemID)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
+
+            return from cat in rootElem.Elements()
+                   where int.Parse(cat.Element("ItemID").Value) == itemID
+                   select int.Parse(cat.Element("CategoryID").Value);
         }
 
         public IEnumerable<ItemImage> GetItemImages()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+
+            return from im in rootElem.Elements()
+                   let temp = XMLTools.CreateImageInstance(im)
+                   select temp;
         }
 
         public IEnumerable<Item> GetItems()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(itemsFilePath);
+
+            return from item in rootElem.Elements()
+                   let temp = XMLTools.CreateItemInstance(item)
+                   select temp;
         }
 
         public IEnumerable<OrderItem> GetOrderItems()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(orderItemsFilePath);
+
+            return from item in rootElem.Elements()
+                   let temp = XMLTools.CreateOrderItemInstance(item)
+                   select temp;
         }
 
         public IEnumerable<Order> GetOrders()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(ordersFilePath);
+
+            return from order in rootElem.Elements()
+                   let temp = XMLTools.CreateOrderInstance(order)
+                   select temp;
         }
 
-        public void RemoveImage(int itemID, string image)
+        public void RemoveImage(int itemID)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+
+            XElement imageElem = (from im in rootElem.Elements()
+                                  let cur = XMLTools.CreateImageInstance(im)
+                                  where cur.ItemID == itemID
+                                  select im).FirstOrDefault();
+
+            imageElem.Remove();
+
+            XMLTools.SaveFile(rootElem, imagesFilePath);
+
+            File.Delete(imagesFolderPath + itemID);
+
         }
 
         public void RemoveItem(Item item)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(itemsFilePath);
+
+            XElement itemElem = (from it in rootElem.Elements()
+                                 let temp = XMLTools.CreateItemInstance(it)
+                                 where temp.ItemID == item.ItemID
+                                 select it).FirstOrDefault();
+            if (itemElem != null)
+            {
+                itemElem.Element("IsActive").SetValue(false);
+            }
+
+            XMLTools.SaveFile(rootElem, itemsFilePath);
         }
 
         public void RemoveItemCategory(int itemID, int categoryID)
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
+
+            XElement itemCatElem = (from cat in rootElem.Elements()
+                                    where int.Parse(cat.Element("ItemID").Value) == itemID && int.Parse(cat.Element("CategoryID").Value)  == categoryID
+                                    select cat).FirstOrDefault();
+
+            itemCatElem.Remove();
+
+            XMLTools.SaveFile(rootElem, itemCategoriesFilePath);
         }
         #endregion
 
