@@ -11,12 +11,12 @@ namespace DO
         /// <summary>
         /// private ID of the Transaction <br>for internal use</br>
         /// </summary>
-        public int OrderID { get; set; }
+        public string OrderID { get; set; }
 
         /// <summary>
         /// private ID of the Customer <br>for internal use</br>
         /// </summary>
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// time of the order

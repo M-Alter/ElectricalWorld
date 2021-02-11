@@ -11,7 +11,7 @@ namespace BO
         /// <summary>
         /// private ID of the Transaction <br>for internal use</br>
         /// </summary>
-        public int OrderID { get; set; }
+        public string OrderID { get; set; }
 
         /// <summary>
         /// customer of the order

@@ -11,7 +11,7 @@ namespace BO
         /// <summary>
         /// private ID of the customer <br>for internal use</br>
         /// </summary>
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// FirstName
@@ -56,6 +56,6 @@ namespace BO
         /// <summary>
         /// order numbers of this customer
         /// </summary>
-        public IEnumerable<int> OrderNumbers { get; set; }
+        public IEnumerable<string> OrderIDs { get; set; }
     }
 }

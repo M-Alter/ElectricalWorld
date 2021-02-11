@@ -18,7 +18,7 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                CustomerID = cust.CustomerID,
+                CustomerID = dl.GetNewCustomerID().ToString(),
                 FirstName = cust.FirstName,
                 LastName = cust.LastName,
                 Address = cust.Address,
@@ -114,7 +114,7 @@ namespace BL
                        Email = cust.Email,
                        Phone = cust.Phone,
                        Mobile = cust.Mobile,
-                       OrderNumbers = dl.GetOrders().Where(order => order.CustomerID == cust.CustomerID).Select(order => order.OrderID)
+                       OrderIDs = dl.GetOrders().Where(order => order.CustomerID == cust.CustomerID).Select(order => order.OrderID)
                    }
                    where filter(temp)
                    orderby temp.FirstName

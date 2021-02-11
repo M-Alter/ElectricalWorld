@@ -11,7 +11,7 @@ namespace DO
         /// <summary>
         /// private ID of the item <br>for internal use</br>
         /// </summary>
-        public int ItemID { get; set; }
+        public string ItemID { get; set; }
 
         /// <summary>
         /// brand of the item

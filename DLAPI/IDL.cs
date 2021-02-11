@@ -57,20 +57,20 @@ namespace DLAPI
         /// </summary>
         /// <param name="itemID">of the item </param>
         /// <param name="image">string of the image</param>
-        void AddImage(int itemID, string image);
+        void AddImage(string itemID, string image);
 
         /// <summary>
         /// Edit an image to an item
         /// </summary>
         /// <param name="itemID">ID of the item </param>
         /// <param name="image">string of the image</param>
-        void EditImage(int itemID, string image);
+        void EditImage(string itemID, string image);
 
         /// <summary>
         /// Remove an image to an item
         /// </summary>
         /// <param name="itemID">ID of the item </param>
-        void RemoveImage(int itemID);
+        void RemoveImage(string itemID);
 
         /// <summary>
         /// get item images 
@@ -96,7 +96,7 @@ namespace DLAPI
         /// </summary>
         /// <param name="itemID">itemID</param>
         /// <param name="categoryID">categoryID</param>
-        void AddItemCategory(int itemID, int categoryID);
+        void AddItemCategory(string itemID, string categoryID);
 
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace DLAPI
         /// </summary>
         /// <param name="itemID">itemID</param>
         /// <param name="categoryID">categoryID</param>
-        void RemoveItemCategory(int itemID, int categoryID);
+        void RemoveItemCategory(string itemID, string categoryID);
 
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace DLAPI
         /// </summary>
         /// <param name="itemID">item </param>
         /// <returns>a collection of the category IDs</returns>
-        IEnumerable<int> GetItemCategories(int itemID);
+        IEnumerable<string> GetItemCategories(string itemID);
 
 
 
@@ -128,7 +128,7 @@ namespace DLAPI
         /// <param name="orderID">ID of the order</param>
         /// <param name="itemID">Id of the Item</param>
         /// <param name="price">price of the item</param>
-        void AddOrderItem(int orderID, int itemID, double price);
+        void AddOrderItem(string orderID, string itemID, double price);
 
         /// <summary>
         /// add a new order 

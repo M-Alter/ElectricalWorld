@@ -76,7 +76,7 @@ namespace DLXML
         {
             return new Customer
             {
-                CustomerID = int.Parse(cust.Element("CustomerID").Value),
+                CustomerID = cust.Element("CustomerID").Value,
                 FirstName = cust.Element("FirstName").Value,
                 LastName = cust.Element("LastName").Value,
                 HouseNumber = cust.Element("HouseNumber").Value,
@@ -95,7 +95,7 @@ namespace DLXML
 
             return new ItemImage
             {
-                ItemID = int.Parse(image.Element("ItemID").Value),
+                ItemID = image.Element("ItemID").Value,
                 Image = fi.FullName
             };
         }
@@ -105,7 +105,7 @@ namespace DLXML
         {
             return new Item
             {
-                ItemID = int.Parse(item.Element("ItemID").Value),
+                ItemID = item.Element("ItemID").Value,
                 Brand = item.Element("Brand").Value,
                 ModelNumber = item.Element("ModelNumber").Value,
                 Description = item.Element("Description").Value,
@@ -120,8 +120,8 @@ namespace DLXML
         {
             return new Order
             {
-                CustomerID = int.Parse(order.Element("CustomerID").Value),
-                OrderID = int.Parse(order.Element("OrderID").Value),
+                CustomerID = order.Element("CustomerID").Value,
+                OrderID = order.Element("OrderID").Value,
                 OrderTime = DateTime.Parse(order.Element("OrderTime").Value),
                 TotalPrice = double.Parse(order.Element("TotalPrice").Value),
                 Paid = bool.Parse(order.Element("Paid").Value)
@@ -133,8 +133,8 @@ namespace DLXML
         {
             return new OrderItem
             {
-                ItemID = int.Parse(orderItem.Element("ItemID").Value),
-                OrderID = int.Parse(orderItem.Element("OrderID").Value),
+                ItemID = orderItem.Element("ItemID").Value,
+                OrderID = orderItem.Element("OrderID").Value,
                 Price = double.Parse(orderItem.Element("Price").Value)
             };
         }
@@ -144,7 +144,7 @@ namespace DLXML
         {
             return new Category
             {
-                CategoryID = int.Parse(category.Element("CategoryID").Value),
+                CategoryID = category.Element("CategoryID").Value,
                 CategoryName = category.Element("CategoryName").Value
             };
         }

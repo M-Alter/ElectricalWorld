@@ -82,7 +82,7 @@ namespace DL
         //=========================================================================================
         //add catch
         //=========================================================================================
-        public void AddImage(int itemID, string image)
+        public void AddImage(string itemID, string image)
         {
             //try
             //{
@@ -133,7 +133,7 @@ namespace DL
             XMLTools.SaveFile(rootElem, itemsFilePath);
         }
 
-        public void AddItemCategory(int itemID, int categoryID)
+        public void AddItemCategory(string itemID, string categoryID)
         {
             XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
 
@@ -162,7 +162,7 @@ namespace DL
             XMLTools.SaveFile(rootElem, ordersFilePath);
         }
 
-        public void AddOrderItem(int orderID, int itemID, double price)
+        public void AddOrderItem(string orderID, string itemID, double price)
         {
             XElement rootElem = XMLTools.LoadFile(orderItemsFilePath);
 
@@ -208,7 +208,7 @@ namespace DL
         }
         //========================================================================
 
-        public void EditImage(int itemID, string image)
+        public void EditImage(string itemID, string image)
         {
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
@@ -265,13 +265,13 @@ namespace DL
                    select temp;
         }
 
-        public IEnumerable<int> GetItemCategories(int itemID)
+        public IEnumerable<string> GetItemCategories(string itemID)
         {
             XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
 
             return from cat in rootElem.Elements()
-                   where int.Parse(cat.Element("ItemID").Value) == itemID
-                   select int.Parse(cat.Element("CategoryID").Value);
+                   where cat.Element("ItemID").Value == itemID
+                   select cat.Element("CategoryID").Value;
         }
 
         public IEnumerable<ItemImage> GetItemImages()
@@ -310,7 +310,7 @@ namespace DL
                    select temp;
         }
 
-        public void RemoveImage(int itemID)
+        public void RemoveImage(string itemID)
         {
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
@@ -343,17 +343,22 @@ namespace DL
             XMLTools.SaveFile(rootElem, itemsFilePath);
         }
 
-        public void RemoveItemCategory(int itemID, int categoryID)
+        public void RemoveItemCategory(string itemID, string categoryID)
         {
             XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
 
             XElement itemCatElem = (from cat in rootElem.Elements()
-                                    where int.Parse(cat.Element("ItemID").Value) == itemID && int.Parse(cat.Element("CategoryID").Value) == categoryID
+                                    where cat.Element("ItemID").Value == itemID && cat.Element("CategoryID").Value == categoryID
                                     select cat).FirstOrDefault();
 
             itemCatElem.Remove();
 
             XMLTools.SaveFile(rootElem, itemCategoriesFilePath);
+        }
+
+        public int GetNewCustomerID()
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

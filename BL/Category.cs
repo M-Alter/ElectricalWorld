@@ -11,7 +11,7 @@ namespace BO
         /// <summary>
         /// private ID of the category <br>for internal use</br>
         /// </summary>
-        public int CategoryID { get; set; }
+        public string CategoryID { get; set; }
 
         /// <summary>
         /// name of the category
