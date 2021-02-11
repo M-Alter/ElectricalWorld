@@ -57,5 +57,11 @@ namespace BO
         /// order numbers of this customer
         /// </summary>
         public IEnumerable<string> OrderIDs { get; set; }
+
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
     }
 }

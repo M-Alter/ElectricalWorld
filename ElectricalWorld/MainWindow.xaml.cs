@@ -108,5 +108,11 @@ namespace ElectricalWorld
             AddCustomer addCustomer = new AddCustomer();
             addCustomer.Show();
         }
+
+        private void btnAddSale_Click(object sender, RoutedEventArgs e)
+        {
+            NewSale newSale = new NewSale();
+            newSale.Show();
+        }
     }
 }

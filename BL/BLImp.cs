@@ -47,7 +47,7 @@ namespace BL
             dl.AddImage(item.ItemID, item.Image);
         }
 
-        public void AddOrder(Order order)
+        public string AddOrder(Order order)
         {
             string OrderID = dl.GetNewOrderID().ToString("000000");
             dl.AddOrder(new DO.Order
@@ -71,6 +71,7 @@ namespace BL
                     Quantity = item.Quantity - 1
                 });
             }
+            return OrderID;
         }
 
         public void EditCustomer(Customer cust)
