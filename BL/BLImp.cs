@@ -18,7 +18,7 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                CustomerID = dl.GetNewCustomerID().ToString(),
+                CustomerID = dl.GetNewCustomerID().ToString("00000"),
                 FirstName = cust.FirstName,
                 LastName = cust.LastName,
                 Address = cust.Address,
@@ -34,7 +34,7 @@ namespace BL
         {
             dl.AddItem(new DO.Item
             {
-                ItemID = item.ItemID,
+                ItemID = dl.GetNewItemID().ToString("00000"),
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
@@ -43,14 +43,16 @@ namespace BL
                 IsActive = item.IsActive
                 
             });
+            if(item.Image != null)
             dl.AddImage(item.ItemID, item.Image);
         }
 
         public void AddOrder(Order order)
         {
+            string OrderID = dl.GetNewOrderID().ToString("000000");
             dl.AddOrder(new DO.Order
             {
-                OrderID = order.OrderID,
+                OrderID = OrderID,
                 CustomerID = order.Customer.CustomerID,
                 OrderTime = DateTime.Now,
                 TotalPrice = order.TotalPrice,
@@ -58,7 +60,7 @@ namespace BL
             });
             foreach (var item in order.Items)
             {
-                dl.AddOrderItem(order.OrderID, item.ItemID, item.Price);
+                dl.AddOrderItem(OrderID, item.ItemID, item.Price);
                 dl.EditItem(new DO.Item
                 {
                     ItemID = item.ItemID,

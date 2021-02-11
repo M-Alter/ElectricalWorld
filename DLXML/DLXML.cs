@@ -32,6 +32,7 @@ namespace DL
         string imagesFilePath = @"images.xml";
         string itemsFilePath = @"items.xml";
         string orderItemsFilePath = @"OrderItems.xml";
+        string idNumberGenertatorFile = @"IdFile.xml";
 
 
 
@@ -48,7 +49,7 @@ namespace DL
             XElement rootElem = XMLTools.LoadFile(categoriesFilePath);
 
             XElement categoryElem = new XElement("Category",
-                new XElement("CategoryID", 0),
+                new XElement("CategoryID", GetNewCategoryID()),
                 new XElement("CategoryName", category)
                 );
             rootElem.Add(categoryElem);
@@ -95,7 +96,7 @@ namespace DL
             bitmap.EndInit();
             Bitmap bitmap1 = new Bitmap(image);
             bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
-           
+
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
             rootElem.Add(new XElement("Image",
@@ -111,7 +112,7 @@ namespace DL
 
             //}
 
-            
+
         }
         //=========================================================================================
 
@@ -358,7 +359,62 @@ namespace DL
 
         public int GetNewCustomerID()
         {
-            throw new NotImplementedException();
+            XElement rootElem = XMLTools.LoadFile(idNumberGenertatorFile);
+
+            if (rootElem.Element("Customer") == null)
+                rootElem.Add(new XElement("Customer", 100));
+
+            int result = int.Parse(rootElem.Element("Customer").Value);
+            rootElem.Element("Customer").SetValue(result + 1);
+
+            XMLTools.SaveFile(rootElem, idNumberGenertatorFile);
+
+            return result;
+        }
+
+        public int GetNewCategoryID()
+        {
+            XElement rootElem = XMLTools.LoadFile(idNumberGenertatorFile);
+
+            if (rootElem.Element("Category") == null)
+                rootElem.Add(new XElement("Category", 100));
+
+            int result = int.Parse(rootElem.Element("Category").Value);
+            rootElem.Element("Category").SetValue(result + 1);
+
+            XMLTools.SaveFile(rootElem, idNumberGenertatorFile);
+
+            return result;
+        }
+
+        public int GetNewItemID()
+        {
+            XElement rootElem = XMLTools.LoadFile(idNumberGenertatorFile);
+
+            if (rootElem.Element("Item") == null)
+                rootElem.Add(new XElement("Item", 100));
+
+            int result = int.Parse(rootElem.Element("Item").Value);
+            rootElem.Element("Item").SetValue(result + 1);
+
+            XMLTools.SaveFile(rootElem, idNumberGenertatorFile);
+
+            return result;
+        }
+
+        public int GetNewOrderID()
+        {
+            XElement rootElem = XMLTools.LoadFile(idNumberGenertatorFile);
+
+            if (rootElem.Element("Order") == null)
+                rootElem.Add(new XElement("Order", 100));
+
+            int result = int.Parse(rootElem.Element("Order").Value);
+            rootElem.Element("Order").SetValue(result + 1);
+
+            XMLTools.SaveFile(rootElem, idNumberGenertatorFile);
+
+            return result;
         }
         #endregion
 
