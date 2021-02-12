@@ -95,7 +95,8 @@ namespace ElectricalWorld
             paragraph.AddFormattedText("INVOICE #" + order.OrderID, TextFormat.Bold);
             paragraph.AddTab();
             //paragraph.AddText("London, ");
-            paragraph.AddDateField("dd.MM.yyyy");
+            //paragraph.AddDateField("dd.MM.yyyy");
+            paragraph.AddText(order.OrderTime.ToShortDateString());
 
             // Create the item table
             Table table = section.AddTable();

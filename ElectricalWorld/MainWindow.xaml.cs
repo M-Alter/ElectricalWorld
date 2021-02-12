@@ -137,5 +137,12 @@ namespace ElectricalWorld
                 //lblOrderDate.DataContext = order.OrderTime;
             }
         }
+
+        private void btnCreateInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Order order = (BO.Order)(sender as Button).DataContext;
+            if (order is BO.Order)
+                Tools.CreateInvoice(order);
+        }
     }
 }

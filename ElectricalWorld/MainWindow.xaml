@@ -146,6 +146,7 @@
                                     <Label Content="{Binding TotalPrice}" Width="200"/>
                                     
                                 </WrapPanel>
+                                <Button x:Name="btnCreateInvoice" Content="Create Invoice" Grid.Row="3" Grid.Column="2" Click="btnCreateInvoice_Click"/>
                             </Grid>
 
                         </Grid>
