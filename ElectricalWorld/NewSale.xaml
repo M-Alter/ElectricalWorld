@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricalWorld"
         mc:Ignorable="d"
-        Title="NewSale" Height="800" Width="1200">
+        Title="NewSale" Height="750" Width="1200" Top="50" Left="50">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,7 +18,7 @@
                 <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click"/>
             </WrapPanel>-->
             <WrapPanel>
-                <ComboBox x:Name="cmbCusts" IsEditable="True" FontSize="20" Width="250" PreviewTextInput="cmbCusts_PreviewTextInput">
+                <ComboBox x:Name="cmbCusts" IsEditable="True" FontSize="20" Width="250" PreviewTextInput="cmbCusts_PreviewTextInput" SelectionChanged="cmbCusts_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>

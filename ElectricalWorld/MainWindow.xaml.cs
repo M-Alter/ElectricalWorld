@@ -1,6 +1,8 @@
 ﻿using BL;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ElectricalWorld
@@ -49,6 +51,7 @@ namespace ElectricalWorld
             sales.Clear();
 
             foreach (var item in bl.GetOrders(ord =>
+                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
                 ord.Customer.FirstName.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.LastName.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
@@ -113,6 +116,26 @@ namespace ElectricalWorld
         {
             NewSale newSale = new NewSale();
             newSale.Show();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Environment.Exit(Environment.ExitCode);
+            }
+
+        }
+
+        private void lvSales_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.Order order = (sender as ListView).SelectedItem as BO.Order;
+            if (order is BO.Order)
+            {
+                grdOrderDetails.DataContext = order;
+                //lvOrderView.DataContext = order.Items;
+                //lblOrderDate.DataContext = order.OrderTime;
+            }
         }
     }
 }

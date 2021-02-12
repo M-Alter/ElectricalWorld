@@ -1,11 +1,8 @@
 ﻿using BO;
+using DLAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DLAPI;
-using System.Collections;
 
 namespace BL
 {
@@ -41,10 +38,10 @@ namespace BL
                 Price = item.Price,
                 Quantity = item.Quantity,
                 IsActive = item.IsActive
-                
+
             });
-            if(item.Image != null)
-            dl.AddImage(item.ItemID, item.Image);
+            if (item.Image != null)
+                dl.AddImage(item.ItemID, item.Image);
         }
 
         public string AddOrder(Order order)
@@ -137,7 +134,7 @@ namespace BL
                        Price = item.Price,
                        Quantity = item.Quantity,
                        Categories = from cat in dl.GetItemCategories(item.ItemID)
-                                    select(new Category { CategoryID = cat, CategoryName = dl.GetCategories().Where(ct => ct.CategoryID == cat).Select(ct => ct.CategoryName).FirstOrDefault()}),
+                                    select (new Category { CategoryID = cat, CategoryName = dl.GetCategories().Where(ct => ct.CategoryID == cat).Select(ct => ct.CategoryName).FirstOrDefault() }),
                        Image = dl.GetItemImages().Where(im => im.ItemID == item.ItemID).Select(im => im.Image).FirstOrDefault(),
                        IsActive = item.IsActive
 

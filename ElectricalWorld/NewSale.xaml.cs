@@ -117,16 +117,24 @@ namespace ElectricalWorld
 
         private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
-            string OrderID = bl.AddOrder(new BO.Order
+            BO.Order order = new BO.Order
             {
                 Customer = cust,
                 Items = from item in basket
                         select item,
                 OrderTime = DateTime.Now,
                 TotalPrice = basket.Sum(it => it.Price)
-            });
+            };
 
+            string orderID = bl.AddOrder(order);
+            order.OrderID = orderID;
+            Tools.CreateInvoice(order);
 
+        }
+
+        private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cust = (BO.Customer)e.AddedItems[0] as BO.Customer;
         }
     }
 }
