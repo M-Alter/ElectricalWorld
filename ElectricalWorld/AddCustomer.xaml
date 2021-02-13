@@ -16,9 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <Label Content="First Name: "/>
-            <Label Content="Last Name: "/>
-            <Label Content="House Number: "/>
+            <Label Content="Name: "/>
             <Label Content="Address: "/>
             <Label Content="Post-Code: "/>
             <Label Content="Phone Number: "/>
@@ -26,9 +24,7 @@
             <Label Content="Email: "/>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <TextBox Text="{Binding FirstName, Mode=TwoWay}"/>
-            <TextBox Text="{Binding LastName, Mode=TwoWay}"/>
-            <TextBox Text="{Binding HouseNumber, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Name, Mode=TwoWay}"/>
             <TextBox Text="{Binding Address, Mode=TwoWay}"/>
             <TextBox Text="{Binding PostCode, Mode=TwoWay}"/>
             <TextBox Text="{Binding Phone, Mode=TwoWay}"/>

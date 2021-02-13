@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using PO;
 
 namespace ElectricalWorld
 {
@@ -13,9 +14,9 @@ namespace ElectricalWorld
     public partial class MainWindow : Window
     {
         IBL bl = BLAPI.BLFactory.GetBL();
-        ObservableCollection<BO.Item> items = new ObservableCollection<BO.Item>();
-        ObservableCollection<BO.Order> sales = new ObservableCollection<BO.Order>();
-        ObservableCollection<BO.Customer> custs = new ObservableCollection<BO.Customer>();
+        ObservableCollection<PO.Item> items = new ObservableCollection<PO.Item>();
+        ObservableCollection<PO.Order> sales = new ObservableCollection<PO.Order>();
+        ObservableCollection<PO.Customer> custs = new ObservableCollection<PO.Customer>();
 
 
         public MainWindow()
@@ -32,8 +33,8 @@ namespace ElectricalWorld
 
         private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BO.Item item = lvItems.SelectedItem as BO.Item;
-            if (item is BO.Item)
+            PO.Item item = lvItems.SelectedItem as PO.Item;
+            if (item is PO.Item)
             {
                 ItemInfo itemInfo = new ItemInfo(item);
                 itemInfo.Show();
@@ -53,8 +54,7 @@ namespace ElectricalWorld
             foreach (var item in bl.GetOrders(ord =>
                 ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
-                ord.Customer.FirstName.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.LastName.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.Customer.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
                 ord.Customer.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
@@ -64,7 +64,7 @@ namespace ElectricalWorld
                  )
                 )
             {
-                sales.Add(item);
+                sales.Add(PO.Tools.POOrder(item));
             }
             lvSales.DataContext = sales;
         }
@@ -75,8 +75,7 @@ namespace ElectricalWorld
 
             foreach (var item in bl.GetCutomers(cust =>
                 cust.CustomerID.ToString().ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.FirstName.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.LastName.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                cust.Name.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Address.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
@@ -85,7 +84,7 @@ namespace ElectricalWorld
                 )
                 )
             {
-                custs.Add(item);
+                custs.Add(PO.Tools.POCustomer(item));
             }
             lvCusts.DataContext = custs;
         }
@@ -101,7 +100,7 @@ namespace ElectricalWorld
                 )
                 )
             {
-                items.Add(item);
+                items.Add(PO.Tools.POItem(item));
             }
             lvItems.DataContext = items;
         }
@@ -129,8 +128,8 @@ namespace ElectricalWorld
 
         private void lvSales_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BO.Order order = (sender as ListView).SelectedItem as BO.Order;
-            if (order is BO.Order)
+            PO.Order order = (sender as ListView).SelectedItem as PO.Order;
+            if (order is PO.Order)
             {
                 grdOrderDetails.DataContext = order;
                 //lvOrderView.DataContext = order.Items;
@@ -140,8 +139,8 @@ namespace ElectricalWorld
 
         private void btnCreateInvoice_Click(object sender, RoutedEventArgs e)
         {
-            BO.Order order = (BO.Order)(sender as Button).DataContext;
-            if (order is BO.Order)
+            PO.Order order = (PO.Order)(sender as Button).DataContext;
+            if (order is PO.Order)
                 Tools.CreateInvoice(order);
         }
     }

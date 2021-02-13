@@ -45,6 +45,7 @@
     <Compile Include="DO\Category.cs" />
     <Compile Include="DO\Customer.cs" />
     <Compile Include="DLFactory.cs" />
+    <Compile Include="DO\StockItem.cs" />
     <Compile Include="IDL.cs" />
     <Compile Include="DO\Item.cs" />
     <Compile Include="DO\ItemCategories.cs" />

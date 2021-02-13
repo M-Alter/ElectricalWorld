@@ -13,7 +13,7 @@ namespace ElectricalWorld
 {
     class Tools
     {
-        public static void CreateInvoice(BO.Order order)
+        public static void CreateInvoice(PO.Order order)
         {
             Document document = new Document();
 
@@ -166,7 +166,7 @@ namespace ElectricalWorld
             Paragraph paragraph1 = addressFrame.AddParagraph();
             paragraph1.AddText(order.Customer.ToString());
             paragraph1.AddLineBreak();
-            paragraph1.AddText(order.Customer.HouseNumber + " " + order.Customer.Address);
+            paragraph1.AddText(order.Customer.Address);
             paragraph1.AddLineBreak();
             paragraph1.AddText(order.Customer.PostCode + " " + "London");
 

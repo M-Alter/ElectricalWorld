@@ -39,11 +39,6 @@ namespace BO
         public IEnumerable<Category> Categories { get; set; }
 
         /// <summary>
-        /// is the item still active
-        /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
         /// price of the item
         /// </summary>
         public double Price { get; set; }

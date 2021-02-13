@@ -94,11 +94,11 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <WrapPanel Grid.ColumnSpan="2" >
-                                <Label Content="Order# "/>
-                                <Label Content="{Binding OrderID}" Width="200"/>
-                                <Label Content="Date " />
-                                <Label Content="{Binding OrderTime}"/>
-                            </WrapPanel>
+                                    <Label Content="Order# "/>
+                                    <Label Content="{Binding OrderID}" Width="200"/>
+                                    <Label Content="Date " />
+                                    <Label Content="{Binding OrderTime}"/>
+                                </WrapPanel>
                                 <ListView x:Name="lvOrderView" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Items}"  MouseDoubleClick="lvItems_MouseDoubleClick">
                                     <ListView.View>
                                         <GridView>
@@ -144,7 +144,7 @@
                                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" >
                                     <Label Content="Total "/>
                                     <Label Content="{Binding TotalPrice}" Width="200"/>
-                                    
+
                                 </WrapPanel>
                                 <Button x:Name="btnCreateInvoice" Content="Create Invoice" Grid.Row="3" Grid.Column="2" Click="btnCreateInvoice_Click"/>
                             </Grid>
@@ -183,17 +183,10 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="First Name" Width="100">
+                                    <GridViewColumn Header="Name" Width="200">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding FirstName}"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Last Name" Width="100">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding LastName}"/>
+                                                <TextBlock Text="{Binding Name}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -226,9 +219,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel>
-                                <Label Content="First Name: "/>
-                                <Label Content="Last Name: "/>
-                                <Label Content="House Number: "/>
+                                <Label Content="Name: "/>
                                 <Label Content="Address: "/>
                                 <Label Content="Post-Code: "/>
                                 <Label Content="Phone Number: "/>
@@ -236,9 +227,7 @@
                                 <Label Content="Email: "/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
-                                <TextBox Text="{Binding FirstName, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding LastName, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding HouseNumber, Mode=TwoWay}"/>
+                                <TextBox Text="{Binding Name, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Address, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding PostCode, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Phone, Mode=TwoWay}"/>
@@ -328,6 +317,7 @@
         </Grid>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center" >
+
             <Button x:Name="btnAddSale" Content="Sale" Width="120" Height="120" Background="green" Click="btnAddSale_Click" />
             <Button x:Name="btnAddCust" Content="Add a Customer" Width="120" Height="120" Click="btnAddCust_Click"/>
             <Button x:Name="btnAddItem" Content="Add a Product" Width="120" Height="120" Click="btnAddItem_Click"/>

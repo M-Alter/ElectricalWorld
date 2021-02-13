@@ -14,19 +14,9 @@ namespace BO
         public string CustomerID { get; set; }
 
         /// <summary>
-        /// FirstName
+        /// Name
         /// </summary>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// lastName
-        /// </summary>
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// house number of the customer
-        /// </summary>
-        public string HouseNumber { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// address of the customer
@@ -61,7 +51,7 @@ namespace BO
 
         public override string ToString()
         {
-            return FirstName + " " + LastName;
+            return Name;
         }
     }
 }

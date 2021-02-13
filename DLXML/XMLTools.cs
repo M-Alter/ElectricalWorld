@@ -77,9 +77,7 @@ namespace DLXML
             return new Customer
             {
                 CustomerID = cust.Element("CustomerID").Value,
-                FirstName = cust.Element("FirstName").Value,
-                LastName = cust.Element("LastName").Value,
-                HouseNumber = cust.Element("HouseNumber").Value,
+                Name = cust.Element("FirstName").Value,
                 Address = cust.Element("Address").Value,
                 PostCode = cust.Element("PostCode").Value,
                 Email = cust.Element("Email").Value,
@@ -109,7 +107,6 @@ namespace DLXML
                 Brand = item.Element("Brand").Value,
                 ModelNumber = item.Element("ModelNumber").Value,
                 Description = item.Element("Description").Value,
-                Quantity = int.Parse(item.Element("Quantity").Value),
                 Price = double.Parse(item.Element("Price").Value),
                 IsActive = bool.Parse(item.Element("IsActive").Value)
             };

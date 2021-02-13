@@ -33,7 +33,6 @@ namespace ElectricalWorld
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            item.IsActive = true;
             bl.AddItem(item);
             Close();
         }

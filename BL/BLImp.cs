@@ -16,10 +16,8 @@ namespace BL
             dl.AddCustomer(new DO.Customer
             {
                 CustomerID = dl.GetNewCustomerID().ToString("00000"),
-                FirstName = cust.FirstName,
-                LastName = cust.LastName,
+                Name = cust.Name,
                 Address = cust.Address,
-                HouseNumber = cust.HouseNumber,
                 PostCode = cust.PostCode,
                 Email = cust.Email,
                 Phone = cust.Phone,
@@ -29,17 +27,18 @@ namespace BL
 
         public void AddItem(Item item)
         {
+            string itemID = dl.GetNewItemID().ToString("00000");
             dl.AddItem(new DO.Item
             {
-                ItemID = dl.GetNewItemID().ToString("00000"),
+                ItemID = itemID,
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
                 Price = item.Price,
-                Quantity = item.Quantity,
-                IsActive = item.IsActive
+                IsActive = true
 
             });
+            dl.AddStockItem(itemID, item.Quantity);
             if (item.Image != null)
                 dl.AddImage(item.ItemID, item.Image);
         }
@@ -58,15 +57,7 @@ namespace BL
             foreach (var item in order.Items)
             {
                 dl.AddOrderItem(OrderID, item.ItemID, item.Price);
-                dl.EditItem(new DO.Item
-                {
-                    ItemID = item.ItemID,
-                    Brand = item.Brand,
-                    Description = item.Description,
-                    ModelNumber = item.ModelNumber,
-                    Price = item.Price,
-                    Quantity = item.Quantity - 1
-                });
+                dl.EditStock(item.ItemID, -1);
             }
             return OrderID;
         }
@@ -76,10 +67,8 @@ namespace BL
             dl.EditCustomer(new DO.Customer
             {
                 CustomerID = cust.CustomerID,
-                FirstName = cust.FirstName,
-                LastName = cust.LastName,
+                Name = cust.Name,
                 Address = cust.Address,
-                HouseNumber = cust.HouseNumber,
                 PostCode = cust.PostCode,
                 Email = cust.Email,
                 Phone = cust.Phone,
@@ -95,8 +84,7 @@ namespace BL
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
-                Price = item.Price,
-                Quantity = item.Quantity
+                Price = item.Price
             });
         }
 
@@ -106,10 +94,8 @@ namespace BL
                    let temp = new Customer
                    {
                        CustomerID = cust.CustomerID,
-                       FirstName = cust.FirstName,
-                       LastName = cust.LastName,
+                       Name = cust.Name,
                        Address = cust.Address,
-                       HouseNumber = cust.HouseNumber,
                        PostCode = cust.PostCode,
                        Email = cust.Email,
                        Phone = cust.Phone,
@@ -117,8 +103,7 @@ namespace BL
                        OrderIDs = dl.GetOrders().Where(order => order.CustomerID == cust.CustomerID).Select(order => order.OrderID)
                    }
                    where filter(temp)
-                   orderby temp.FirstName
-                   orderby temp.LastName
+                   orderby temp.Name
                    select temp;
         }
 
@@ -132,12 +117,10 @@ namespace BL
                        Description = item.Description,
                        ModelNumber = item.ModelNumber,
                        Price = item.Price,
-                       Quantity = item.Quantity,
+                       Quantity = dl.GetStockItem(item.ItemID),
                        Categories = from cat in dl.GetItemCategories(item.ItemID)
                                     select (new Category { CategoryID = cat, CategoryName = dl.GetCategories().Where(ct => ct.CategoryID == cat).Select(ct => ct.CategoryName).FirstOrDefault() }),
-                       Image = dl.GetItemImages().Where(im => im.ItemID == item.ItemID).Select(im => im.Image).FirstOrDefault(),
-                       IsActive = item.IsActive
-
+                       Image = dl.GetItemImages().Where(im => im.ItemID == item.ItemID).Select(im => im.Image).FirstOrDefault()
                    }
                    where filter(temp)
                    select temp;
@@ -162,17 +145,9 @@ namespace BL
                    select (temp);
         }
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(string itemID)
         {
-            dl.RemoveItem(new DO.Item
-            {
-                ItemID = item.ItemID,
-                Brand = item.Brand,
-                Description = item.Description,
-                ModelNumber = item.ModelNumber,
-                Price = item.Price,
-                Quantity = item.Quantity
-            });
+            dl.RemoveItem(itemID);
         }
     }
 }

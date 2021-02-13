@@ -51,7 +51,7 @@ namespace BL
         /// marks an item as InActive
         /// </summary>
         /// <param name="item">item to mark</param>
-        void RemoveItem(Item item);
+        void RemoveItem(string itemID);
 
         /// <summary>
         /// add a new order 

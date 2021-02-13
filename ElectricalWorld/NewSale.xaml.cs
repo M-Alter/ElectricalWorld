@@ -22,12 +22,12 @@ namespace ElectricalWorld
     public partial class NewSale : Window
     {
         IBL bl = BLAPI.BLFactory.GetBL();
-        ObservableCollection<BO.Customer> custs = new ObservableCollection<BO.Customer>();
-        ObservableCollection<BO.Item> items = new ObservableCollection<BO.Item>();
-        ObservableCollection<BO.Item> basket = new ObservableCollection<BO.Item>();
+        ObservableCollection<PO.Customer> custs = new ObservableCollection<PO.Customer>();
+        ObservableCollection<PO.Item> items = new ObservableCollection<PO.Item>();
+        ObservableCollection<PO.Item> basket = new ObservableCollection<PO.Item>();
 
 
-        BO.Customer cust;
+        PO.Customer cust;
         public NewSale()
         {
             InitializeComponent();
@@ -76,14 +76,14 @@ namespace ElectricalWorld
                 )
                 )
             {
-                items.Add(item);
+                items.Add(PO.Tools.POItem(item));
             }
             lvItems.DataContext = items;
         }
 
         private void btnChooseItem_Click(object sender, RoutedEventArgs e)
         {
-            BO.Item item = (BO.Item)(sender as Button).DataContext as BO.Item;
+            PO.Item item = (PO.Item)(sender as Button).DataContext as PO.Item;
             basket.Add(item);
             lblTotal.Content = basket.Sum(it => it.Price);
         }
@@ -100,8 +100,7 @@ namespace ElectricalWorld
 
             foreach (var item in bl.GetCutomers(cust =>
                 cust.CustomerID.ToString().ToLower().Contains(input) ||
-                cust.FirstName.ToLower().Contains(input) ||
-                cust.LastName.ToLower().Contains(input) ||
+                cust.Name.ToLower().Contains(input) ||
                 cust.Phone.ToLower().Contains(input) ||
                 cust.Mobile.ToLower().Contains(input) ||
                 cust.Address.ToLower().Contains(input) ||
@@ -110,14 +109,14 @@ namespace ElectricalWorld
                 )
                 )
             {
-                custs.Add(item);
+                custs.Add(PO.Tools.POCustomer(item));
             }
             cmbCusts.ItemsSource = custs;
         }
 
         private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
-            BO.Order order = new BO.Order
+            PO.Order order = new PO.Order
             {
                 Customer = cust,
                 Items = from item in basket
@@ -126,7 +125,7 @@ namespace ElectricalWorld
                 TotalPrice = basket.Sum(it => it.Price)
             };
 
-            string orderID = bl.AddOrder(order);
+            string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
             order.OrderID = orderID;
             Tools.CreateInvoice(order);
 
@@ -134,7 +133,7 @@ namespace ElectricalWorld
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cust = (BO.Customer)e.AddedItems[0] as BO.Customer;
+            cust = (PO.Customer)e.AddedItems[0] as PO.Customer;
         }
     }
 }

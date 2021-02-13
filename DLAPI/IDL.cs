@@ -50,7 +50,7 @@ namespace DLAPI
         /// marks an item as InActive
         /// </summary>
         /// <param name="item">item to mark</param>
-        void RemoveItem(Item item);
+        void RemoveItem(string itemID);
 
         /// <summary>
         /// add an image to an item
@@ -167,5 +167,26 @@ namespace DLAPI
         /// </summary>
         /// <returns></returns>
         int GetNewOrderID();
+
+        /// <summary>
+        /// add a new stock item insctance
+        /// </summary>
+        /// <param name="itemID">ID of the item</param>
+        /// <param name="qnt">qnt of the item</param>
+        void AddStockItem(string itemID, int qnt);
+
+        /// <summary>
+        /// edit the stock of an item
+        /// </summary>
+        /// <param name="itemID">ID of the item</param>
+        /// <param name="qnt">qnt of the item</param>
+        void EditStock(string itemID, int qnt);
+
+        /// <summary>
+        /// get the stock of an item
+        /// </summary>
+        /// <param name="itemID">ID of the item</param>
+        /// <returns> in the current qnt stock</returns>
+        int GetStockItem(string itemID);
     }
 }

@@ -31,7 +31,8 @@ namespace DL
         string ordersFilePath = @"orders.xml";
         string imagesFilePath = @"images.xml";
         string itemsFilePath = @"items.xml";
-        string orderItemsFilePath = @"OrderItems.xml";
+        string orderItemsFilePath = @"orderItems.xml";
+        string stockItemsFilePath = @"stockItems.xml";
         string idNumberGenertatorFile = @"IdFile.xml";
 
 
@@ -64,9 +65,7 @@ namespace DL
 
             XElement customerElem = new XElement("Customer",
                 new XElement("CustomerID", cust.CustomerID),
-                new XElement("FirstName", cust.FirstName),
-                new XElement("LastName", cust.LastName),
-                new XElement("HouseNumber", cust.HouseNumber),
+                new XElement("FirstName", cust.Name),
                 new XElement("Address", cust.Address),
                 new XElement("PostCode", cust.PostCode),
                 new XElement("Phone", cust.Phone),
@@ -126,8 +125,7 @@ namespace DL
                 new XElement("ModelNumber", item.ModelNumber),
                 new XElement("Description", item.Description),
                 new XElement("IsActive", item.IsActive),
-                new XElement("Price", item.Price),
-                new XElement("Quantity", item.Quantity)
+                new XElement("Price", item.Price)
                 )
                 );
 
@@ -193,9 +191,7 @@ namespace DL
 
             customerElem = new XElement("Customer",
                 new XElement("CustomerID", cust.CustomerID),
-                new XElement("FirstName", cust.FirstName),
-                new XElement("LastName", cust.LastName),
-                new XElement("HouseNumber", cust.HouseNumber),
+                new XElement("FirstName", cust.Name),
                 new XElement("Address", cust.Address),
                 new XElement("PostCode", cust.PostCode),
                 new XElement("Phone", cust.Phone),
@@ -239,8 +235,7 @@ namespace DL
                 new XElement("ModelNumber", item.ModelNumber),
                 new XElement("Description", item.Description),
                 new XElement("IsActive", item.IsActive),
-                new XElement("Price", item.Price),
-                new XElement("Quantity", item.Quantity)
+                new XElement("Price", item.Price)
                 )
                 );
 
@@ -290,6 +285,7 @@ namespace DL
 
             return from item in rootElem.Elements()
                    let temp = XMLTools.CreateItemInstance(item)
+                   where temp.IsActive == true
                    select temp;
         }
 
@@ -328,13 +324,13 @@ namespace DL
 
         }
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(string itemID)
         {
             XElement rootElem = XMLTools.LoadFile(itemsFilePath);
 
             XElement itemElem = (from it in rootElem.Elements()
                                  let temp = XMLTools.CreateItemInstance(it)
-                                 where temp.ItemID == item.ItemID
+                                 where temp.ItemID == itemID
                                  select it).FirstOrDefault();
             if (itemElem != null)
             {
@@ -415,6 +411,42 @@ namespace DL
             XMLTools.SaveFile(rootElem, idNumberGenertatorFile);
 
             return result;
+        }
+
+        public void AddStockItem(string itemID, int qnt)
+        {
+            XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
+
+            rootElem.Add(new XElement("StckItem",
+                new XElement("ItemID", itemID),
+                new XElement("Quantity", qnt)
+                )
+                );
+
+            XMLTools.SaveFile(rootElem, stockItemsFilePath);
+
+        }
+
+        public void EditStock(string itemID, int qnt)
+        {
+            XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
+
+            var stockItemElem = (from item in rootElem.Elements()
+                                 where item.Element("ItemID").Value == itemID
+                                 select item).FirstOrDefault();
+
+            stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
+
+            XMLTools.SaveFile(rootElem, stockItemsFilePath);
+        }
+
+        public int GetStockItem(string itemID)
+        {
+            XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
+
+            return (from item in rootElem.Elements()
+                    where item.Element("ItemID").Value == itemID
+                    select int.Parse(item.Element("Quantity").Value)).FirstOrDefault();
         }
         #endregion
 

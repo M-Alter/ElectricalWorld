@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO
+namespace PO
 {
     public class Customer
     {
@@ -42,5 +42,16 @@ namespace DO
         /// email address of the customer
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// order numbers of this customer
+        /// </summary>
+        public IEnumerable<string> OrderIDs { get; set; }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

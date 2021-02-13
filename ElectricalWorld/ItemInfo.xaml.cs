@@ -12,7 +12,7 @@ namespace ElectricalWorld
     public partial class ItemInfo : Window
     {
         BL.IBL bl = BLFactory.GetBL();
-        BO.Item item;
+        PO.Item item;
         public static readonly DependencyProperty ItemIsEditable = DependencyProperty.Register("isInEditMode", typeof(bool), typeof(ItemInfo));
 
 
@@ -22,7 +22,7 @@ namespace ElectricalWorld
             set { SetValue(ItemIsEditable, value); }
         }
 
-        public ItemInfo(BO.Item item)
+        public ItemInfo(PO.Item item)
         {
             InitializeComponent();
             this.item = item;
@@ -41,8 +41,7 @@ namespace ElectricalWorld
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            item.IsActive = true;
-            bl.AddItem(item);
+            bl.AddItem(PO.Tools.BOItem(item));
             Close();
         }
 
