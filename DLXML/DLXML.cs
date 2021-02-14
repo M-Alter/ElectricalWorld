@@ -20,11 +20,11 @@ namespace DL
         #region Singleton
         private static readonly DLXML instance = new DLXML();
         static DLXML() { }
-        DLXML() { } // default => private
+        DLXML() {} // default => private
         public static DLXML Instance { get => instance; }// The public Instance property to use
 
         #region Files
-        string imagesFolderPath = @"images\";
+        string imagesFolderPath = Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)) + @"\ElectricalWorld\images\";
         string categoriesFilePath = @"categories.xml";
         string itemCategoriesFilePath = @"itemCategories.xml";
         string customersFilePath = @"customers.xml";
@@ -86,7 +86,7 @@ namespace DL
         {
             //try
             //{
-
+            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
 
             //var file = File.Create(imagesFolderPath + itemID + @".bmp");
             BitmapImage bitmap = new BitmapImage();
@@ -207,6 +207,8 @@ namespace DL
 
         public void EditImage(string itemID, string image)
         {
+            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
             XElement imageElem = (from im in rootElem.Elements()
@@ -309,6 +311,8 @@ namespace DL
 
         public void RemoveImage(string itemID)
         {
+            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
             XElement imageElem = (from im in rootElem.Elements()

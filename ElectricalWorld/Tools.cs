@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -266,9 +268,10 @@ namespace ElectricalWorld
 
             pdfRenderer.RenderDocument();
 
-            string filePath = order.OrderID + ".pdf";
-            pdfRenderer.PdfDocument.Save(@"Invoice\" + filePath);
-
+            string fileName = order.OrderID + ".pdf";
+            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\")) Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\");
+            pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
+            Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
         }
     }
 }

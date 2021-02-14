@@ -13,7 +13,7 @@ namespace DLXML
     public class XMLTools
     {
 
-        public static string dir = @"xml\";
+        public static string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\xml\";
 
         static XMLTools()
         {

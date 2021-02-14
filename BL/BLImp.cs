@@ -15,7 +15,7 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                CustomerID = dl.GetNewCustomerID().ToString("00000"),
+                CustomerID = dl.GetNewCustomerID().ToString(@"00000"),
                 Name = cust.Name,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
@@ -27,7 +27,7 @@ namespace BL
 
         public void AddItem(Item item)
         {
-            string itemID = dl.GetNewItemID().ToString("00000");
+            string itemID = dl.GetNewItemID().ToString(@"00000");
             dl.AddItem(new DO.Item
             {
                 ItemID = itemID,
@@ -45,7 +45,7 @@ namespace BL
 
         public string AddOrder(Order order)
         {
-            string OrderID = dl.GetNewOrderID().ToString("000000");
+            string OrderID = dl.GetNewOrderID().ToString(@"000000");
             dl.AddOrder(new DO.Order
             {
                 OrderID = OrderID,

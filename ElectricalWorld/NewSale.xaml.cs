@@ -128,7 +128,7 @@ namespace ElectricalWorld
             string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
             order.OrderID = orderID;
             Tools.CreateInvoice(order);
-
+            Close();
         }
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)

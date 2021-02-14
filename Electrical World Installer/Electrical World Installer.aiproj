@@ -1,0 +1,63 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">All</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>0fb939ad-73ae-4b50-ac3a-24bfedbed129</ProjectGuid>
+    <OutputType>msi</OutputType>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Electrical World Installer.aip</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <IsWindowsApplication>True</IsWindowsApplication>
+    <AssemblyName>Electrical World Installer</AssemblyName>
+    <Name>Electrical World Installer</Name>
+    <RootNamespace>Electrical World Installer</RootNamespace>
+    <LoadFromTemplate>
+    </LoadFromTemplate>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DefaultBuild' " />
+  <ItemGroup>
+    <Compile Include="Electrical World Installer.aip">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Name>BL</Name>
+      <Project>{1b76c313-9cbe-4f98-9610-60ed5f7ac9ee}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References;SymbolsOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\DLAPI\DLAPI.csproj">
+      <Name>DLAPI</Name>
+      <Project>{ed11aa00-399d-4541-bb35-061bd708176c}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;SymbolsOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\DLXML\DLXML.csproj">
+      <Name>DLXML</Name>
+      <Project>{abb4468b-2dd5-455c-87c3-9e49267800f0}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References;SymbolsOutput</OutputsToImport>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectricalWorld\ElectricalWorld.csproj">
+      <Name>ElectricalWorld</Name>
+      <Project>{4b96df44-6319-4a38-9c75-ab5569d30c4a}</Project>
+      <Private>True</Private>
+      <OutputsToImport>PrimaryOutput;References;SymbolsOutput</OutputsToImport>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="Build">
+    <Error Text="This project requires Advanced Installer tool. Please download it from https://www.advancedinstaller.com/download.html" />
+  </Target>
+  <Target Name="Rebuild">
+    <Error Text="This project requires Advanced Installer tool. Please download it from https://www.advancedinstaller.com/download.html" />
+  </Target>
+  <Target Name="Clean">
+  </Target>
+  <Target Name="ResolveAssemblyReferences">
+  </Target>
+  <Import Condition="'$(AdvancedInstallerMSBuildTargets)' != ''" Project="$(AdvancedInstallerMSBuildTargets)\AdvInstExtTasks.Targets" />
+  <Import Condition="('$(AdvancedInstallerMSBuildTargets)' == '') And (Exists('$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets'))" Project="$(MSBuildExtensionsPath32)\Caphyon\Advanced Installer\AdvInstExtTasks.Targets" />
+</Project>

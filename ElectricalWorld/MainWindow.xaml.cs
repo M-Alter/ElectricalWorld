@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using PO;
 
+
 namespace ElectricalWorld
 {
     /// <summary>
@@ -16,8 +17,9 @@ namespace ElectricalWorld
         IBL bl = BLAPI.BLFactory.GetBL();
         ObservableCollection<PO.Item> items = new ObservableCollection<PO.Item>();
         ObservableCollection<PO.Order> sales = new ObservableCollection<PO.Order>();
+        ObservableCollection<PO.Order> custOrders = new ObservableCollection<PO.Order>();
         ObservableCollection<PO.Customer> custs = new ObservableCollection<PO.Customer>();
-
+        
 
         public MainWindow()
         {
@@ -28,12 +30,12 @@ namespace ElectricalWorld
             //    items.Add(item);
             //}
             //lvItems.DataContext = items;
-
+            
         }
 
         private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            PO.Item item = lvItems.SelectedItem as PO.Item;
+            PO.Item item = (sender as ListView).SelectedItem as PO.Item;
             if (item is PO.Item)
             {
                 ItemInfo itemInfo = new ItemInfo(item);
@@ -134,6 +136,7 @@ namespace ElectricalWorld
                 grdOrderDetails.DataContext = order;
                 //lvOrderView.DataContext = order.Items;
                 //lblOrderDate.DataContext = order.OrderTime;
+                tabControl.SelectedIndex = 1;
             }
         }
 
@@ -142,6 +145,19 @@ namespace ElectricalWorld
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
                 Tools.CreateInvoice(order);
+        }
+
+        private void lvCusts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PO.Customer customer = (sender as ListView).SelectedItem as PO.Customer;
+            custOrders.Clear();
+            custOrders = new ObservableCollection<Order>();
+            foreach (var item in bl.GetOrders(order=>order.Customer.CustomerID == customer.CustomerID))
+            {
+                custOrders.Add(PO.Tools.POOrder(item));
+            }
+            lvCustSales.DataContext = custOrders;
+            grdCustInfo.DataContext = customer;
         }
     }
 }

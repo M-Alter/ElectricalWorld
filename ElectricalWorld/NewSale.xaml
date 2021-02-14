@@ -23,8 +23,7 @@
                         <DataTemplate>
                             <WrapPanel>
                                 <TextBlock Text="{Binding CustomerID}" Margin="3,0"/>
-                                <TextBlock Text="{Binding FirstName}" Margin="3,0"/>
-                                <TextBlock Text="{Binding LastName}" Margin="3,0"/>
+                                <TextBlock Text="{Binding Name}" Margin="3,0"/>
                             </WrapPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>

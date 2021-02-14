@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="17.9" version="17.9" Modules="simple" RootPath="." Language="en" Id="{E4A38F90-396B-4657-8E37-8D4A824A5A96}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BL.dll" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BL.dll_1" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BL.pdb" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_1" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_2" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_3" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.pdb" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLXML.dll" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLXML.pdb" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe.config" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.pdb" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll" Value="..\packages\MaterialDesignColors.1.2.7\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="..\packages\MaterialDesignThemes.3.2.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.Renderinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_PdfSharp.Chartinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_PdfSharpgdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Drawing.Common.dll" Value="..\packages\System.Drawing.Common.5.0.1\lib\net461"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BL.dll" Value="BL.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1" Value="BL.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BL.pdb" Value="BL.pdb"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.pdb" Value="DLAPI.pdb"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll" Value="DLXML.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLXML.pdb" Value="DLXML.pdb"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe" Value="Electrical World.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config" Value="Electrical World.exe.config"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.pdb" Value="Electrical World.pdb"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll" Value="MaterialDesignColors.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Value="MigraDoc.DocumentObjectModel-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll" Value="MigraDoc.Rendering-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Value="MigraDoc.RtfRendering-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll" Value="PdfSharp.Charting-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll" Value="PdfSharp-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll" Value="System.Drawing.Common.dll"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="Manufacturer" Value="Menachem Alter"/>
+    <ROW Property="ProductCode" Value="1033:{4D9AA4FC-7F0A-4D8E-9EC5-D8035BC1B670} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Electrical World"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{546E05D1-6E4E-46AD-8604-790028C343A6}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="BL_Dir" Directory_Parent="APPDIR" DefaultDir="BL"/>
+    <ROW Directory="DLAPI_Dir" Directory_Parent="APPDIR" DefaultDir="DLAPI"/>
+    <ROW Directory="DLXML_Dir" Directory_Parent="APPDIR" DefaultDir="DLXML"/>
+    <ROW Directory="ElectricalWorld_Dir" Directory_Parent="APPDIR" DefaultDir="ELECTR~1|ElectricalWorld"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll" ComponentId="{9686BB86-2226-424A-A465-61035E1F2A93}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Drawing.Common.dll"/>
+    <ROW Component="APPDIR" ComponentId="{2798A293-356A-40F5-ADEB-8FC2152C9367}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="BL_PrimaryOutput" ComponentId="{D5FC9498-CE2F-4987-A0E9-65DFA5C9FC89}" Directory_="BL_Dir" Attributes="0" KeyPath="BL.dll"/>
+    <ROW Component="BL_References" ComponentId="{10BFAA57-AFDC-4D5C-9C7E-021E9693C228}" Directory_="BL_Dir" Attributes="0" KeyPath="DLAPI.dll"/>
+    <ROW Component="BL_SymbolsOutput" ComponentId="{4FBAACFF-7BD6-4809-B6F7-F5C0CD9998BE}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="BL.pdb"/>
+    <ROW Component="DLAPI_PrimaryOutput" ComponentId="{FB051B9D-5F93-4C5F-BB0B-2CAD2257F169}" Directory_="DLAPI_Dir" Attributes="0" KeyPath="DLAPI.dll_1"/>
+    <ROW Component="DLAPI_SymbolsOutput" ComponentId="{E7E8830A-23F0-4AEE-BC8C-0822CD5928A1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLAPI.pdb"/>
+    <ROW Component="DLXML_PrimaryOutput" ComponentId="{4879EC71-7B6A-4E34-8F83-07ECA444E94E}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLXML.dll"/>
+    <ROW Component="DLXML_References" ComponentId="{B78FEBFD-4168-429D-8627-B2E121794405}" Directory_="DLXML_Dir" Attributes="0" KeyPath="DLAPI.dll_2"/>
+    <ROW Component="DLXML_SymbolsOutput" ComponentId="{37197FEF-6F8A-4F09-A728-35DAB5A61CE0}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLXML.pdb"/>
+    <ROW Component="ElectricalWorld_PrimaryOutput" ComponentId="{DE34C9CD-4843-470D-BFB2-3AA5132D2A8D}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.exe"/>
+    <ROW Component="ElectricalWorld_References" ComponentId="{867C9B05-3BC9-4BA4-9A27-CA46A797AE5E}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLAPI.dll_3"/>
+    <ROW Component="ElectricalWorld_SymbolsOutput" ComponentId="{8A8F0BEB-FEA2-4666-A892-99B5750EA646}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.pdb"/>
+    <ROW Component="ProductInformation" ComponentId="{5FC62741-4F12-48E5-985E-B033E181573B}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{2B5D7354-D981-4C79-AF8B-4F81B1534576}" Directory_="SHORTCUTDIR" Attributes="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="BL.dll" Component_="BL_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BL.dll&gt;" SelfReg="false"/>
+    <ROW File="DLAPI.dll" Component_="BL_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll&gt;" SelfReg="false"/>
+    <ROW File="BL.pdb" Component_="BL_SymbolsOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_BL.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BL.pdb&gt;" SelfReg="false"/>
+    <ROW File="DLAPI.dll_1" Component_="DLAPI_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_1&gt;" SelfReg="false"/>
+    <ROW File="DLAPI.pdb" Component_="DLAPI_SymbolsOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.pdb&gt;" SelfReg="false"/>
+    <ROW File="DLXML.dll" Component_="DLXML_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLXML.dll&gt;" SelfReg="false"/>
+    <ROW File="DLAPI.dll_2" Component_="DLXML_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_2&gt;" SelfReg="false"/>
+    <ROW File="System.Drawing.Common.dll" Component_="AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll" FileName="SYSTEM~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Drawing.Common.dll&gt;" SelfReg="false"/>
+    <ROW File="DLXML.pdb" Component_="DLXML_SymbolsOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLXML.pdb&gt;" SelfReg="false"/>
+    <ROW File="ElectricalWorld.exe" Component_="ElectricalWorld_PrimaryOutput" FileName="ELECTR~2.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.exe&gt;" SelfReg="false" DigSign="true"/>
+    <ROW File="ElectricalWorld.exe.config" Component_="ElectricalWorld_PrimaryOutput" FileName="ELECTR~2.CON|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.exe.config&gt;" SelfReg="false"/>
+    <ROW File="BL.dll_1" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BL.dll_1&gt;" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.dll" Component_="ElectricalWorld_References" FileName="MATERI~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignColors.dll&gt;" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.dll" Component_="ElectricalWorld_References" FileName="MATERI~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll&gt;" SelfReg="false"/>
+    <ROW File="MigraDoc.DocumentObjectModelgdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll&gt;" SelfReg="false"/>
+    <ROW File="MigraDoc.Renderinggdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.Renderinggdi.dll&gt;" SelfReg="false"/>
+    <ROW File="MigraDoc.RtfRenderinggdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.RtfRenderinggdi.dll&gt;" SelfReg="false"/>
+    <ROW File="PdfSharpgdi.dll" Component_="ElectricalWorld_References" FileName="PDFSHA~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_PdfSharpgdi.dll&gt;" SelfReg="false"/>
+    <ROW File="PdfSharp.Chartinggdi.dll" Component_="ElectricalWorld_References" FileName="PDFSHA~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_PdfSharp.Chartinggdi.dll&gt;" SelfReg="false"/>
+    <ROW File="DLAPI.dll_3" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_3&gt;" SelfReg="false"/>
+    <ROW File="ElectricalWorld.pdb" Component_="ElectricalWorld_SymbolsOutput" FileName="ELECTR~2.PDB|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.pdb&gt;" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
+    <ROW Name="AI_APPPATH_PERBUILD_BL.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_BL.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_BL.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.pdb]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_3" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_3]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.pdb]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLXML.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DLXML.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLXML.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_DLXML.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.pdb]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ElectricalWorld.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ElectricalWorld.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ElectricalWorld.pdb" Path="[|AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.pdb]\[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.pdb]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignColors.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.Renderinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.Renderinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.RtfRenderinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_PdfSharp.Chartinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_PdfSharp.Chartinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_PdfSharpgdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_PdfSharpgdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Drawing.Common.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Drawing.Common.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll]" Type="2" Content="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="BL_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="BL_References"/>
+    <ROW Feature_="MainFeature" Component_="BL_SymbolsOutput"/>
+    <ROW Feature_="MainFeature" Component_="DLAPI_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="DLAPI_SymbolsOutput"/>
+    <ROW Feature_="MainFeature" Component_="DLXML_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="DLXML_References"/>
+    <ROW Feature_="MainFeature" Component_="DLXML_SymbolsOutput"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld_References"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld_SymbolsOutput"/>
+    <ROW Feature_="MainFeature" Component_="AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="ElectricalWorld" Directory_="SHORTCUTDIR" Name="ELECTR~1|Electrical World" Component_="ElectricalWorld_PrimaryOutput" Target="[#ElectricalWorld.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
+    <ROW ProjectId="{1b76c313-9cbe-4f98-9610-60ed5f7ac9ee}" ProjectName="BL" OutputGroup="PrimaryOutput" OutputFile="BL.dll"/>
+    <ROW ProjectId="{1b76c313-9cbe-4f98-9610-60ed5f7ac9ee}" ProjectName="BL" OutputGroup="References" OutputFile="DLAPI.dll"/>
+    <ROW ProjectId="{1b76c313-9cbe-4f98-9610-60ed5f7ac9ee}" ProjectName="BL" OutputGroup="SymbolsOutput" OutputFile="BL.pdb"/>
+    <ROW ProjectId="{ed11aa00-399d-4541-bb35-061bd708176c}" ProjectName="DLAPI" OutputGroup="PrimaryOutput" OutputFile="DLAPI.dll_1"/>
+    <ROW ProjectId="{ed11aa00-399d-4541-bb35-061bd708176c}" ProjectName="DLAPI" OutputGroup="SymbolsOutput" OutputFile="DLAPI.pdb"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="PrimaryOutput" OutputFile="DLXML.dll"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="References" OutputFile="DLAPI.dll_2"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="References" OutputFile="System.Drawing.Common.dll"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="SymbolsOutput" OutputFile="DLXML.pdb"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="PrimaryOutput" OutputFile="ElectricalWorld.exe" OutputFileShortcut="ElectricalWorld"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="PrimaryOutput" OutputFile="ElectricalWorld.exe.config"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="BL.dll_1"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MaterialDesignColors.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MaterialDesignThemes.Wpf.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.DocumentObjectModelgdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.Renderinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.RtfRenderinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="PdfSharpgdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="PdfSharp.Chartinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="DLAPI.dll_3"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="SymbolsOutput" OutputFile="ElectricalWorld.pdb"/>
+  </COMPONENT>
+</DOCUMENT>
