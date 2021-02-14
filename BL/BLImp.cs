@@ -27,6 +27,14 @@ namespace BL
 
         public void AddItem(Item item)
         {
+            foreach (var doItem in dl.GetItems())
+            {
+                if (doItem.ItemID == item.ItemID)
+                {
+                    dl.EditStock(item.ItemID, item.Quantity);
+                    return;
+                }
+            }
             string itemID = dl.GetNewItemID().ToString(@"00000");
             dl.AddItem(new DO.Item
             {
@@ -84,7 +92,8 @@ namespace BL
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
-                Price = item.Price
+                Price = item.Price,
+                IsActive = true
             });
         }
 

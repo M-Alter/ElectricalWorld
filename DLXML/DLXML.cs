@@ -439,7 +439,7 @@ namespace DL
                                  where item.Element("ItemID").Value == itemID
                                  select item).FirstOrDefault();
 
-            stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
+            stockItemElem.Element("Quantity").SetValue(/*int.Parse(stockItemElem.Element("Quantity").Value) + */qnt);
 
             XMLTools.SaveFile(rootElem, stockItemsFilePath);
         }
