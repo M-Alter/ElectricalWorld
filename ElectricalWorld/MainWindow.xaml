@@ -209,26 +209,27 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="4*"/>
-                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
                             <StackPanel>
                                 <Label Content="Name: "/>
+                                <Label Content="Company Name: "/>
                                 <Label Content="Address: "/>
                                 <Label Content="Post-Code: "/>
+                                <Label Content="City: "/>
                                 <Label Content="Phone Number: "/>
                                 <Label Content="Mobile: "/>
                                 <Label Content="Email: "/>
-                                <Button x:Name="btnSaveCustChanges" Content="Save Changes" Width="120" Click="btnSaveCustChanges_Click"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+                                <TextBox Text="{Binding Company, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Address, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding PostCode, Mode=TwoWay}"/>
+                                <TextBox Text="{Binding City, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Phone, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Mobile, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Email, Mode=TwoWay}"/>
-
-
                             </StackPanel>
 
                             <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >

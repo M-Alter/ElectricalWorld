@@ -150,7 +150,7 @@
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Button x:Name="btnEndSale" Content="End Sale" Height="50" Width="200" Margin="20" Background="Turquoise" Click="btnEndSale_Click"/>
-                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Margin="20" Background="Red"/>
+                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Margin="20" Background="Red" Click="btnPay_Click"/>
                 
             </WrapPanel>
         </StackPanel>

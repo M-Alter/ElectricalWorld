@@ -74,16 +74,26 @@ namespace DLXML
 
         internal static Customer CreateCustomerInstance(XElement cust)
         {
-            return new Customer
+
+            try
             {
-                CustomerID = cust.Element("CustomerID").Value,
-                Name = cust.Element("FirstName").Value,
-                Address = cust.Element("Address").Value,
-                PostCode = cust.Element("PostCode").Value,
-                Email = cust.Element("Email").Value,
-                Phone = cust.Element("Phone").Value,
-                Mobile = cust.Element("Mobile").Value
-            };
+                return new Customer
+                {
+                    CustomerID = cust.Element("CustomerID").Value,
+                    Name = cust.Element("Name").Value,
+                    Company = cust.Element("Company").Value,
+                    Address = cust.Element("Address").Value,
+                    PostCode = cust.Element("PostCode").Value,
+                    City = cust.Element("City").Value,
+                    Email = cust.Element("Email").Value,
+                    Phone = cust.Element("Phone").Value,
+                    Mobile = cust.Element("Mobile").Value
+                };
+            }
+            catch (Exception e)
+            {
+                throw new BadCustomerExceptions(cust.Element("CustomerID").Value != ""? cust.Element("CustomerID").Value: "Unknown Customer ID", "failed to load the customer", e);
+            }
         }
 
 

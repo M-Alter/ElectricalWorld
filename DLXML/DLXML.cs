@@ -65,9 +65,11 @@ namespace DL
 
             XElement customerElem = new XElement("Customer",
                 new XElement("CustomerID", cust.CustomerID),
-                new XElement("FirstName", cust.Name),
+                new XElement("Name", cust.Name),
+                new XElement("Company", cust.Company),
                 new XElement("Address", cust.Address),
                 new XElement("PostCode", cust.PostCode),
+                new XElement("City", cust.City),
                 new XElement("Phone", cust.Phone),
                 new XElement("Mobile", cust.Mobile),
                 new XElement("Email", cust.Email)
@@ -191,9 +193,11 @@ namespace DL
 
             customerElem = new XElement("Customer",
                 new XElement("CustomerID", cust.CustomerID),
-                new XElement("FirstName", cust.Name),
+                new XElement("Name", cust.Name),
+                new XElement("Company", cust.Company),
                 new XElement("Address", cust.Address),
                 new XElement("PostCode", cust.PostCode),
+                new XElement("City", cust.City),
                 new XElement("Phone", cust.Phone),
                 new XElement("Mobile", cust.Mobile),
                 new XElement("Email", cust.Email)

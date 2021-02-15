@@ -1,21 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MailKit.Net.Smtp;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
+using MimeKit;
+using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace ElectricalWorld
 {
     class Tools
     {
-        public static void CreateInvoice(PO.Order order)
+        public static string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\xml\";
+
+        static Tools()
+        {
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+        }
+
+        /// <summary>
+        /// loads the file 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>the root element of the file</returns>
+        public static XElement LoadFile(string path)
+        {
+            try
+            {
+                if (File.Exists(dir + path))
+                {
+                    return XElement.Load(dir + path);
+                }
+                else
+                {
+                    XElement rootElement = new XElement(path);
+                    rootElement.Add(new XElement("Email", 0));
+                    rootElement.Add(new XElement("Password", 0));
+                    rootElement.Save(dir + path);
+                    return rootElement;
+                }
+            }
+            catch (FileLoadException e)
+            {
+                throw new FileLoadException(e.Message, e.FileName);
+            }
+            catch (Exception e)
+            {
+                throw new FileLoadException(e.Message, dir + path);
+            }
+        }
+
+
+        public static void EmailInvoice(PO.Order order, string fileName)
+        {
+            XElement rootElem = LoadFile(@"EmailDetails.xml");
+            string email = rootElem.Element("Email").Value;
+            string password = rootElem.Element("Password").Value;
+
+
+            //create a new message
+            var message = new MimeMessage();
+            //add the source of the message
+            message.From.Add(new MailboxAddress("Electrical World", email));
+            //add the destination of the messeg
+            message.To.Add(new MailboxAddress(order.Customer.Name, order.Customer.Email));
+            //add a subject to the message
+            message.Subject = "Invoice for order no. " + order.OrderID;
+
+            BodyBuilder bodyBuilder = new BodyBuilder();
+
+            bodyBuilder.TextBody = string.Format(@"Dear {0} :
+
+Your invoice for order no. {1} is attached. 
+
+Thank you for your business - we appreciate it very much.
+
+Sincerely,
+Sruli", order.Customer.Name, order.OrderID);
+
+            bodyBuilder.Attachments.Add(fileName);
+
+            message.Body = bodyBuilder.ToMessageBody();
+
+
+
+            //use resources only as long as needed and dipose right away
+            using (var client = new SmtpClient())
+            {
+                //connect to email server
+                client.Connect("smtp.gmail.com", 465, true);
+
+                //authenticate 
+                client.Authenticate(email, password);
+
+                try
+                {
+                    client.Send(message);
+                    client.Disconnect(true);
+                    client.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed to send message", ex);
+                }
+            }
+        }
+
+
+        public static void CreateInvoice(PO.Order order, bool paid = false)
         {
             Document document = new Document();
 
@@ -52,12 +149,12 @@ namespace ElectricalWorld
             style.ParagraphFormat.TabStops.AddTabStop("16cm", TabAlignment.Right);
 
 
-            
+
 
             // Each MigraDoc document needs at least one section.
             Section section = document.AddSection();
 
-            
+
 
             // Create footer
             Paragraph paragraph = section.Footers.Primary.AddParagraph();
@@ -170,8 +267,8 @@ namespace ElectricalWorld
             paragraph1.AddLineBreak();
             if (order.Customer.Company != "")
             {
-                paragraph1.AddLineBreak();
                 paragraph1.AddText(order.Customer.Company);
+                paragraph1.AddLineBreak();
             }
             paragraph1.AddText(order.Customer.Address);
             paragraph1.AddLineBreak();
@@ -191,8 +288,7 @@ namespace ElectricalWorld
             paragraph2.AddText("London");
             paragraph2.AddLineBreak();
             paragraph2.AddText("N16 6UE");
-            paragraph2.AddLineBreak();
-            paragraph2.AddText("020-8802-2894");
+
 
 
             // Iterate the invoice items
@@ -215,7 +311,23 @@ namespace ElectricalWorld
                 row1.Cells[2].AddParagraph(item.ModelNumber);
                 row1.Cells[3].AddParagraph(item.Description);
                 row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
-                
+
+
+                table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
+            }
+
+
+            if (paid)
+            {
+                Row row1 = table.AddRow();
+                row1.TopPadding = 1.5;
+                row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+                row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
+
+
+                row1.Cells[1].AddParagraph("Paid");
+                row1.Cells[4].AddParagraph("-" + order.Items.Sum(it => it.Price).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
 
                 table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
             }
@@ -283,6 +395,8 @@ namespace ElectricalWorld
             string fileName = order.OrderID + ".pdf";
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\")) Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
+            if (order.Customer.Email != "")
+                EmailInvoice(order, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
         }
     }

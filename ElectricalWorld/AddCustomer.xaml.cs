@@ -26,6 +26,7 @@ namespace ElectricalWorld
         {
             InitializeComponent();
             this.DataContext = cust;
+            cust.City = "London";
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

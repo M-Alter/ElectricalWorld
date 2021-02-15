@@ -20,7 +20,7 @@ namespace BL
                 Company = cust.Company,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
-                City =cust.City,
+                City = cust.City,
                 Email = cust.Email,
                 Phone = cust.Phone,
                 Mobile = cust.Mobile
@@ -67,7 +67,7 @@ namespace BL
             foreach (var item in order.Items)
             {
                 dl.AddOrderItem(OrderID, item.ItemID, item.Price);
-                dl.EditStock(item.ItemID, - 1);
+                dl.EditStock(item.ItemID, -1);
             }
             return OrderID;
         }

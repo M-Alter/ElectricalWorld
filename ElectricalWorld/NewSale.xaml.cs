@@ -60,10 +60,11 @@ namespace ElectricalWorld
         {
             AddCustomer addCustomer = new AddCustomer();
             addCustomer.Show();
-
-            cmbCusts.SelectedValue = PO.Tools.POCustomer(addCustomer.cust);
-            cust = PO.Tools.POCustomer(addCustomer.cust);
-
+            if (addCustomer.cust is BO.Customer)
+            {
+                cmbCusts.SelectedValue = PO.Tools.POCustomer(addCustomer.cust);
+                cust = PO.Tools.POCustomer(addCustomer.cust);
+            }
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
@@ -172,6 +173,23 @@ namespace ElectricalWorld
                 ItemInfo itemInfo = new ItemInfo(item);
                 itemInfo.ShowDialog();
             }
+        }
+
+        private void btnPay_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Order order = new PO.Order
+            {
+                Customer = cust,
+                Items = from item in basket
+                        select item,
+                OrderTime = DateTime.Now,
+                TotalPrice = 0.00
+            };
+
+            string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
+            order.OrderID = orderID;
+            Tools.CreateInvoice(order, true);
+            Close();
         }
     }
 }
