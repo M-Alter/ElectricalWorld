@@ -26,8 +26,9 @@ namespace ElectricalWorld
         ObservableCollection<PO.Item> items = new ObservableCollection<PO.Item>();
         ObservableCollection<PO.Item> basket = new ObservableCollection<PO.Item>();
 
+        PO.Order order = new PO.Order();
 
-        PO.Customer cust;
+        PO.Customer cust = new PO.Customer();
         public NewSale()
         {
             InitializeComponent();
@@ -57,6 +58,11 @@ namespace ElectricalWorld
 
         private void btnAddCust_Click(object sender, RoutedEventArgs e)
         {
+            AddCustomer addCustomer = new AddCustomer();
+            addCustomer.Show();
+
+            cmbCusts.SelectedValue = PO.Tools.POCustomer(addCustomer.cust);
+            cust = PO.Tools.POCustomer(addCustomer.cust);
 
         }
 
@@ -84,12 +90,13 @@ namespace ElectricalWorld
         private void btnChooseItem_Click(object sender, RoutedEventArgs e)
         {
             PO.Item item = (PO.Item)(sender as Button).DataContext as PO.Item;
-            basket.Add(item);
+            if (item is PO.Item)
+                basket.Add(item);
             lblTotal.Content = basket.Sum(it => it.Price);
         }
 
 
-       
+
 
         private void cmbCusts_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -133,7 +140,38 @@ namespace ElectricalWorld
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cust = (PO.Customer)e.AddedItems[0] as PO.Customer;
+            //cust = (PO.Customer)e.AddedItems[0] as PO.Customer;
+            cust = (sender as ComboBox).SelectedItem as PO.Customer;
+        }
+
+        private void lvBasket_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PO.Item item = (sender as ListView).SelectedItem as PO.Item;
+            if (item is PO.Item)
+            {
+                ItemInfo itemInfo = new ItemInfo(item);
+                itemInfo.ShowDialog();
+            }
+        }
+
+        private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PO.Item item = (sender as ListView).SelectedItem as PO.Item;
+            if (item is PO.Item)
+            {
+                ItemInfo itemInfo = new ItemInfo(item);
+                itemInfo.ShowDialog();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Item item = (sender as ListView).SelectedItem as PO.Item;
+            if (item is PO.Item)
+            {
+                ItemInfo itemInfo = new ItemInfo(item);
+                itemInfo.ShowDialog();
+            }
         }
     }
 }

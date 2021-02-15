@@ -47,10 +47,10 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Menachem Alter"/>
-    <ROW Property="ProductCode" Value="1033:{4D9AA4FC-7F0A-4D8E-9EC5-D8035BC1B670} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{5A20AF7A-864E-487B-8FA5-CB7C97CC1F22} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Electrical World"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.1" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{546E05D1-6E4E-46AD-8604-790028C343A6}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -86,6 +86,7 @@
     <ROW Component="ElectricalWorld_References" ComponentId="{867C9B05-3BC9-4BA4-9A27-CA46A797AE5E}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLAPI.dll_3"/>
     <ROW Component="ElectricalWorld_SymbolsOutput" ComponentId="{8A8F0BEB-FEA2-4666-A892-99B5750EA646}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.pdb"/>
     <ROW Component="ProductInformation" ComponentId="{5FC62741-4F12-48E5-985E-B033E181573B}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="README.md" ComponentId="{1ADE8CDB-7309-4040-A87D-4C6D22492AD1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="README.md" Type="0"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{2B5D7354-D981-4C79-AF8B-4F81B1534576}" Directory_="SHORTCUTDIR" Attributes="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
@@ -114,6 +115,7 @@
     <ROW File="PdfSharp.Chartinggdi.dll" Component_="ElectricalWorld_References" FileName="PDFSHA~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_PdfSharp.Chartinggdi.dll&gt;" SelfReg="false"/>
     <ROW File="DLAPI.dll_3" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_3&gt;" SelfReg="false"/>
     <ROW File="ElectricalWorld.pdb" Component_="ElectricalWorld_SymbolsOutput" FileName="ELECTR~2.PDB|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.pdb]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.pdb&gt;" SelfReg="false"/>
+    <ROW File="README.md" Component_="README.md" FileName="README.md" Attributes="0" SourcePath="..\README.md" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_BL.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll]" Type="2" Content="0"/>
@@ -203,6 +205,7 @@
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_SetArpReadmeFile" Type="51" Source="ARPREADME" Target="[#README.md]"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
@@ -223,6 +226,7 @@
     <ROW Feature_="MainFeature" Component_="ElectricalWorld_References"/>
     <ROW Feature_="MainFeature" Component_="ElectricalWorld_SymbolsOutput"/>
     <ROW Feature_="MainFeature" Component_="AI_PROPPATH_FILENAME_PERBUILD_System.Drawing.Common.dll"/>
+    <ROW Feature_="MainFeature" Component_="README.md"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -231,6 +235,7 @@
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_SetArpReadmeFile" Condition="NOT Installed" Sequence="1001"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>

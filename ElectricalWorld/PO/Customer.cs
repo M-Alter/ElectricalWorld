@@ -19,6 +19,11 @@ namespace PO
         public string Name { get; set; }
 
         /// <summary>
+        /// Company name
+        /// </summary>
+        public string Company { get; set; }
+
+        /// <summary>
         /// address of the customer
         /// </summary>
         public string Address { get; set; }
@@ -27,6 +32,11 @@ namespace PO
         /// post code of the customer
         /// </summary>
         public string PostCode { get; set; }
+
+        /// <summary>
+        /// City of the customer
+        /// </summary>
+        public string City { get; set; }
 
         /// <summary>
         /// phone number of the customer

@@ -45,8 +45,10 @@ namespace PO
             {
                 CustomerID = cust.CustomerID,
                 Name = cust.Name,
+                Company = cust.Company,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
+                City = cust.City,
                 Phone = cust.Phone,
                 Mobile = cust.Mobile,
                 Email = cust.Email,
@@ -61,8 +63,10 @@ namespace PO
             {
                 CustomerID = cust.CustomerID,
                 Name = cust.Name,
+                Company = cust.Company,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
+                City = cust.City,
                 Phone = cust.Phone,
                 Mobile = cust.Mobile,
                 Email = cust.Email,

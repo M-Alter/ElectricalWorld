@@ -52,7 +52,7 @@ namespace ElectricalWorld
             style.ParagraphFormat.TabStops.AddTabStop("16cm", TabAlignment.Right);
 
 
-
+            
 
             // Each MigraDoc document needs at least one section.
             Section section = document.AddSection();
@@ -61,7 +61,7 @@ namespace ElectricalWorld
 
             // Create footer
             Paragraph paragraph = section.Footers.Primary.AddParagraph();
-            paragraph.AddText("Household Goods World ltd · 9 Egerton Road · N16 6UE London · England");
+            paragraph.AddText("Household Goods World ltd · 9 Egerton Road · London N16 6UE · England");
             paragraph.Format.Font.Size = 9;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
@@ -166,11 +166,18 @@ namespace ElectricalWorld
 
             // Fill address in address text frame
             Paragraph paragraph1 = addressFrame.AddParagraph();
-            paragraph1.AddText(order.Customer.ToString());
+            paragraph1.AddText(order.Customer.Name);
             paragraph1.AddLineBreak();
+            if (order.Customer.Company != "")
+            {
+                paragraph1.AddLineBreak();
+                paragraph1.AddText(order.Customer.Company);
+            }
             paragraph1.AddText(order.Customer.Address);
             paragraph1.AddLineBreak();
-            paragraph1.AddText(order.Customer.PostCode + " " + "London");
+            paragraph1.AddText(order.Customer.City);
+            paragraph1.AddLineBreak();
+            paragraph1.AddText(order.Customer.PostCode);
 
 
             // Fill address in company text frame
@@ -181,11 +188,16 @@ namespace ElectricalWorld
             paragraph2.AddLineBreak();
             paragraph2.AddText("9 Egerton Road");
             paragraph2.AddLineBreak();
-            paragraph2.AddText("London N16 6UE");
+            paragraph2.AddText("London");
+            paragraph2.AddLineBreak();
+            paragraph2.AddText("N16 6UE");
+            paragraph2.AddLineBreak();
+            paragraph2.AddText("020-8802-2894");
+
 
             // Iterate the invoice items
 
-            //XPathNodeIterator iter = navigator.Select("/invoice/items/*");
+
             var iter = order.Items.GetEnumerator();
             while (iter.MoveNext())
             {

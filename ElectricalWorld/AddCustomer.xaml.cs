@@ -21,7 +21,7 @@ namespace ElectricalWorld
     public partial class AddCustomer : Window
     {
         IBL bl = BLAPI.BLFactory.GetBL();
-        BO.Customer cust = new BO.Customer();
+        internal BO.Customer cust = new BO.Customer();
         public AddCustomer()
         {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace ElectricalWorld
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             bl.AddCustomer(cust);
+            //DialogResult = true;
             Close();
         }
 

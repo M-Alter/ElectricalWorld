@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BLAPI;
+﻿using BLAPI;
 using Microsoft.Win32;
+using System;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace ElectricalWorld
 {
@@ -23,7 +13,7 @@ namespace ElectricalWorld
     {
         BL.IBL bl = BLFactory.GetBL();
         BO.Item item = new BO.Item();
-        
+
         public AddItem()
         {
             InitializeComponent();
@@ -47,13 +37,17 @@ namespace ElectricalWorld
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.DefaultExt = ".png";
             fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-            fileDialog.ShowDialog();
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(fileDialog.FileName);
-            bitmap.EndInit();
-            imgItemImage.Source = bitmap;
-            item.Image = fileDialog.FileName;
+
+            if (fileDialog.ShowDialog() == true)
+            {
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(fileDialog.FileName);
+                bitmap.EndInit();
+                imgItemImage.Source = bitmap;
+                item.Image = fileDialog.FileName;
+            }
         }
     }
 }

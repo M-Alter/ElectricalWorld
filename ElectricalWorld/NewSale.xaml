@@ -18,7 +18,7 @@
                 <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click"/>
             </WrapPanel>-->
             <WrapPanel>
-                <ComboBox x:Name="cmbCusts" IsEditable="True" FontSize="20" Width="250" PreviewTextInput="cmbCusts_PreviewTextInput">
+                <ComboBox x:Name="cmbCusts" IsEditable="True" Text="Choose a customer" FontSize="20" Width="250" PreviewTextInput="cmbCusts_PreviewTextInput" SelectionChanged="cmbCusts_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
@@ -38,7 +38,7 @@
                 <Button x:Name="btnProdSearch" Content="Search" Click="btnProdSearch_Click"/>
             </WrapPanel>
             <WrapPanel>
-                <ListView x:Name="lvItems" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" ItemsSource="{Binding}" HorizontalAlignment="Left">
+                <ListView x:Name="lvItems" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" ItemsSource="{Binding}" HorizontalAlignment="Left" MouseDoubleClick="lvItems_MouseDoubleClick">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Width="50">
@@ -94,7 +94,7 @@
             <Label Content="Basket"/>
             <WrapPanel>
                 <Border BorderBrush="Black" BorderThickness="2">
-                    <ListView x:Name="lvBasket" Height="500" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" ItemsSource="{Binding}" HorizontalAlignment="Left">
+                    <ListView x:Name="lvBasket" Height="500" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" ItemsSource="{Binding}" HorizontalAlignment="Left" MouseDoubleClick="lvBasket_MouseDoubleClick">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ID" Width="100">
@@ -125,10 +125,17 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Qnt" Width="100">
+                                <!--<GridViewColumn Header="Qnt" Width="50">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Label Content="{Binding Quantity}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>-->
+                                <GridViewColumn Header="" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Override Price" Click="Button_Click"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -152,6 +159,9 @@
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Height" Value="40"/>
+        </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
     </Window.Resources>
 </Window>

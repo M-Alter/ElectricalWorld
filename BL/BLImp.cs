@@ -17,8 +17,10 @@ namespace BL
             {
                 CustomerID = dl.GetNewCustomerID().ToString(@"00000"),
                 Name = cust.Name,
+                Company = cust.Company,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
+                City =cust.City,
                 Email = cust.Email,
                 Phone = cust.Phone,
                 Mobile = cust.Mobile
@@ -31,7 +33,7 @@ namespace BL
             {
                 if (doItem.ItemID == item.ItemID)
                 {
-                    dl.EditStock(item.ItemID, item.Quantity);
+                    dl.EditStock(item.ItemID, item.Quantity - dl.GetStockItem(doItem.ItemID));
                     return;
                 }
             }
@@ -65,7 +67,7 @@ namespace BL
             foreach (var item in order.Items)
             {
                 dl.AddOrderItem(OrderID, item.ItemID, item.Price);
-                dl.EditStock(item.ItemID, -1);
+                dl.EditStock(item.ItemID, - 1);
             }
             return OrderID;
         }
@@ -76,8 +78,10 @@ namespace BL
             {
                 CustomerID = cust.CustomerID,
                 Name = cust.Name,
+                Company = cust.Company,
                 Address = cust.Address,
                 PostCode = cust.PostCode,
+                City = cust.City,
                 Email = cust.Email,
                 Phone = cust.Phone,
                 Mobile = cust.Mobile
@@ -104,8 +108,10 @@ namespace BL
                    {
                        CustomerID = cust.CustomerID,
                        Name = cust.Name,
+                       Company = cust.Company,
                        Address = cust.Address,
                        PostCode = cust.PostCode,
+                       City = cust.City,
                        Email = cust.Email,
                        Phone = cust.Phone,
                        Mobile = cust.Mobile,

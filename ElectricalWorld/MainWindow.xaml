@@ -204,12 +204,12 @@
                         </StackPanel>
                         <Grid x:Name="grdCustInfo" Grid.Column="1" Grid.Row="1" DataContext="{Binding}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition />
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
                             <StackPanel>
                                 <Label Content="Name: "/>
@@ -218,36 +218,8 @@
                                 <Label Content="Phone Number: "/>
                                 <Label Content="Mobile: "/>
                                 <Label Content="Email: "/>
+                                <Button x:Name="btnSaveCustChanges" Content="Save Changes" Width="120" Click="btnSaveCustChanges_Click"/>
                             </StackPanel>
-                                <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridView.Columns>
-                                                <GridViewColumn Header="Order#" Width="100">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding OrderID}"/>
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <GridViewColumn Header="Name" Width="200">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding Customer.Name}" />
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <GridViewColumn Header="Date" Width="150">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding OrderTime}" />
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                            </GridView.Columns>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
                             <StackPanel Grid.Column="1">
                                 <TextBox Text="{Binding Name, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Address, Mode=TwoWay}"/>
@@ -255,9 +227,39 @@
                                 <TextBox Text="{Binding Phone, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Mobile, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Email, Mode=TwoWay}"/>
-                                
+
 
                             </StackPanel>
+
+                            <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridView.Columns>
+                                            <GridViewColumn Header="Order#" Width="100">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding OrderID}"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Name" Width="200">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Customer.Name}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Date" Width="150">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding OrderTime}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
 
                         </Grid>
                     </Grid>

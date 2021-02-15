@@ -159,5 +159,14 @@ namespace ElectricalWorld
             lvCustSales.DataContext = custOrders;
             grdCustInfo.DataContext = customer;
         }
+
+        private void btnSaveCustChanges_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = (sender as Button).DataContext as Customer;
+            if (customer is Customer)
+            {
+                bl.EditCustomer(PO.Tools.BOCustomer(customer));
+            }
+        }
     }
 }
