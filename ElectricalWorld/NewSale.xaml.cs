@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -135,7 +136,11 @@ namespace ElectricalWorld
 
             string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
             order.OrderID = orderID;
-            Tools.CreateInvoice(order);
+            new Thread(() =>
+                {
+                    Tools.CreateInvoice(order);
+                }).Start();
+
             Close();
         }
 
@@ -188,7 +193,11 @@ namespace ElectricalWorld
 
             string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
             order.OrderID = orderID;
-            Tools.CreateInvoice(order, true);
+            new Thread(() =>
+            {
+                Tools.CreateInvoice(order, true);
+            }).Start();
+
             Close();
         }
     }

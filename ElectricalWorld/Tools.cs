@@ -158,7 +158,7 @@ Sruli", order.Customer.Name, order.OrderID);
 
             // Create footer
             Paragraph paragraph = section.Footers.Primary.AddParagraph();
-            paragraph.AddText("Household Goods World ltd · 9 Egerton Road · London N16 6UE · England");
+            paragraph.AddText("Household Goods World Ltd · 9 Egerton Road · London · N16 6UE · England");
             paragraph.Format.Font.Size = 9;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
@@ -281,7 +281,7 @@ Sruli", order.Customer.Name, order.OrderID);
             Paragraph paragraph2 = companyFrame.AddParagraph();
             paragraph2.Format.Alignment = ParagraphAlignment.Right;
             paragraph2.Format.Font.Size = 12;
-            paragraph2.AddFormattedText("Household Goods World ltd", TextFormat.Bold);
+            paragraph2.AddFormattedText("Household Goods World Ltd", TextFormat.Bold);
             paragraph2.AddLineBreak();
             paragraph2.AddText("9 Egerton Road");
             paragraph2.AddLineBreak();
@@ -386,13 +386,26 @@ Sruli", order.Customer.Name, order.OrderID);
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.AddFormattedText("Thank you for your business - we appreciate it very much.", TextFormat.Italic);
 
+
+            // Add the notes paragraph
+            paragraph = document.LastSection.AddParagraph();
+            paragraph.Format.SpaceBefore = "1cm";
+            paragraph.Format.Borders.Width = 0.75;
+            paragraph.Format.Borders.Distance = 3;
+            paragraph.Format.Alignment = ParagraphAlignment.Center;
+            paragraph.AddText(@"Bank details;
+HSBC
+Household Goods World Limited
+Sort Code: 40-06-25
+Account Number: 21469371");
+
             PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer();
 
             pdfRenderer.Document = document;
 
             pdfRenderer.RenderDocument();
 
-            string fileName = order.OrderID + ".pdf";
+            string fileName = "INV_" + order.OrderID + ".pdf";
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\")) Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             if (order.Customer.Email != "")

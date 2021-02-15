@@ -23,7 +23,14 @@ namespace ElectricalWorld
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            bl.AddItem(item);
+            try
+            {
+                bl.AddItem(item);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             Close();
         }
 

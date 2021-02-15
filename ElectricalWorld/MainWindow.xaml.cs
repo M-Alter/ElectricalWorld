@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PO;
-
+using System.Threading;
 
 namespace ElectricalWorld
 {
@@ -19,7 +19,7 @@ namespace ElectricalWorld
         ObservableCollection<PO.Order> sales = new ObservableCollection<PO.Order>();
         ObservableCollection<PO.Order> custOrders = new ObservableCollection<PO.Order>();
         ObservableCollection<PO.Customer> custs = new ObservableCollection<PO.Customer>();
-        
+
 
         public MainWindow()
         {
@@ -30,7 +30,7 @@ namespace ElectricalWorld
             //    items.Add(item);
             //}
             //lvItems.DataContext = items;
-            
+
         }
 
         private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -144,7 +144,10 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
-                Tools.CreateInvoice(order);
+                new Thread(() =>
+                {
+                    Tools.CreateInvoice(order);
+                }).Start();
         }
 
         private void lvCusts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -152,7 +155,7 @@ namespace ElectricalWorld
             PO.Customer customer = (sender as ListView).SelectedItem as PO.Customer;
             custOrders.Clear();
             custOrders = new ObservableCollection<Order>();
-            foreach (var item in bl.GetOrders(order=>order.Customer.CustomerID == customer.CustomerID))
+            foreach (var item in bl.GetOrders(order => order.Customer.CustomerID == customer.CustomerID))
             {
                 custOrders.Add(PO.Tools.POOrder(item));
             }

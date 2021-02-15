@@ -64,11 +64,11 @@ namespace DLXML
                 rootElem.Save(dir + path);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                throw new SaveFileException(dir + path, "Error while loading file", e);
                 //throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
-            return false;
         }
 
 
@@ -92,7 +92,7 @@ namespace DLXML
             }
             catch (Exception e)
             {
-                throw new BadCustomerExceptions(cust.Element("CustomerID").Value != ""? cust.Element("CustomerID").Value: "Unknown Customer ID", "failed to load the customer", e);
+                throw new BadCustomerException(cust.Element("CustomerID").Value != "" ? cust.Element("CustomerID").Value : "Unknown Customer ID", "failed to load the customer", e);
             }
         }
 
@@ -106,33 +106,48 @@ namespace DLXML
                 ItemID = image.Element("ItemID").Value,
                 Image = fi.FullName
             };
+
         }
 
 
         internal static Item CreateItemInstance(XElement item)
         {
-            return new Item
+            try
             {
-                ItemID = item.Element("ItemID").Value,
-                Brand = item.Element("Brand").Value,
-                ModelNumber = item.Element("ModelNumber").Value,
-                Description = item.Element("Description").Value,
-                Price = double.Parse(item.Element("Price").Value),
-                IsActive = bool.Parse(item.Element("IsActive").Value)
-            };
+                return new Item
+                {
+                    ItemID = item.Element("ItemID").Value,
+                    Brand = item.Element("Brand").Value,
+                    ModelNumber = item.Element("ModelNumber").Value,
+                    Description = item.Element("Description").Value,
+                    Price = double.Parse(item.Element("Price").Value),
+                    IsActive = bool.Parse(item.Element("IsActive").Value)
+                };
+            }
+            catch (Exception e)
+            {
+                throw new BadItemException(item.Element("ItemID").Value != "" ? item.Element("ItemID").Value : "Unknown Item ID", "failed to load the item", e);
+            }
         }
 
 
         internal static Order CreateOrderInstance(XElement order)
         {
-            return new Order
+            try
             {
-                CustomerID = order.Element("CustomerID").Value,
-                OrderID = order.Element("OrderID").Value,
-                OrderTime = DateTime.Parse(order.Element("OrderTime").Value),
-                TotalPrice = double.Parse(order.Element("TotalPrice").Value),
-                Paid = bool.Parse(order.Element("Paid").Value)
-            };
+                return new Order
+                {
+                    CustomerID = order.Element("CustomerID").Value,
+                    OrderID = order.Element("OrderID").Value,
+                    OrderTime = DateTime.Parse(order.Element("OrderTime").Value),
+                    TotalPrice = double.Parse(order.Element("TotalPrice").Value),
+                    Paid = bool.Parse(order.Element("Paid").Value)
+                };
+            }
+            catch (Exception e)
+            {
+                throw new BadOrderException(order.Element("OrderID").Value != "" ? order.Element("OrderID").Value : "Unknown order ID", "failed to load the order", e);
+            }
         }
 
 

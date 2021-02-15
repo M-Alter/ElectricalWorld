@@ -20,7 +20,7 @@ namespace DL
         #region Singleton
         private static readonly DLXML instance = new DLXML();
         static DLXML() { }
-        DLXML() {} // default => private
+        DLXML() { } // default => private
         public static DLXML Instance { get => instance; }// The public Instance property to use
 
         #region Files
@@ -86,32 +86,32 @@ namespace DL
         //=========================================================================================
         public void AddImage(string itemID, string image)
         {
-            //try
-            //{
-            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+            try
+            {
+                if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
 
-            //var file = File.Create(imagesFolderPath + itemID + @".bmp");
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(image);
-            bitmap.EndInit();
-            Bitmap bitmap1 = new Bitmap(image);
-            bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
+                //var file = File.Create(imagesFolderPath + itemID + @".bmp");
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(image);
+                bitmap.EndInit();
+                Bitmap bitmap1 = new Bitmap(image);
+                bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
 
-            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+                XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-            rootElem.Add(new XElement("Image",
-                new XElement("ItemID", itemID),
-                new XElement("Image", imagesFolderPath + itemID + @".png")
-                )
-                );
+                rootElem.Add(new XElement("Image",
+                    new XElement("ItemID", itemID),
+                    new XElement("Image", imagesFolderPath + itemID + @".png")
+                    )
+                    );
 
-            XMLTools.SaveFile(rootElem, imagesFilePath);
-            //}
-            //catch(Exception e)
-            //{
-
-            //}
+                XMLTools.SaveFile(rootElem, imagesFilePath);
+            }
+            catch (Exception e)
+            {
+                throw new BadImageException(itemID, " Error while trying to add image ", e);
+            }
 
 
         }
@@ -211,16 +211,23 @@ namespace DL
 
         public void EditImage(string itemID, string image)
         {
-            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+            try
+            {
+                if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
 
-            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+                XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-            XElement imageElem = (from im in rootElem.Elements()
-                                  let cur = XMLTools.CreateImageInstance(im)
-                                  where cur.ItemID == itemID
-                                  select im).FirstOrDefault();
+                XElement imageElem = (from im in rootElem.Elements()
+                                      let cur = XMLTools.CreateImageInstance(im)
+                                      where cur.ItemID == itemID
+                                      select im).FirstOrDefault();
 
-            File.Copy(image, imagesFolderPath + itemID, true);
+                File.Copy(image, imagesFolderPath + itemID, true);
+            }
+            catch (Exception e)
+            {
+                throw new BadImageException(itemID, " Error while trying to edit image ", e);
+            }
 
         }
 
@@ -267,6 +274,9 @@ namespace DL
                    select temp;
         }
 
+        //==============================================================
+        //create an exception
+        //==============================================================
         public IEnumerable<string> GetItemCategories(string itemID)
         {
             XElement rootElem = XMLTools.LoadFile(itemCategoriesFilePath);
@@ -275,7 +285,7 @@ namespace DL
                    where cat.Element("ItemID").Value == itemID
                    select cat.Element("CategoryID").Value;
         }
-
+        //===================================================================
         public IEnumerable<ItemImage> GetItemImages()
         {
             XElement rootElem = XMLTools.LoadFile(imagesFilePath);
@@ -315,21 +325,27 @@ namespace DL
 
         public void RemoveImage(string itemID)
         {
-            if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+            try
+            {
+                if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
 
-            XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+                XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-            XElement imageElem = (from im in rootElem.Elements()
-                                  let cur = XMLTools.CreateImageInstance(im)
-                                  where cur.ItemID == itemID
-                                  select im).FirstOrDefault();
+                XElement imageElem = (from im in rootElem.Elements()
+                                      let cur = XMLTools.CreateImageInstance(im)
+                                      where cur.ItemID == itemID
+                                      select im).FirstOrDefault();
 
-            imageElem.Remove();
+                imageElem.Remove();
 
-            XMLTools.SaveFile(rootElem, imagesFilePath);
+                XMLTools.SaveFile(rootElem, imagesFilePath);
 
-            File.Delete(imagesFolderPath + itemID);
-
+                File.Delete(imagesFolderPath + itemID);
+            }
+            catch (Exception e)
+            {
+                throw new BadImageException(itemID, " Error while trying to remove image ", e);
+            }
         }
 
         public void RemoveItem(string itemID)
