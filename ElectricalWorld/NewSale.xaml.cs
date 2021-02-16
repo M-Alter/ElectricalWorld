@@ -183,7 +183,17 @@ namespace ElectricalWorld
 
         private void btnEndSaleWithEmail_Click(object sender, RoutedEventArgs e)
         {
+            order.Items = from item in basket
+                          select item;
+            order.OrderTime = DateTime.Now;
+            order.TotalPrice = basket.Sum(it => it.Price);
+            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
+            new Thread(() =>
+            {
+                Tools.CreateInvoice(order, false);
+            }).Start();
 
+            Close();
         }
     }
 }

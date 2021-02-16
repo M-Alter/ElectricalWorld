@@ -112,7 +112,7 @@ Sruli", order.Customer.Name, order.OrderID);
         }
 
 
-        public static void CreateInvoice(PO.Order order)
+        public static void CreateInvoice(PO.Order order , bool sendEmail = true)
         {
             Document document = new Document();
 
@@ -158,7 +158,7 @@ Sruli", order.Customer.Name, order.OrderID);
 
             // Create footer
             Paragraph paragraph = section.Footers.Primary.AddParagraph();
-            paragraph.AddText("Household Goods World Ltd · 9 Egerton Road · London · N16 6UE · England");
+            paragraph.AddText("Household Goods World Ltd · 9 Egerton Road · London · N16 6UE · England · Company No. 05713446");
             paragraph.Format.Font.Size = 9;
             paragraph.Format.Alignment = ParagraphAlignment.Center;
 
@@ -396,9 +396,10 @@ Account Number: 21469371");
             string fileName = "INV_" + order.OrderID + ".pdf";
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\")) Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
-            if (order.Customer.Email != "")
-                EmailInvoice(order, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
+            
+            if (order.Customer.Email != "" && sendEmail)
+                EmailInvoice(order, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
         }
     }
 }
