@@ -29,14 +29,14 @@ namespace BL
 
         public void AddItem(Item item)
         {
-            foreach (var doItem in dl.GetItems())
-            {
-                if (doItem.ItemID == item.ItemID)
-                {
-                    dl.EditStock(item.ItemID, item.Quantity - dl.GetStockItem(doItem.ItemID));
-                    return;
-                }
-            }
+            //foreach (var doItem in dl.GetItems())
+            //{
+            //    if (doItem.ItemID == item.ItemID)
+            //    {
+            //        dl.EditStock(item.ItemID, item.Quantity - dl.GetStockItem(doItem.ItemID));
+            //        return;
+            //    }
+            //}
             string itemID = dl.GetNewItemID().ToString(@"00000");
             dl.AddItem(new DO.Item
             {
@@ -99,6 +99,7 @@ namespace BL
                 Price = item.Price,
                 IsActive = true
             });
+            dl.EditStock(item.ItemID, - dl.GetStockItem(item.ItemID) + item.Quantity);
         }
 
         public IEnumerable<Customer> GetCutomers(Predicate<Customer> filter)

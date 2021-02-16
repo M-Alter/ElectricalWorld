@@ -109,8 +109,10 @@
     </ApplicationDefinition>
     <Compile Include="PO\Category.cs" />
     <Compile Include="PO\Customer.cs" />
+    <Compile Include="PO\InvoiceItem.cs" />
     <Compile Include="PO\Item.cs" />
     <Compile Include="PO\Order.cs" />
+    <Compile Include="PO\Payment.cs" />
     <Compile Include="PO\Tools.cs" />
     <Compile Include="Tools.cs" />
     <Page Include="AddCustomer.xaml">

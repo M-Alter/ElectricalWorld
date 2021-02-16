@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricalWorld"
         mc:Ignorable="d"
-        Title="NewSale" Height="750" Width="1200" Top="50" Left="50">
+        Title="NewSale" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,7 +34,7 @@
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Search: "/>
-                <TextBox x:Name="tboxProdSearch" Width="250" FontSize="20"/>
+                <TextBox x:Name="tboxProdSearch" Width="250" FontSize="20" TextChanged="tboxProdSearch_TextChanged"/>
                 <Button x:Name="btnProdSearch" Content="Search" Click="btnProdSearch_Click"/>
             </WrapPanel>
             <WrapPanel>
@@ -148,11 +148,20 @@
                 <Label Content="Total: "/>
                 <Label x:Name="lblTotal"/>
             </WrapPanel>
-            <WrapPanel HorizontalAlignment="Center">
-                <Button x:Name="btnEndSale" Content="End Sale" Height="50" Width="200" Margin="20" Background="Turquoise" Click="btnEndSale_Click"/>
-                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Margin="20" Background="Red" Click="btnPay_Click"/>
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnEndSale" Content="End Sale" Height="50" Width="200" Grid.Row="0" Background="Turquoise" Click="btnEndSale_Click"/>
+                <Button x:Name="btnEndSaleWithEmail" Content="End Sale and send Email" Height="50" Width="200" Grid.Row="1" Background="PeachPuff" Click="btnEndSaleWithEmail_Click"/>
+                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Grid.Row="1" Grid.Column="1" Background="Red" Click="btnPay_Click"/>
                 
-            </WrapPanel>
+            </Grid>
         </StackPanel>
     </Grid>
     <Window.Resources>

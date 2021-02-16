@@ -61,7 +61,7 @@ namespace PO
 
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Company;
         }
     }
 }

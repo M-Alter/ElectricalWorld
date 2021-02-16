@@ -40,7 +40,7 @@
                             </Grid.ColumnDefinitions>
                             <WrapPanel>
                                 <Label Content="Search: "/>
-                                <TextBox x:Name="tboxSalesSearch" Width="250" FontSize="20"/>
+                                <TextBox x:Name="tboxSalesSearch" Width="250" FontSize="20" TextChanged="tboxSalesSearch_TextChanged"/>
                                 <Button x:Name="btnSalesSearch" Content="Search" Click="btnSalesSearch_Click"/>
                             </WrapPanel>
 
@@ -162,7 +162,7 @@
                         </Grid.ColumnDefinitions>
                         <WrapPanel>
                             <Label Content="Search: "/>
-                            <TextBox x:Name="tboxCustSearch" Width="250" FontSize="20"/>
+                            <TextBox x:Name="tboxCustSearch" Width="250" FontSize="20" TextChanged="tboxCustSearch_TextChanged"/>
                             <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click" />
                         </WrapPanel>
 
@@ -202,13 +202,15 @@
                         </ListView>
                         <StackPanel>
                         </StackPanel>
+                        
+                        
                         <Grid x:Name="grdCustInfo" Grid.Column="1" Grid.Row="1" DataContext="{Binding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
-                                <ColumnDefinition/>
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="6*"/>
                                 <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
                             <StackPanel>
@@ -220,6 +222,7 @@
                                 <Label Content="Phone Number: "/>
                                 <Label Content="Mobile: "/>
                                 <Label Content="Email: "/>
+                                <Button x:Name="btnCustSave" Content="Save" Width="80" Margin="20,10" Click="btnCustSave_Click"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <TextBox Text="{Binding Name, Mode=TwoWay}"/>
@@ -231,7 +234,7 @@
                                 <TextBox Text="{Binding Mobile, Mode=TwoWay}"/>
                                 <TextBox Text="{Binding Email, Mode=TwoWay}"/>
                             </StackPanel>
-
+                            
                             <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >
                                 <ListView.View>
                                     <GridView>
@@ -283,7 +286,7 @@
                         </Grid.ColumnDefinitions>
                         <WrapPanel>
                             <Label Content="Search: "/>
-                            <TextBox x:Name="tboxProdSearch" Width="250" FontSize="20"/>
+                            <TextBox x:Name="tboxProdSearch" Width="250" FontSize="20" TextChanged="tboxProdSearch_TextChanged"/>
                             <Button x:Name="btnProdSearch" Content="Search" Click="btnProdSearch_Click"/>
                         </WrapPanel>
 
@@ -328,7 +331,37 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
+                        <Grid x:Name="grdItemDetails" Grid.Column="1" Grid.Row="1" DataContext="{Binding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="1">
+                                <Label Content="{Binding ItemID}" HorizontalAlignment="Left" Width="100"/>
+                                <TextBox x:Name="tboxBrand" Text="{Binding Brand, Mode=TwoWay}" HorizontalAlignment="Left"  Width="150"/>
+                                <TextBox x:Name="tboxModelNumber" Text="{Binding ModelNumber, Mode=TwoWay}" HorizontalAlignment="Left" Width="150"/>
+                                <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="80" FontSize="12"  Width="150"/>
+                                <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" HorizontalAlignment="Left" Width="150"/>
+                                <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150"/>
+                            </StackPanel>
 
+                            <StackPanel>
+                                <Label Content="ID: "/>
+                                <Label Content="Brand: "/>
+                                <Label Content="Model#: "/>
+                                <Label Content="Description: " Height="80"/>
+                                <Label Content="Price: "/>
+                                <Label Content="Quantity: "/>
+                            </StackPanel>
+
+                            <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                                <Button x:Name="btnProdSave" Content="Save" Width="80" Margin="20,10" Click="btnProdSave_Click"/>
+                            </WrapPanel>
+                        </Grid>
                     </Grid>
                 </TabItem>
 
@@ -351,8 +384,8 @@
             <!--<Button Content="New Sale" Height="120" Width="120" Background="DimGray" />-->
             <!--<Button Content="New Customer" Height="120" Width="120" Background="DimGray"/>-->
             <!--<Button Content="New Product" Height="120" Width="120" Background="DimGray"/>-->
-            <Button Content="__" Height="120" Width="120" Background="DimGray"/>
             <!--<Button Content="__" Height="120" Width="120" Background="DimGray"/>-->
+            <Button x:Name="btnMinimize" Content="Minimize"  Height="120" Width="120"  Background="Orange" Click="btnMinimize_Click"/>
             <Button x:Name="btnExit" Content="Exit"  Height="120" Width="120"  Background="Red" Click="btnExit_Click"/>
         </WrapPanel>
     </Grid>

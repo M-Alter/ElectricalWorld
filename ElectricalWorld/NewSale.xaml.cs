@@ -29,49 +29,19 @@ namespace ElectricalWorld
 
         PO.Order order = new PO.Order();
 
-        PO.Customer cust = new PO.Customer();
         public NewSale()
         {
             InitializeComponent();
             lvBasket.DataContext = basket;
         }
 
-        //private void btnCustSearch_Click(object sender, RoutedEventArgs e)
-        //{
-        //    custs.Clear();
-
-        //    foreach (var item in bl.GetCutomers(cust =>
-        //        cust.CustomerID.ToString().ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.FirstName.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.LastName.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.Address.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.PostCode.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-        //        cust.Email.ToLower().Contains(tboxCustSearch.Text.ToLower())
-        //        )
-        //        )
-        //    {
-        //        custs.Add(item);
-        //    }
-        //    cmbCusts.ItemsSource = custs;
-        //}
 
         private void btnAddCust_Click(object sender, RoutedEventArgs e)
         {
             AddCustomer addCustomer = new AddCustomer();
             addCustomer.Show();
-            if (addCustomer.cust is BO.Customer)
-            {
-                cmbCusts.SelectedValue = PO.Tools.POCustomer(addCustomer.cust);
-                cust = PO.Tools.POCustomer(addCustomer.cust);
-            }
         }
 
-        private void btnAddItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnProdSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -91,7 +61,7 @@ namespace ElectricalWorld
 
         private void btnChooseItem_Click(object sender, RoutedEventArgs e)
         {
-            PO.Item item = (PO.Item)(sender as Button).DataContext as PO.Item;
+            PO.Item item = (sender as Button).DataContext as PO.Item;
             if (item is PO.Item)
                 basket.Add(item);
             lblTotal.Content = basket.Sum(it => it.Price);
@@ -110,6 +80,7 @@ namespace ElectricalWorld
             foreach (var item in bl.GetCutomers(cust =>
                 cust.CustomerID.ToString().ToLower().Contains(input) ||
                 cust.Name.ToLower().Contains(input) ||
+                cust.Company.ToLower().Contains(input) ||
                 cust.Phone.ToLower().Contains(input) ||
                 cust.Mobile.ToLower().Contains(input) ||
                 cust.Address.ToLower().Contains(input) ||
@@ -125,17 +96,11 @@ namespace ElectricalWorld
 
         private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
-            PO.Order order = new PO.Order
-            {
-                Customer = cust,
-                Items = from item in basket
-                        select item,
-                OrderTime = DateTime.Now,
-                TotalPrice = basket.Sum(it => it.Price)
-            };
-
-            string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            order.OrderID = orderID;
+            order.Items = from item in basket
+                          select item;
+            order.OrderTime = DateTime.Now;
+            order.TotalPrice = basket.Sum(it => it.Price);
+            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             new Thread(() =>
                 {
                     Tools.CreateInvoice(order);
@@ -145,9 +110,8 @@ namespace ElectricalWorld
         }
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //cust = (PO.Customer)e.AddedItems[0] as PO.Customer;
-            cust = (sender as ComboBox).SelectedItem as PO.Customer;
+        {           
+            order.Customer = (sender as ComboBox).SelectedItem as PO.Customer;
         }
 
         private void lvBasket_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -182,23 +146,38 @@ namespace ElectricalWorld
 
         private void btnPay_Click(object sender, RoutedEventArgs e)
         {
-            PO.Order order = new PO.Order
-            {
-                Customer = cust,
-                Items = from item in basket
-                        select item,
-                OrderTime = DateTime.Now,
-                TotalPrice = 0.00
-            };
-
-            string orderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            order.OrderID = orderID;
+            order.Items = from item in basket
+                          select item;
+            order.OrderTime = DateTime.Now;
+            order.TotalPrice = basket.Sum(it => it.Price);
+            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             new Thread(() =>
             {
                 Tools.CreateInvoice(order, true);
             }).Start();
 
             Close();
+        }
+
+        private void tboxProdSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            items.Clear();
+
+            foreach (var item in bl.GetItems(it =>
+                it.ItemID.ToString().ToLower().Contains(tboxProdSearch.Text.ToLower()) ||
+                it.Brand.ToLower().Contains(tboxProdSearch.Text.ToLower()) ||
+                it.ModelNumber.ToLower().Contains(tboxProdSearch.Text.ToLower().ToLower())
+                )
+                )
+            {
+                items.Add(PO.Tools.POItem(item));
+            }
+            lvItems.DataContext = items;
+        }
+
+        private void btnEndSaleWithEmail_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
