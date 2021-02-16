@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PO
 {
-    public class Item
+    public class Item : InvoiceItem
     {
         /// <summary>
         /// private ID of the item <br>for internal use</br>

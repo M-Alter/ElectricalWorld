@@ -99,7 +99,7 @@ namespace BL
                 Price = item.Price,
                 IsActive = true
             });
-            dl.EditStock(item.ItemID, - dl.GetStockItem(item.ItemID) + item.Quantity);
+            dl.EditStock(item.ItemID, -dl.GetStockItem(item.ItemID) + item.Quantity);
         }
 
         public IEnumerable<Customer> GetCutomers(Predicate<Customer> filter)

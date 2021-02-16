@@ -55,7 +55,7 @@ namespace ElectricalWorld
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.DefaultExt = ".png";
             fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-            
+
             if (fileDialog.ShowDialog() == true)
             {
                 BitmapImage bitmap = new BitmapImage();

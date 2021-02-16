@@ -112,7 +112,7 @@ Sruli", order.Customer.Name, order.OrderID);
         }
 
 
-        public static void CreateInvoice(PO.Order order, bool paid = false)
+        public static void CreateInvoice(PO.Order order)
         {
             Document document = new Document();
 
@@ -243,20 +243,6 @@ Sruli", order.Customer.Name, order.OrderID);
 
 
 
-            //row = table.AddRow();
-            //row.HeadingFormat = true;
-            //row.Format.Alignment = ParagraphAlignment.Center;
-            //row.Format.Font.Bold = true;
-            //row.Shading.Color = Colors.LightGray;
-            //row.Cells[1].AddParagraph("Quantity");
-            //row.Cells[1].Format.Alignment = ParagraphAlignment.Left;
-            //row.Cells[2].AddParagraph("Unit Price");
-            //row.Cells[2].Format.Alignment = ParagraphAlignment.Left;
-            //row.Cells[3].AddParagraph("Discount (%)");
-            //row.Cells[3].Format.Alignment = ParagraphAlignment.Left;
-            //row.Cells[4].AddParagraph("Taxable");
-            //row.Cells[4].Format.Alignment = ParagraphAlignment.Left;
-
             table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty);
 
 
@@ -297,40 +283,49 @@ Sruli", order.Customer.Name, order.OrderID);
             var iter = order.Items.GetEnumerator();
             while (iter.MoveNext())
             {
-                var item = iter.Current;
-                double price = item.Price;
+                if (iter.Current is PO.Item)
+                {
+                    var item = iter.Current as PO.Item;
+                    double price = item.Price;
 
-                // Each item fills two rows
-                Row row1 = table.AddRow();
-                row1.TopPadding = 1.5;
-                row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
-                row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
+                    // Each item fills two rows
+                    Row row1 = table.AddRow();
+                    row1.TopPadding = 1.5;
+                    row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+                    row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
 
-                row1.Cells[0].AddParagraph(item.ItemID);
-                row1.Cells[1].AddParagraph(item.Brand);
-                row1.Cells[2].AddParagraph(item.ModelNumber);
-                row1.Cells[3].AddParagraph(item.Description);
-                row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+                    row1.Cells[0].AddParagraph(item.ItemID);
+                    row1.Cells[1].AddParagraph(item.Brand);
+                    row1.Cells[2].AddParagraph(item.ModelNumber);
+                    row1.Cells[3].AddParagraph(item.Description);
+                    row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+                }
+                else
+                {
+                    var item = iter.Current as PO.Payment;
+
+                    Row row1 = table.AddRow();
+                    row1.TopPadding = 1.5;
+                    row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+                    row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
+
+
+                    row1.Cells[1].AddParagraph("Paid");
+                    row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
+                    //row1.Cells[4].AddParagraph("-" + order.Items.Sum(it => it.Price).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
+
+                    table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
+                }
+
 
 
                 table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
             }
 
 
-            if (paid)
-            {
-                Row row1 = table.AddRow();
-                row1.TopPadding = 1.5;
-                row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
-                row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
 
-
-                row1.Cells[1].AddParagraph("Paid");
-                row1.Cells[4].AddParagraph("-" + order.Items.Sum(it => it.Price).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
-
-
-                table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
-            }
 
             // Add an invisible row as a space line to the table
             Row row2 = table.AddRow();
@@ -345,14 +340,7 @@ Sruli", order.Customer.Name, order.OrderID);
             row2.Cells[0].MergeRight = 3;
             row2.Cells[4].AddParagraph(order.TotalPrice.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
 
-            //// Add the VAT row
-            //row = table.AddRow();
-            //row.Cells[0].Borders.Visible = false;
-            //row.Cells[0].AddParagraph("VAT (19%)");
-            //row.Cells[0].Format.Font.Bold = true;
-            //row.Cells[0].Format.Alignment = ParagraphAlignment.Right;
-            //row.Cells[0].MergeRight = 4;
-            //row.Cells[5].AddParagraph((0.19 * totalExtendedPrice).ToString("0.00") + " €");
+
 
             // Add the additional fee row
             Row row3 = table.AddRow();

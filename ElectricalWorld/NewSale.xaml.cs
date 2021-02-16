@@ -3,17 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ElectricalWorld
 {
@@ -94,23 +87,9 @@ namespace ElectricalWorld
             cmbCusts.ItemsSource = custs;
         }
 
-        private void btnEndSale_Click(object sender, RoutedEventArgs e)
-        {
-            order.Items = from item in basket
-                          select item;
-            order.OrderTime = DateTime.Now;
-            order.TotalPrice = basket.Sum(it => it.Price);
-            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            new Thread(() =>
-                {
-                    Tools.CreateInvoice(order);
-                }).Start();
-
-            Close();
-        }
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {           
+        {
             order.Customer = (sender as ComboBox).SelectedItem as PO.Customer;
         }
 
@@ -144,7 +123,7 @@ namespace ElectricalWorld
             }
         }
 
-        private void btnPay_Click(object sender, RoutedEventArgs e)
+        private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
             order.Items = from item in basket
                           select item;
@@ -153,7 +132,34 @@ namespace ElectricalWorld
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             new Thread(() =>
             {
-                Tools.CreateInvoice(order, true);
+                Tools.CreateInvoice(order);
+            }).Start();
+
+            Close();
+        }
+
+        private void btnPay_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentWindow paymentWindow = new PaymentWindow(order.TotalPrice);
+            paymentWindow.ShowDialog();
+
+            if (paymentWindow.DialogResult == true)
+            {
+                order.Items = new List<PO.InvoiceItem>(basket.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -basket.Sum(it => it.Price) } }));
+                order.Paid = true;
+            }
+            else
+            {
+                order.Items = from item in basket
+                              select item;
+            }
+            order.OrderTime = DateTime.Now;
+            order.TotalPrice = order.Items.Sum(it => it.Price);
+            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
+
+            new Thread(() =>
+            {
+                Tools.CreateInvoice(order);
             }).Start();
 
             Close();

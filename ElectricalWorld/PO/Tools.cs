@@ -34,7 +34,7 @@ namespace PO
                 Price = item.Price,
                 Quantity = item.Quantity,
                 Categories = from cat in item.Categories
-                             select new BO.Category { CategoryID = cat.CategoryID, CategoryName = cat.CategoryName}
+                             select new BO.Category { CategoryID = cat.CategoryID, CategoryName = cat.CategoryName }
             };
         }
 
@@ -99,7 +99,8 @@ namespace PO
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,
                 Items = from item in order.Items
-                        select BOItem(item)
+                        where item is Item
+                        select BOItem(item as Item)
             };
         }
 

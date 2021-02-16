@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PO
 {
@@ -36,7 +33,7 @@ namespace PO
         /// <summary>
         /// items of the order
         /// </summary>
-        public IEnumerable<Item> Items { get; set; }
+        public IEnumerable<InvoiceItem> Items { get; set; }
 
     }
 }
