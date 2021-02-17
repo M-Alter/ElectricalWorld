@@ -25,6 +25,12 @@ namespace ElectricalWorld
         {
             InitializeComponent();
 
+
+            this.Width = SystemParameters.WorkArea.Width;
+            this.Height = SystemParameters.WorkArea.Height;
+            this.Left = 0;
+            this.Top = 0;
+            this.WindowState = WindowState.Normal;
             //foreach (var item in bl.GetItems(it => true))
             //{
             //    items.Add(item);

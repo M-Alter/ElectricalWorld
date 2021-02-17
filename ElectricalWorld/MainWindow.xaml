@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Electrical World" WindowStyle="None" Height="900" Width="1600" WindowState="Maximized" ResizeMode="NoResize">
+        Title="Electrical World" Height="900" Width="1600" WindowState="Maximized" ResizeMode="NoResize" Topmost="True" WindowStyle="None" >
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
