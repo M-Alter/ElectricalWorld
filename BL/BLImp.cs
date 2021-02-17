@@ -161,6 +161,11 @@ namespace BL
                    select (temp);
         }
 
+        public void PayOrder(string orderID, bool paid)
+        {
+            dl.PayOrder(orderID, paid);
+        }
+
         public void RemoveItem(string itemID)
         {
             dl.RemoveItem(itemID);

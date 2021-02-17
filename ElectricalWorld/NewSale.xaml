@@ -135,7 +135,7 @@
                                 <GridViewColumn Header="" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Override Price" Click="Button_Click"/>
+                                            <Button Content="Override Price" x:Name="btnOverride" Click="btnOverride_Click"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -159,7 +159,8 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnEndSale" Content="End Sale" Height="50" Width="200" Grid.Row="0" Background="Turquoise" Click="btnEndSale_Click"/>
                 <Button x:Name="btnEndSaleWithEmail" Content="End Sale and send Email" Height="50" Width="200" Grid.Row="1" Background="PeachPuff" Click="btnEndSaleWithEmail_Click"/>
-                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Grid.Row="1" Grid.Column="1" Background="Red" Click="btnPay_Click"/>
+                <Button x:Name="btnPay" Content="Pay" Height="50" Width="200" Grid.Row="0" Grid.Column="1" Background="Red" Click="btnPay_Click"/>
+                <Button x:Name="btnPayAndSendEmail" Content="Pay and send email" Height="50" Width="200" Grid.Row="1" Grid.Column="1" Background="Red" Click="btnPayAndSendEmail_Click"/>
                 
             </Grid>
         </StackPanel>

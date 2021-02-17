@@ -262,5 +262,14 @@ namespace ElectricalWorld
         {
             WindowState = WindowState.Minimized;
         }
+
+        private void chkBoxPaid_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Order order = (PO.Order)(sender as CheckBox).DataContext;
+            if (order is PO.Order)
+            {
+                bl.PayOrder(order.OrderID, order.Paid);
+            }
+        }
     }
 }

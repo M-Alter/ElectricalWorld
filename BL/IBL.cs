@@ -63,5 +63,12 @@ namespace BL
         /// <returns>return a collection of all the orders that comply to the filter</returns>
         IEnumerable<Order> GetOrders(Predicate<Order> filter);
 
+        /// <summary>
+        /// set order as paid
+        /// </summary>
+        /// <param name="orderID">id of the order</param>
+        /// <param name="paid">true if paid</param>
+        void PayOrder(string orderID, bool paid);
+
     }
 }

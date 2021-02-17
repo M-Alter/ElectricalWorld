@@ -470,6 +470,20 @@ namespace DL
                     where item.Element("ItemID").Value == itemID
                     select int.Parse(item.Element("Quantity").Value)).FirstOrDefault();
         }
+
+        public void PayOrder(string orderID, bool paid)
+        {
+            XElement rootElem = XMLTools.LoadFile(ordersFilePath);
+
+            var orderElem = (from ord in rootElem.Elements()
+                             let order = XMLTools.CreateOrderInstance(ord)
+                             where order.OrderID == orderID
+                             select ord).FirstOrDefault();
+
+            orderElem.SetElementValue("Paid", paid);
+
+            XMLTools.SaveFile(rootElem, ordersFilePath);
+        }
         #endregion
 
 

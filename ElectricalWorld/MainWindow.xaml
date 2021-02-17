@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Electrical World" Height="900" Width="1600" WindowState="Maximized" ResizeMode="NoResize" Topmost="True" WindowStyle="None" >
+        Title="Electrical World" Height="900" Width="1600" WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None" >
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -137,9 +137,12 @@
                                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" >
                                     <Label Content="Total "/>
                                     <Label Content="{Binding TotalPrice}" Width="200"/>
+                                    
+                                    <Label Content="Paid"/>
+                                    <CheckBox x:Name="chkBoxPaid" IsChecked="{Binding Paid}" Click="chkBoxPaid_Click"/>
 
+                                <Button x:Name="btnCreateInvoice" Content="Create Invoice and send email" Margin="50,0,0,0"  Click="btnCreateInvoice_Click"/>
                                 </WrapPanel>
-                                <Button x:Name="btnCreateInvoice" Content="Create Invoice" Grid.Row="3" Grid.Column="2" Click="btnCreateInvoice_Click"/>
                             </Grid>
 
                         </Grid>
@@ -202,8 +205,8 @@
                         </ListView>
                         <StackPanel>
                         </StackPanel>
-                        
-                        
+
+
                         <Grid x:Name="grdCustInfo" Grid.Column="1" Grid.Row="1" DataContext="{Binding}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -213,29 +216,44 @@
                                 <RowDefinition Height="6*"/>
                                 <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
-                            <StackPanel>
-                                <Label Content="Name: "/>
-                                <Label Content="Company Name: "/>
-                                <Label Content="Address: "/>
-                                <Label Content="Post-Code: "/>
-                                <Label Content="City: "/>
-                                <Label Content="Phone Number: "/>
-                                <Label Content="Mobile: "/>
-                                <Label Content="Email: "/>
-                                <Button x:Name="btnCustSave" Content="Save" Width="80" Margin="20,10" Click="btnCustSave_Click"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <TextBox Text="{Binding Name, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding Company, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding Address, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding PostCode, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding City, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding Phone, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding Mobile, Mode=TwoWay}"/>
-                                <TextBox Text="{Binding Email, Mode=TwoWay}"/>
-                            </StackPanel>
-                            
-                            <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="1" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >
+                            <Grid Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Content="Name: " Grid.Row="0"/>
+                                <Label Content="Company Name: " Grid.Row="1"/>
+                                <Label Content="Address: " Grid.Row="2"/>
+                                <Label Content="Post-Code: " Grid.Row="3"/>
+                                <Label Content="City: " Grid.Row="4"/>
+                                <Label Content="Phone Number: " Grid.Row="5"/>
+                                <Label Content="Mobile: " Grid.Row="6"/>
+                                <Label Content="Email: " Grid.Row="7"/>
+                                <Button x:Name="btnCustSave" Content="Save" Width="80" Click="btnCustSave_Click" Grid.Row="8"/>
+
+                                <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"/>
+                                <TextBox Text="{Binding Company, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>
+                                <TextBox Text="{Binding Address, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"/>
+                                <TextBox Text="{Binding PostCode, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"/>
+                                <TextBox Text="{Binding City, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"/>
+                                <TextBox Text="{Binding Phone, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"/>
+                                <TextBox Text="{Binding Mobile, Mode=TwoWay}" Grid.Row="6" Grid.Column="1"/>
+                                <TextBox Text="{Binding Email, Mode=TwoWay}" Grid.Row="7" Grid.Column="1"/>
+
+                            </Grid>
+
+                            <ListView x:Name="lvCustSales" ItemsSource="{Binding}" Grid.Row="9" Grid.ColumnSpan="2" MouseDoubleClick="lvSales_MouseDoubleClick" >
                                 <ListView.View>
                                     <GridView>
                                         <GridView.Columns>
@@ -337,26 +355,40 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <StackPanel Grid.Column="1">
-                                <Label Content="{Binding ItemID}" HorizontalAlignment="Left" Width="100"/>
-                                <TextBox x:Name="tboxBrand" Text="{Binding Brand, Mode=TwoWay}" HorizontalAlignment="Left"  Width="150"/>
-                                <TextBox x:Name="tboxModelNumber" Text="{Binding ModelNumber, Mode=TwoWay}" HorizontalAlignment="Left" Width="150"/>
-                                <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="80" FontSize="12"  Width="150"/>
-                                <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" HorizontalAlignment="Left" Width="150"/>
-                                <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150"/>
-                            </StackPanel>
 
-                            <StackPanel>
-                                <Label Content="ID: "/>
-                                <Label Content="Brand: "/>
-                                <Label Content="Model#: "/>
-                                <Label Content="Description: " Height="80"/>
-                                <Label Content="Price: "/>
-                                <Label Content="Quantity: "/>
-                            </StackPanel>
+                            <Grid Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            
+                                <Label Content="ID: " Grid.Row="0"/>
+                                <Label Content="Brand: " Grid.Row="1"/>
+                                <Label Content="Model#: " Grid.Row="2"/>
+                                <Label Content="Description: " Height="80" Grid.Row="3"/>
+                                <Label Content="Price: " Grid.Row="4"/>
+                                <Label Content="Quantity: " Grid.Row="5"/>
+
+                                <Label Content="{Binding ItemID}" HorizontalAlignment="Left" Width="100" Grid.Row="0" Grid.Column="1"/>
+                                <TextBox x:Name="tboxBrand" Text="{Binding Brand, Mode=TwoWay}" HorizontalAlignment="Left"  Width="150" Grid.Row="1" Grid.Column="1"/>
+                                <TextBox x:Name="tboxModelNumber" Text="{Binding ModelNumber, Mode=TwoWay}" HorizontalAlignment="Left" Width="150" Grid.Row="2" Grid.Column="1"/>
+                                <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="80" FontSize="12" Width="150" Grid.Row="3" Grid.Column="1"/>
+                                <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" HorizontalAlignment="Left" Width="150" Grid.Row="4" Grid.Column="1"/>
+                                <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150" Grid.Row="5" Grid.Column="1"/>
+
+                            
+                            </Grid>
 
                             <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
                                 <Button x:Name="btnProdSave" Content="Save" Width="80" Margin="20,10" Click="btnProdSave_Click"/>

@@ -56,7 +56,18 @@ namespace ElectricalWorld
         {
             PO.Item item = (sender as Button).DataContext as PO.Item;
             if (item is PO.Item)
-                basket.Add(item);
+                basket.Add(new PO.Item
+                {
+                    ItemID = item.ItemID,
+                    Brand = item.Brand,
+                    ModelNumber = item.ModelNumber,
+                    Description = item.Description,
+                    Image = item.Image,
+                    Price = item.Price,
+                    Quantity = item.Quantity,
+                    Categories = from cat in item.Categories
+                                 select cat
+                });
             lblTotal.Content = basket.Sum(it => it.Price);
         }
 
@@ -113,16 +124,7 @@ namespace ElectricalWorld
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PO.Item item = (sender as ListView).SelectedItem as PO.Item;
-            if (item is PO.Item)
-            {
-                ItemInfo itemInfo = new ItemInfo(item);
-                itemInfo.ShowDialog();
-            }
-        }
-
+        
         private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
             order.Items = from item in basket
@@ -132,7 +134,7 @@ namespace ElectricalWorld
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             new Thread(() =>
             {
-                Tools.CreateInvoice(order);
+                Tools.CreateInvoice(order, false);
             }).Start();
 
             Close();
@@ -159,7 +161,7 @@ namespace ElectricalWorld
 
             new Thread(() =>
             {
-                Tools.CreateInvoice(order);
+                Tools.CreateInvoice(order, false);
             }).Start();
 
             Close();
@@ -190,10 +192,47 @@ namespace ElectricalWorld
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             new Thread(() =>
             {
-                Tools.CreateInvoice(order, false);
+                Tools.CreateInvoice(order, true);
             }).Start();
 
             Close();
+        }
+
+        private void btnPayAndSendEmail_Click(object sender, RoutedEventArgs e)
+        {
+            PaymentWindow paymentWindow = new PaymentWindow(order.TotalPrice);
+            paymentWindow.ShowDialog();
+
+            if (paymentWindow.DialogResult == true)
+            {
+                order.Items = new List<PO.InvoiceItem>(basket.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -basket.Sum(it => it.Price) } }));
+                order.Paid = true;
+            }
+            else
+            {
+                order.Items = from item in basket
+                              select item;
+            }
+            order.OrderTime = DateTime.Now;
+            order.TotalPrice = order.Items.Sum(it => it.Price);
+            order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
+
+            new Thread(() =>
+            {
+                Tools.CreateInvoice(order, true);
+            }).Start();
+
+            Close();
+        }
+
+        private void btnOverride_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Item item = (sender as Button).DataContext as PO.Item;
+            if (item is PO.Item)
+            {
+                OverridePrice overridePrice = new OverridePrice(item);
+                overridePrice.ShowDialog();
+            }
         }
     }
 }

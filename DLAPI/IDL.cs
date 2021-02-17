@@ -140,6 +140,12 @@ namespace DLAPI
         IEnumerable<Order> GetOrders();
 
         /// <summary>
+        /// mark if an order is paid
+        /// </summary>
+        /// <param name="paid">truenif paid</param>
+        void PayOrder(string orderID, bool paid);
+
+        /// <summary>
         /// generates a new customerID
         /// </summary>
         /// <returns>a new CustomerID</returns>
