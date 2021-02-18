@@ -56,7 +56,7 @@ namespace ElectricalWorld
         }
 
 
-        public static void EmailInvoice(PO.Order order, string fileName)
+        public static void EmailInvoice(PO.Order order)
         {
             XElement rootElem = LoadFile(@"EmailDetails.xml");
             string email = rootElem.Element("Email").Value;
@@ -83,7 +83,7 @@ Thank you for your business - we appreciate it very much.
 Sincerely,
 Sruli", order.Customer.Name, order.OrderID);
 
-            bodyBuilder.Attachments.Add(fileName);
+            bodyBuilder.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\""INV_" + order.OrderID + ".pdf");
 
             message.Body = bodyBuilder.ToMessageBody();
 
@@ -399,7 +399,7 @@ Account Number: 21469371");
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             
             if (order.Customer.Email != "" && sendEmail)
-                EmailInvoice(order, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
+                EmailInvoice(order/*, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName*/);
         }
     }
 }

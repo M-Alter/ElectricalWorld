@@ -13,10 +13,10 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Menachem Alter"/>
-    <ROW Property="ProductCode" Value="1033:{5EA03851-E86C-4453-B783-344D64041DAD} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{FA397F26-AA7C-4688-A9F7-F1D1C9D05B1E} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Electrical World"/>
-    <ROW Property="ProductVersion" Value="1.0.10" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.11" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{546E05D1-6E4E-46AD-8604-790028C343A6}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>

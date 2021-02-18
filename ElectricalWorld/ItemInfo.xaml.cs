@@ -28,15 +28,15 @@ namespace ElectricalWorld
             this.item = item;
             this.DataContext = item;
             isInEditMode = false;
-            if (item.Image != null)
-            {
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(item.Image);
-                bitmap.EndInit();
+            //if (item.Image != null)
+            //{
+            //    BitmapImage bitmap = new BitmapImage();
+            //    bitmap.BeginInit();
+            //    bitmap.UriSource = new Uri(item.Image);
+            //    bitmap.EndInit();
 
-                imgItemImage.Source = bitmap;
-            }
+                
+            //}
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -50,21 +50,21 @@ namespace ElectricalWorld
             Close();
         }
 
-        private void btnChhoseImg_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".png";
-            fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+        //private void btnChhoseImg_Click(object sender, RoutedEventArgs e)
+        //{
+        //    OpenFileDialog fileDialog = new OpenFileDialog();
+        //    fileDialog.DefaultExt = ".png";
+        //    fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            if (fileDialog.ShowDialog() == true)
-            {
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(fileDialog.FileName);
-                bitmap.EndInit();
-                imgItemImage.Source = bitmap;
-                item.Image = fileDialog.FileName;
-            }
-        }
+        //    if (fileDialog.ShowDialog() == true)
+        //    {
+        //        BitmapImage bitmap = new BitmapImage();
+        //        bitmap.BeginInit();
+        //        bitmap.UriSource = new Uri(fileDialog.FileName);
+        //        bitmap.EndInit();
+        //        imgItemImage.Source = bitmap;
+        //        item.Image = fileDialog.FileName;
+        //    }
+        //}
     }
 }

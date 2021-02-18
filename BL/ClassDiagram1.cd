@@ -1,45 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BL.BLImp" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="BL.BLImp" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAkAAAAAgAAAAAIAAAAgCAAAgAEAAAAAAAABAA=</HashCode>
+      <HashCode>AAAAAQAkAAAAAgAAAAAIAAAAiCAAAgAEAAAAAAAABAA=</HashCode>
       <FileName>BLImp.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.117" />
   </Class>
-  <Class Name="BO.Category" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="BO.Category">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Category.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BO.Customer" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+  <Class Name="BO.Customer">
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEIAACAAAAAAAAAAAAAAEEAAAACCAAAAoAAAAAg=</HashCode>
+      <HashCode>AAAAAgAAACAAAAAMAAAAAAQAEAAAAACCAAAApAAAAAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BO.Item">
-    <Position X="7.25" Y="1" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAQAgAAAAkAAAAAAAAAAAEBAAAAAAgAABAAA=</HashCode>
+      <HashCode>AAAAAEAAAQAgAAAAgAAAAAAAAAAAEBAAAAAAgAABAAA=</HashCode>
       <FileName>Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BO.Order">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAgCAAAAEAAAAAAEAAAQAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAABAAAAAgCAAAAEAAAAACAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Order.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="BL.IBL" Collapsed="true">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+  <Interface Name="BL.IBL">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAkAAAAAgAAAAAIAAAAgCAAAgAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAkAAAAAgAAAAAIAAAAiCAAAgAEAAAAAAAAAAA=</HashCode>
       <FileName>IBL.cs</FileName>
     </TypeIdentifier>
   </Interface>

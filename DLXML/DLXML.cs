@@ -3,11 +3,8 @@ using DLXML;
 using DO;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
 
@@ -86,32 +83,32 @@ namespace DL
         //=========================================================================================
         public void AddImage(string itemID, string image)
         {
-            try
-            {
-                if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
+            //try
+            //{
+            //    if (!Directory.Exists(imagesFolderPath)) Directory.CreateDirectory(imagesFolderPath);
 
-                //var file = File.Create(imagesFolderPath + itemID + @".bmp");
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(image);
-                bitmap.EndInit();
-                Bitmap bitmap1 = new Bitmap(image);
-                bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
+            //    //var file = File.Create(imagesFolderPath + itemID + @".bmp");
+            //    BitmapImage bitmap = new BitmapImage();
+            //    bitmap.BeginInit();
+            //    bitmap.UriSource = new Uri(image);
+            //    bitmap.EndInit();
+            //    Bitmap bitmap1 = new Bitmap(image);
+            //    bitmap1.Save(imagesFolderPath + itemID + @".png", ImageFormat.Png);
 
-                XElement rootElem = XMLTools.LoadFile(imagesFilePath);
+            //    XElement rootElem = XMLTools.LoadFile(imagesFilePath);
 
-                rootElem.Add(new XElement("Image",
-                    new XElement("ItemID", itemID),
-                    new XElement("Image", imagesFolderPath + itemID + @".png")
-                    )
-                    );
+            //    rootElem.Add(new XElement("Image",
+            //        new XElement("ItemID", itemID),
+            //        new XElement("Image", imagesFolderPath + itemID + @".png")
+            //        )
+            //        );
 
-                XMLTools.SaveFile(rootElem, imagesFilePath);
-            }
-            catch (Exception e)
-            {
-                throw new BadImageException(itemID, " Error while trying to add image ", e);
-            }
+            //    XMLTools.SaveFile(rootElem, imagesFilePath);
+            //}
+            //catch (Exception e)
+            //{
+            //    throw new BadImageException(itemID, " Error while trying to add image ", e);
+            //}
 
 
         }
@@ -303,6 +300,7 @@ namespace DL
             return from item in rootElem.Elements()
                    let temp = XMLTools.CreateItemInstance(item)
                    where temp.IsActive == true
+                   orderby temp.Brand
                    select temp;
         }
 

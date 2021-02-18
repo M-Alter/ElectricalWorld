@@ -1,7 +1,9 @@
 ﻿using BL;
 using PO;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -156,7 +158,9 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
-                new Thread(() =>
+                if (order.Paid)
+                    order.Items = new List<PO.InvoiceItem>(order.Items.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -order.Items.Sum(it => it.Price) } }));
+            new Thread(() =>
                 {
                     Tools.CreateInvoice(order);
                 }).Start();

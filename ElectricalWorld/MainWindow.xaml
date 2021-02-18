@@ -1,4 +1,4 @@
-﻿<Window x:Class="ElectricalWorld.MainWindow"
+﻿<Window xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  x:Class="ElectricalWorld.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -381,11 +381,11 @@
                                 <Label Content="Quantity: " Grid.Row="5"/>
 
                                 <Label Content="{Binding ItemID}" HorizontalAlignment="Left" Width="100" Grid.Row="0" Grid.Column="1"/>
-                                <TextBox x:Name="tboxBrand" Text="{Binding Brand, Mode=TwoWay}" HorizontalAlignment="Left"  Width="150" Grid.Row="1" Grid.Column="1"/>
-                                <TextBox x:Name="tboxModelNumber" Text="{Binding ModelNumber, Mode=TwoWay}" HorizontalAlignment="Left" Width="150" Grid.Row="2" Grid.Column="1"/>
+                                <TextBox x:Name="tboxBrand" IsEnabled="False" Text="{Binding Brand, Mode=TwoWay}" HorizontalAlignment="Left"  Width="150" Grid.Row="1" Grid.Column="1"/>
+                                <TextBox x:Name="tboxModelNumber" IsEnabled="False" Text="{Binding ModelNumber, Mode=TwoWay}" HorizontalAlignment="Left" Width="150" Grid.Row="2" Grid.Column="1"/>
                                 <TextBox x:Name="tboxDescription" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Left" Height="80" FontSize="12" Width="150" Grid.Row="3" Grid.Column="1"/>
                                 <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}" HorizontalAlignment="Left" Width="150" Grid.Row="4" Grid.Column="1"/>
-                                <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150" Grid.Row="5" Grid.Column="1"/>
+                                <TextBox x:Name="tboxQnt" IsEnabled="False" Text="{Binding Quantity, Mode=TwoWay}" HorizontalAlignment="Left" Height="40"  Width="150" Grid.Row="5" Grid.Column="1"/>
 
                             
                             </Grid>
@@ -401,19 +401,10 @@
 
                 <TabItem Height="120" Width="120">
                     <TabItem.Header>
-                        <Label Content="Stock"/>
+                        <Label Content="Stats"/>
                     </TabItem.Header>
-                    <DataGrid x:Name="dgrdStock" AutoGenerateColumns="True" ItemsSource="{Binding}">
-                        <!--<DataGrid.Columns>
-                            <DataGridTextColumn>
-                                <DataGridTextColumn.Header>
-                                    <TextBlock/>
-                                </DataGridTextColumn.Header>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns>-->
-                    </DataGrid>
-                    
                 </TabItem>
+                
             </TabControl>
         </Grid>
 
