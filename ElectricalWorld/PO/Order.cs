@@ -35,5 +35,10 @@ namespace PO
         /// </summary>
         public IEnumerable<InvoiceItem> Items { get; set; }
 
+        /// <summary>
+        /// profit earned on this order
+        /// </summary>
+        public double Profit { get; set; }
+
     }
 }

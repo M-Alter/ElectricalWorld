@@ -45,6 +45,9 @@ namespace PO
         public int Quantity { get; set; }
 
 
-
+        /// <summary>
+        /// cost price of the item
+        /// </summary>
+        public double CostPrice { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace BL
         /// add a new item
         /// </summary>
         /// <param name="item">item to add</param>
-        void AddItem(Item item);
+        void AddItem(Item item, double costPrice);
 
         /// <summary>
         /// edit details of an item

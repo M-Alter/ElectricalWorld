@@ -83,6 +83,7 @@ namespace PO
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,
+                Profit = order.Profit,
                 Items = from item in order.Items
                         select POItem(item)
             };
@@ -98,6 +99,7 @@ namespace PO
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,
+                Profit = order.Profit,
                 Items = from item in order.Items
                         where item is Item
                         select BOItem(item as Item)

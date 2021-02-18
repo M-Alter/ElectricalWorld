@@ -41,7 +41,7 @@ namespace ElectricalWorld
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            bl.AddItem(PO.Tools.BOItem(item));
+            bl.AddItem(PO.Tools.BOItem(item),0);
             Close();
         }
 

@@ -12,12 +12,14 @@ namespace ElectricalWorld
     public partial class AddItem : Window
     {
         BL.IBL bl = BLFactory.GetBL();
-        BO.Item item = new BO.Item();
+        PO.Item item = new PO.Item();
+        
 
         public AddItem()
         {
             InitializeComponent();
             DataContext = item;
+            grdItem.DataContext = item;
         }
 
 
@@ -25,7 +27,15 @@ namespace ElectricalWorld
         {
             try
             {
-                bl.AddItem(item);
+                bl.AddItem(new BO.Item 
+                {
+                    Brand = item.Brand,
+                    ModelNumber = item.ModelNumber,
+                    Description = item.Description,
+                    Price = item.Price,
+                    Quantity = item.Quantity,
+                },
+                item.CostPrice);
             }
             catch (Exception ex)
             {
@@ -39,22 +49,22 @@ namespace ElectricalWorld
             Close();
         }
 
-        private void btnChhoseImg_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".png";
-            fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+        //private void btnChhoseImg_Click(object sender, RoutedEventArgs e)
+        //{
+        //    OpenFileDialog fileDialog = new OpenFileDialog();
+        //    fileDialog.DefaultExt = ".png";
+        //    fileDialog.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            if (fileDialog.ShowDialog() == true)
-            {
+        //    if (fileDialog.ShowDialog() == true)
+        //    {
 
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(fileDialog.FileName);
-                bitmap.EndInit();
-                imgItemImage.Source = bitmap;
-                item.Image = fileDialog.FileName;
-            }
-        }
+        //        BitmapImage bitmap = new BitmapImage();
+        //        bitmap.BeginInit();
+        //        bitmap.UriSource = new Uri(fileDialog.FileName);
+        //        bitmap.EndInit();
+        //        imgItemImage.Source = bitmap;
+        //        item.Image = fileDialog.FileName;
+        //    }
+        //}
     }
 }

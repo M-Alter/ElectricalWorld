@@ -16,5 +16,10 @@
         /// price of the item
         /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// profit of the sale of this item
+        /// </summary>
+        public double Profit { get; set; }
     }
 }

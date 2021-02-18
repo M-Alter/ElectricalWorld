@@ -27,7 +27,7 @@ namespace BL
             });
         }
 
-        public void AddItem(Item item)
+        public void AddItem(Item item, double costPrice)
         {
             //foreach (var doItem in dl.GetItems())
             //{
@@ -48,17 +48,23 @@ namespace BL
                 IsActive = true
 
             });
-            dl.AddStockItem(itemID, item.Quantity);
+            dl.AddStockItem(new DO.StockItem
+            {
+                ItemID = itemID,
+                Quantity = item.Quantity,
+                Date = DateTime.Now,
+                Price = costPrice
+            });
             if (item.Image != null)
                 dl.AddImage(item.ItemID, item.Image);
         }
 
         public string AddOrder(Order order)
         {
-            string OrderID = dl.GetNewOrderID().ToString(@"000000");
+            string orderID = dl.GetNewOrderID().ToString(@"000000");
             dl.AddOrder(new DO.Order
             {
-                OrderID = OrderID,
+                OrderID = orderID,
                 CustomerID = order.Customer.CustomerID,
                 OrderTime = DateTime.Now,
                 TotalPrice = order.TotalPrice,
@@ -66,10 +72,16 @@ namespace BL
             });
             foreach (var item in order.Items)
             {
-                dl.AddOrderItem(OrderID, item.ItemID, item.Price);
-                dl.EditStock(item.ItemID, -1);
+                dl.AddOrderItem(new DO.OrderItem
+                {
+                    OrderID = orderID,
+                    ItemID = item.ItemID,
+                    Price = item.Price,
+                    Profit = item.Price - dl.GetCostPrice(item.ItemID)
+                });
+                dl.SubtractStock(item.ItemID, -1);
             }
-            return OrderID;
+            return orderID;
         }
 
         public void EditCustomer(Customer cust)
@@ -99,7 +111,7 @@ namespace BL
                 Price = item.Price,
                 IsActive = true
             });
-            dl.EditStock(item.ItemID, -dl.GetStockItem(item.ItemID) + item.Quantity);
+            //dl.EditStock(item.ItemID, -dl.GetStockItem(item.ItemID) + item.Quantity);
         }
 
         public IEnumerable<Customer> GetCutomers(Predicate<Customer> filter)
@@ -152,6 +164,7 @@ namespace BL
                        OrderTime = order.OrderTime,
                        TotalPrice = order.TotalPrice,
                        Paid = order.Paid,
+                       Profit = dl.GetOrderItems().Where(it => it.OrderID == order.OrderID).Select(it => it.Profit).Sum(),
                        Items = from item in dl.GetOrderItems()
                                where item.OrderID == order.OrderID
                                select GetItems(it => it.ItemID == item.ItemID).FirstOrDefault()

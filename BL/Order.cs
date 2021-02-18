@@ -35,5 +35,10 @@ namespace BO
         /// </summary>
         public IEnumerable<Item> Items { get; set; }
 
+        /// <summary>
+        /// profit earned on this order
+        /// </summary>
+        public double Profit { get; set; }
+
     }
 }

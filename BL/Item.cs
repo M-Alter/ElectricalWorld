@@ -44,7 +44,7 @@ namespace BO
         /// </summary>
         public int Quantity { get; set; }
 
-
+       
 
     }
 }

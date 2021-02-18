@@ -163,14 +163,15 @@ namespace DL
             XMLTools.SaveFile(rootElem, ordersFilePath);
         }
 
-        public void AddOrderItem(string orderID, string itemID, double price)
+        public void AddOrderItem(OrderItem item)
         {
             XElement rootElem = XMLTools.LoadFile(orderItemsFilePath);
 
             rootElem.Add(new XElement("OrderItem",
-                new XElement("OrderID", orderID),
-                new XElement("ItemID", itemID),
-                new XElement("Price", price)
+                new XElement("OrderID", item.OrderID),
+                new XElement("ItemID", item.ItemID),
+                new XElement("Price", item.Price),
+                new XElement("Profit", item.Profit)
                 )
                 );
 
@@ -437,15 +438,15 @@ namespace DL
             return result;
         }
 
-        public void AddStockItem(string itemID, int qnt)
+        public void AddStockItem(StockItem item)
         {
             XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
 
             rootElem.Add(new XElement("StckItem",
-                new XElement("ItemID", itemID),
-                new XElement("Quantity", qnt),
-            //    Add(new XElement("Date", DateTime.Now));
-            //Add(new XElement("Price", 0.00));
+                new XElement("ItemID", item.ItemID),
+                new XElement("Quantity", item.Quantity),
+                new XElement("Date", item.Date),
+                new XElement("Price", item.Price)
                 )
                 );
 
@@ -453,15 +454,23 @@ namespace DL
 
         }
 
-        public void EditStock(string itemID, int qnt)
+        public void SubtractStock(string itemID, int qnt)
         {
             XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
 
             var stockItemElem = (from item in rootElem.Elements()
-                                 where item.Element("ItemID").Value == itemID
+                                 let stockItem = XMLTools.CreateStockItemInstance(item)
+                                 where stockItem.ItemID == itemID
+                                 where stockItem.Quantity > 0
+                                 orderby stockItem.Date
                                  select item).FirstOrDefault();
 
             stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
+
+            if (stockItemElem.Element("Quantity").Value == "0")
+            {
+                stockItemElem.Remove();
+            }
 
             XMLTools.SaveFile(rootElem, stockItemsFilePath);
         }
@@ -471,8 +480,10 @@ namespace DL
             XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
 
             return (from item in rootElem.Elements()
-                    where item.Element("ItemID").Value == itemID
-                    select int.Parse(item.Element("Quantity").Value)).FirstOrDefault();
+                    let stockItem = XMLTools.CreateStockItemInstance(item)
+                    where stockItem.ItemID == itemID
+                    orderby stockItem.Date
+                    select stockItem.Quantity).DefaultIfEmpty(0).Sum();
         }
 
         public void PayOrder(string orderID, bool paid)
@@ -488,8 +499,20 @@ namespace DL
 
             XMLTools.SaveFile(rootElem, ordersFilePath);
         }
-        #endregion
 
+        public double GetCostPrice(string itemID)
+        {
+            XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
 
+            var stockItemElem = (from item in rootElem.Elements()
+                                 let stockItem = XMLTools.CreateStockItemInstance(item)
+                                 where stockItem.ItemID == itemID
+                                 where stockItem.Quantity > 0
+                                 orderby stockItem.Date
+                                 select stockItem).FirstOrDefault();
+
+            return stockItemElem.Price;
+            
+        }
     }
 }

@@ -123,7 +123,7 @@ namespace DLAPI
         /// <param name="orderID">ID of the order</param>
         /// <param name="itemID">Id of the Item</param>
         /// <param name="price">price of the item</param>
-        void AddOrderItem(string orderID, string itemID, double price);
+        void AddOrderItem(OrderItem item);
 
         /// <summary>
         /// add a new order 
@@ -172,16 +172,15 @@ namespace DLAPI
         /// <summary>
         /// add a new stock item insctance
         /// </summary>
-        /// <param name="itemID">ID of the item</param>
-        /// <param name="qnt">qnt of the item</param>
-        void AddStockItem(string itemID, int qnt);
+        /// <param name="item">stockitem to add</param>
+        void AddStockItem(StockItem item);
 
         /// <summary>
         /// edit the stock of an item
         /// </summary>
         /// <param name="itemID">ID of the item</param>
         /// <param name="qnt">qnt of the item</param>
-        void EditStock(string itemID, int qnt);
+        void SubtractStock(string itemID, int qnt);
 
         /// <summary>
         /// get the stock of an item
@@ -189,5 +188,12 @@ namespace DLAPI
         /// <param name="itemID">ID of the item</param>
         /// <returns> in the current qnt stock</returns>
         int GetStockItem(string itemID);
+
+        /// <summary>
+        /// get the cost of the item id
+        /// </summary>
+        /// <param name="itemID">id of the requeated item</param>
+        /// <returns>the cost price of the item</returns>
+        double GetCostPrice(string itemID);
     }
 }

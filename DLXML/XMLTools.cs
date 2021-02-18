@@ -152,7 +152,8 @@ namespace DLXML
             {
                 ItemID = orderItem.Element("ItemID").Value,
                 OrderID = orderItem.Element("OrderID").Value,
-                Price = double.Parse(orderItem.Element("Price").Value)
+                Price = double.Parse(orderItem.Element("Price").Value),
+                Profit = double.Parse(orderItem.Element("Profit").Value)
             };
         }
 
@@ -167,6 +168,16 @@ namespace DLXML
         }
 
 
+        internal static StockItem CreateStockItemInstance(XElement item)
+        {
+            return new StockItem
+            {
+               ItemID = item.Element("ItemID").Value,
+               Quantity = int.Parse(item.Element("Quantity").Value),
+               Price = double.Parse(item.Element("Price").Value),
+               Date = DateTime.Parse(item.Element("Date").Value)
+            };
+        }
 
 
 
