@@ -21,6 +21,8 @@ namespace DL
         DLXML() { } // default => private
         public static DLXML Instance { get => instance; }// The public Instance property to use
 
+        #endregion
+
         #region Files
         string imagesFolderPath = Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)) + @"\ElectricalWorld\images\";
         string categoriesFilePath = @"categories.xml";
@@ -441,7 +443,9 @@ namespace DL
 
             rootElem.Add(new XElement("StckItem",
                 new XElement("ItemID", itemID),
-                new XElement("Quantity", qnt)
+                new XElement("Quantity", qnt),
+            //    Add(new XElement("Date", DateTime.Now));
+            //Add(new XElement("Price", 0.00));
                 )
                 );
 

@@ -401,8 +401,18 @@
 
                 <TabItem Height="120" Width="120">
                     <TabItem.Header>
-                        <Label Content="Invoices"/>
+                        <Label Content="Stock"/>
                     </TabItem.Header>
+                    <DataGrid x:Name="dgrdStock" AutoGenerateColumns="True" ItemsSource="{Binding}">
+                        <!--<DataGrid.Columns>
+                            <DataGridTextColumn>
+                                <DataGridTextColumn.Header>
+                                    <TextBlock/>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>-->
+                    </DataGrid>
+                    
                 </TabItem>
             </TabControl>
         </Grid>

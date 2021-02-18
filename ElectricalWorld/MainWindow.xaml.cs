@@ -16,6 +16,7 @@ namespace ElectricalWorld
     {
         IBL bl = BLAPI.BLFactory.GetBL();
         ObservableCollection<PO.Item> items = new ObservableCollection<PO.Item>();
+        ObservableCollection<PO.Item> stockItems = new ObservableCollection<PO.Item>();
         ObservableCollection<PO.Order> sales = new ObservableCollection<PO.Order>();
         ObservableCollection<PO.Order> custOrders = new ObservableCollection<PO.Order>();
         ObservableCollection<PO.Customer> custs = new ObservableCollection<PO.Customer>();
@@ -31,11 +32,12 @@ namespace ElectricalWorld
             this.Left = 0;
             this.Top = 0;
             this.WindowState = WindowState.Normal;
+
             //foreach (var item in bl.GetItems(it => true))
             //{
-            //    items.Add(item);
+            //    stockItems.Add(PO.Tools.POItem(item));
             //}
-            //lvItems.DataContext = items;
+            //dgrdStock.DataContext = stockItems;
 
         }
 
