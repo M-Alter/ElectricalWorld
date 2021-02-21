@@ -84,6 +84,17 @@ namespace BL
             return orderID;
         }
 
+        public void AddStock(Item item, double costPrice)
+        {
+            dl.AddStockItem(new DO.StockItem
+            {
+                Date = DateTime.Now,
+                ItemID = item.ItemID,
+                Quantity = item.Quantity,
+                Price = costPrice
+            });
+        }
+
         public void EditCustomer(Customer cust)
         {
             dl.EditCustomer(new DO.Customer

@@ -1,0 +1,72 @@
+﻿<Window x:Class="ElectricalWorld.AddStock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectricalWorld"
+        mc:Ignorable="d"
+        Title="AddStock" Height="400" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid x:Name="grdItem" Grid.ColumnSpan="2" DataContext="{Binding}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="ID: "/>
+            <Label Grid.Row="1" Content="Brand: "/>
+            <Label Grid.Row="2" Content="Model#: "/>
+            <Label Grid.Row="3" Content="Description: " Height="80"/>
+            <Label Grid.Row="4" Content="Price: "/>
+            <Label Grid.Row="5" Content="Quantity: "/>
+            <Label Grid.Row="6" Content="Cost Price: "/>
+
+
+            <Label Content="{Binding ItemID}" IsEnabled="False" HorizontalAlignment="Left" Width="Auto" Grid.Column="1" Grid.Row="0"/>
+            <TextBox x:Name="tboxBrand" IsEnabled="False"  Text="{Binding Brand, Mode=TwoWay}"  Grid.Column="1" Width="Auto" Grid.Row="1"/>
+            <TextBox x:Name="tboxModelNumber" IsEnabled="False"  Text="{Binding ModelNumber, Mode=TwoWay}"  Grid.Column="1" Width="Auto" Grid.Row="2"/>
+            <TextBox x:Name="tboxDescription" IsEnabled="False"  Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap"  Grid.Column="1" Height="80" FontSize="12"  Width="Auto" Grid.Row="3"/>
+            <TextBox x:Name="tboxPrice" Text="{Binding Price, Mode=TwoWay}"  Grid.Column="1" Width="Auto" Grid.Row="4"/>
+            <TextBox x:Name="tboxQnt" Text="{Binding Quantity, Mode=TwoWay}"  Grid.Column="1" Height="40"  Width="Auto" Grid.Row="5"/>
+            <TextBox x:Name="tboxCostPrice" Text="{Binding CostPrice, Mode=TwoWay}" Grid.Column="1" Height="40"  Width="Auto" Grid.Row="6"/>
+
+
+
+
+        </Grid>
+
+        <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+            <Button x:Name="btnSave" Content="Save" Width="80" Margin="20,10" Click="btnSave_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="80" Margin="20,10" Click="btnCancel_Click"/>
+        </WrapPanel>
+    </Grid>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Window.Resources>
+</Window>

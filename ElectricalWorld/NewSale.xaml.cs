@@ -124,7 +124,7 @@ namespace ElectricalWorld
             }
         }
 
-        
+
         private void btnEndSale_Click(object sender, RoutedEventArgs e)
         {
             order.Items = from item in basket
@@ -136,8 +136,8 @@ namespace ElectricalWorld
             {
                 Tools.CreateInvoice(order, false);
             }).Start();
-
-            Close();
+            btnSend.IsEnabled = true;
+            //Close();
         }
 
         private void btnPay_Click(object sender, RoutedEventArgs e)
@@ -163,8 +163,8 @@ namespace ElectricalWorld
             {
                 Tools.CreateInvoice(order, false);
             }).Start();
-
-            Close();
+            btnSend.IsEnabled = true;
+            //Close();
         }
 
         private void tboxProdSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -233,6 +233,12 @@ namespace ElectricalWorld
                 OverridePrice overridePrice = new OverridePrice(item);
                 overridePrice.ShowDialog();
             }
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            if (order.Customer.Email != "")
+                Tools.EmailInvoice(order);
         }
     }
 }

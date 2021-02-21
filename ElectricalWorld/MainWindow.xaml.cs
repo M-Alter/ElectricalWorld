@@ -277,5 +277,22 @@ namespace ElectricalWorld
                 bl.PayOrder(order.OrderID, order.Paid);
             }
         }
+
+        private void btnAddStock_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Item item = (sender as Button).DataContext as PO.Item;
+            if (item is Item)
+            {
+                AddStock addStock = new AddStock(item);
+                addStock.Show();
+            }
+        }
+
+        private void btnSendEmail_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Order order = (PO.Order)(sender as Button).DataContext;
+            if (order is PO.Order)
+                Tools.EmailInvoice(order);
+        }
     }
 }

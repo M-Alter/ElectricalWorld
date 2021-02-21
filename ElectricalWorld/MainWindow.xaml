@@ -141,7 +141,8 @@
                                     <Label Content="Paid"/>
                                     <CheckBox x:Name="chkBoxPaid" IsChecked="{Binding Paid}" Click="chkBoxPaid_Click"/>
 
-                                <Button x:Name="btnCreateInvoice" Content="Create Invoice and send email" Margin="50,0,0,0"  Click="btnCreateInvoice_Click"/>
+                                <Button x:Name="btnReCreateInvoice" Content="ReCreate Invoice" Margin="50,0,0,0" Width="150"  Click="btnCreateInvoice_Click"/>
+                                <Button x:Name="btnSendEmail" Content="Send Email" Margin="30,0,0,0" Width="150" Background="Chocolate" Click="btnSendEmail_Click"/>
                                 </WrapPanel>
                             </Grid>
 
@@ -391,7 +392,9 @@
                             </Grid>
 
                             <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
-                                <Button x:Name="btnProdSave" Content="Save" Width="80" Margin="20,10" Click="btnProdSave_Click"/>
+                                <Button x:Name="btnProdSave" Content="Save" Width="100" Margin="20,10" Click="btnProdSave_Click"/>
+                                <Button x:Name="btnAddStock" Content="Add Stock" Width="100" Margin="20,10" Click="btnAddStock_Click"/>
+                                
                             </WrapPanel>
                         </Grid>
                     </Grid>

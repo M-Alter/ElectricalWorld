@@ -440,7 +440,7 @@ namespace DL
         {
             XElement rootElem = XMLTools.LoadFile(stockItemsFilePath);
 
-            rootElem.Add(new XElement("StckItem",
+            rootElem.Add(new XElement("StockItem",
                 new XElement("ItemID", item.ItemID),
                 new XElement("Quantity", item.Quantity),
                 new XElement("Date", item.Date),
@@ -463,12 +463,13 @@ namespace DL
                                  orderby stockItem.Date
                                  select item).FirstOrDefault();
 
-            stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
+            
+                stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
 
-            if (stockItemElem.Element("Quantity").Value == "0")
-            {
-                stockItemElem.Remove();
-            }
+            //if (stockItemElem.Element("Quantity").Value == "0")
+            //{
+            //    stockItemElem.Remove();
+            //}
 
             XMLTools.SaveFile(rootElem, stockItemsFilePath);
         }
@@ -510,7 +511,7 @@ namespace DL
                                  select stockItem).FirstOrDefault();
 
             return stockItemElem.Price;
-            
+
         }
     }
 }

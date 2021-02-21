@@ -70,5 +70,11 @@ namespace BL
         /// <param name="paid">true if paid</param>
         void PayOrder(string orderID, bool paid);
 
+        /// <summary>
+        /// add stock to an existing item
+        /// </summary>
+        /// <param name="item"></param>
+        void AddStock(Item item, double costPrice);
+
     }
 }
