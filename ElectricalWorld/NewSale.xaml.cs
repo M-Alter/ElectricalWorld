@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -238,7 +239,10 @@ namespace ElectricalWorld
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             if (order.Customer.Email != "")
-                Tools.EmailInvoice(order);
+                new Task(() =>
+                {
+                    Tools.EmailInvoice(order);
+                }).Start();
         }
     }
 }
