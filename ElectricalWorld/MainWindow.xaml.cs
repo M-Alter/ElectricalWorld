@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -160,6 +161,7 @@ namespace ElectricalWorld
             if (order is PO.Order)
                 if (order.Paid)
                     order.Items = new List<PO.InvoiceItem>(order.Items.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -order.Items.Sum(it => it.Price) } }));
+            order.TotalPrice = order.Items.Sum(it => it.Price);
             new Thread(() =>
                 {
                     Tools.CreateInvoice(order);
@@ -292,7 +294,12 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
-                Tools.EmailInvoice(order);
+                new Task(() =>
+                {
+                    Tools.EmailInvoice(order);
+                }).Start();
         }
+
+
     }
 }

@@ -27,7 +27,7 @@ namespace ElectricalWorld
         {
             try
             {
-                bl.AddStock(new BO.Item 
+                bl.AddItem(new BO.Item 
                 {
                     Brand = item.Brand,
                     ModelNumber = item.ModelNumber,

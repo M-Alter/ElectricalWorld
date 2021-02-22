@@ -62,6 +62,7 @@ namespace ElectricalWorld
             string email = rootElem.Element("Email").Value;
             string password = rootElem.Element("Password").Value;
 
+            //string invoicePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\""INV_" + order.OrderID + @".pdf"";
 
             //create a new message
             var message = new MimeMessage();
@@ -83,7 +84,7 @@ Thank you for your business - we appreciate it very much.
 Sincerely,
 Sruli", order.Customer.Name, order.OrderID);
 
-            bodyBuilder.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\""INV_" + order.OrderID + ".pdf");
+            bodyBuilder.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + "INV_" + order.OrderID + @".pdf");
 
             message.Body = bodyBuilder.ToMessageBody();
 
