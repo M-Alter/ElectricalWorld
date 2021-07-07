@@ -17,14 +17,14 @@
   <Class Name="DO.Customer">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAACAAAAAAAAAAAAAAEEAAAACCAAAAoAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAIAAAAAAQAEAAAAACCAAAApAAAAAA=</HashCode>
       <FileName>DO\Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DO.Item">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAQAgAAAAkAAAAAAAAAAAAAAAAAAAgAABAAA=</HashCode>
+      <HashCode>AAAAAEAAAQAgAAAAkAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>DO\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,14 +52,63 @@
   <Class Name="DO.OrderItem">
     <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAQAAAAAAgAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DO\OrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BadCustomerException" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAEAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BadOrderException" Collapsed="true">
+    <Position X="0.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAEAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BadItemException" Collapsed="true">
+    <Position X="0.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.SaveFileException" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAEAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.BadImageException" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAAAEAAAAAAAAA=</HashCode>
+      <FileName>DO\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.OrderPayment">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>DO\OrderPayment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DO.StockItem">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAgAAAAAAAAAAAAAABAAAAgAAAAAA=</HashCode>
+      <FileName>DO\StockItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="DLAPI.IDL">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQFkAAQAHgAAAQAIAAAAgSAAAgAFAAAAAAACAAA=</HashCode>
+      <HashCode>AACAAQFkAA0AHgAAAQAICAAAiWABAgAFAAEAACACAAI=</HashCode>
       <FileName>IDL.cs</FileName>
     </TypeIdentifier>
   </Interface>

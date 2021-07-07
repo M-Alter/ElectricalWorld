@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using DLAPI;
+using DLSQL;
 using DO;
 
 namespace DL
@@ -28,7 +32,10 @@ namespace DL
 
         public void AddCustomer(Customer cust)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into Customer (Name, Company, Address, PostCode, City, Phone, Mobile , Email) values (@Name, @Company, @Address, @PostCode, @City, @Phone, @Mobile , @Email)", cust);
+            }
         }
 
         public void AddImage(string itemID, string image)
@@ -38,27 +45,42 @@ namespace DL
 
         public void AddItem(Item item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into Item (ItemID, Brand, ModelNumber, Description, IsActive, Price) values (@ItemID, @Brand, @ModelNumber, @Description, @IsActive, @Price) ", item);
+            }
         }
 
         public void AddItemCategory(string itemID, string categoryID)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into ItemCategory (ItemID, CategoryID) values (@ItemID, @CategoryID)");
+            }
         }
 
         public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into Order (OrderID, CustomerID, OrderTime, TotalPrice, Paid) values (@OrderID, @CustomerID, @OrderTime, @TotalPrice, @Paid)", order);
+            }
         }
 
         public void AddOrderItem(OrderItem item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into OrderItem (OrderID, ItemID, Price, Profit) values (@OrderID, @ItemID, @Price, @Profit)", item);
+            }
         }
 
         public void AddStockItem(StockItem item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute("insert into StockItem (ItemID, Quantity, Date, Price) values (@ItemID, @Quantity, @Date, @Price)", item);
+            }
         }
 
         public void EditCustomer(Customer cust)
