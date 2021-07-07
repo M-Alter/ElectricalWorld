@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Dapper;
+using DLAPI;
+using DLSQL;
+using DO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using DLAPI;
-using DLSQL;
-using DO;
 
 namespace DL
 {
@@ -100,22 +98,37 @@ namespace DL
 
         public IEnumerable<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<Category>("Select * From Category", new DynamicParameters());
+            }
         }
 
         public double GetCostPrice(string itemID)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                var prices =  cnn.Query<StockItem>($"Select * From StockItem WHERE ItemID ={itemID} and Quantity > 0 ", new DynamicParameters());
+                return (from p in prices
+                        orderby p.Date
+                        select p.Price).FirstOrDefault();
+            }
         }
 
         public IEnumerable<Customer> GetCutomers()
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<Customer>("Select * From Customer",new DynamicParameters());
+            }
         }
 
         public IEnumerable<string> GetItemCategories(string itemID)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<string>($"Select CategoryID From ItemCategories where ItemID = {itemID} ", new DynamicParameters());
+            }
         }
 
         public IEnumerable<ItemImage> GetItemImages()
@@ -125,44 +138,37 @@ namespace DL
 
         public IEnumerable<Item> GetItems()
         {
-            throw new NotImplementedException();
-        }
-
-        public int GetNewCategoryID()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetNewCustomerID()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetNewItemID()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetNewOrderID()
-        {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<Item>("Select * From Item where IsActive = 1 order by Brand asc", new DynamicParameters());
+            }
         }
 
         public IEnumerable<OrderItem> GetOrderItems()
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<OrderItem>("Select * From OrderItem", new DynamicParameters());
+            }
         }
 
         public IEnumerable<Order> GetOrders()
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<Order>("Select * From Order", new DynamicParameters());
+            }
         }
 
         public int GetStockItem(string itemID)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                var stocks = cnn.Query<StockItem>($"Select * StockItem where ItemID = {itemID}", new DynamicParameters());
+                return stocks.Sum(s => s.Quantity);
+            }
         }
-
+    
         public void PayOrder(string orderID, bool paid)
         {
             throw new NotImplementedException();

@@ -146,30 +146,6 @@ namespace DLAPI
         void PayOrder(string orderID, bool paid);
 
         /// <summary>
-        /// generates a new customerID
-        /// </summary>
-        /// <returns>a new CustomerID</returns>
-        int GetNewCustomerID();
-
-        /// <summary>
-        /// generates a new CategoryID
-        /// </summary>
-        /// <returns></returns>
-        int GetNewCategoryID();
-
-        /// <summary>
-        /// generates a new ItemID
-        /// </summary>
-        /// <returns></returns>
-        int GetNewItemID();
-
-        /// <summary>
-        /// generates a new OrderID
-        /// </summary>
-        /// <returns></returns>
-        int GetNewOrderID();
-
-        /// <summary>
         /// add a new stock item insctance
         /// </summary>
         /// <param name="item">stockitem to add</param>

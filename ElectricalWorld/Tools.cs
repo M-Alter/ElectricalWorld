@@ -8,7 +8,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 
 namespace ElectricalWorld
@@ -113,7 +112,7 @@ Sruli", order.Customer.Name, order.OrderID);
         }
 
 
-        public static void CreateInvoice(PO.Order order , bool sendEmail = true)
+        public static void CreateInvoice(PO.Order order, bool sendEmail = true)
         {
             Document document = new Document();
 
@@ -398,7 +397,7 @@ Account Number: 21469371");
             if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\")) Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
-            
+
             //if (order.Customer.Email != "" && sendEmail)
             //    EmailInvoice(order/*, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName*/);
         }

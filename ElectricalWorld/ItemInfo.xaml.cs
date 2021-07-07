@@ -1,8 +1,5 @@
 ﻿using BLAPI;
-using Microsoft.Win32;
-using System;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 namespace ElectricalWorld
 {
@@ -35,13 +32,13 @@ namespace ElectricalWorld
             //    bitmap.UriSource = new Uri(item.Image);
             //    bitmap.EndInit();
 
-                
+
             //}
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            bl.AddItem(PO.Tools.BOItem(item),0);
+            bl.AddItem(PO.Tools.BOItem(item), 0);
             Close();
         }
 

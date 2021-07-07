@@ -15,7 +15,7 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                CustomerID = dl.GetNewCustomerID().ToString(@"00000"),
+                //CustomerID = dl.GetNewCustomerID().ToString(@"00000"),
                 Name = cust.Name,
                 Company = cust.Company,
                 Address = cust.Address,
@@ -29,18 +29,10 @@ namespace BL
 
         public void AddItem(Item item, double costPrice)
         {
-            //foreach (var doItem in dl.GetItems())
-            //{
-            //    if (doItem.ItemID == item.ItemID)
-            //    {
-            //        dl.EditStock(item.ItemID, item.Quantity - dl.GetStockItem(doItem.ItemID));
-            //        return;
-            //    }
-            //}
-            string itemID = dl.GetNewItemID().ToString(@"00000");
+            //string itemID = dl.GetNewItemID().ToString(@"00000");
             dl.AddItem(new DO.Item
             {
-                ItemID = itemID,
+                //ItemID = itemID,
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
@@ -50,7 +42,7 @@ namespace BL
             });
             dl.AddStockItem(new DO.StockItem
             {
-                ItemID = itemID,
+                //ItemID = itemID,
                 Quantity = item.Quantity,
                 Date = DateTime.Now,
                 Price = costPrice
@@ -61,10 +53,10 @@ namespace BL
 
         public string AddOrder(Order order)
         {
-            string orderID = dl.GetNewOrderID().ToString(@"000000");
+            //string orderID = dl.GetNewOrderID().ToString(@"000000");
             dl.AddOrder(new DO.Order
             {
-                OrderID = orderID,
+                //OrderID = orderID,
                 CustomerID = order.Customer.CustomerID,
                 OrderTime = DateTime.Now,
                 TotalPrice = order.TotalPrice,
@@ -74,14 +66,15 @@ namespace BL
             {
                 dl.AddOrderItem(new DO.OrderItem
                 {
-                    OrderID = orderID,
+                    //OrderID = orderID,
                     ItemID = item.ItemID,
                     Price = item.Price,
                     Profit = item.Price - dl.GetCostPrice(item.ItemID)
                 });
                 dl.SubtractStock(item.ItemID, -1);
             }
-            return orderID;
+            //return orderID;
+            return null;
         }
 
         public void AddStock(Item item, double costPrice)

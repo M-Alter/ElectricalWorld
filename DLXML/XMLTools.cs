@@ -172,10 +172,10 @@ namespace DLXML
         {
             return new StockItem
             {
-               ItemID = item.Element("ItemID").Value,
-               Quantity = int.Parse(item.Element("Quantity").Value),
-               Price = double.Parse(item.Element("Price").Value),
-               Date = DateTime.Parse(item.Element("Date").Value)
+                ItemID = item.Element("ItemID").Value,
+                Quantity = int.Parse(item.Element("Quantity").Value),
+                Price = double.Parse(item.Element("Price").Value),
+                Date = DateTime.Parse(item.Element("Date").Value)
             };
         }
 

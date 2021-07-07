@@ -463,8 +463,8 @@ namespace DL
                                  orderby stockItem.Date
                                  select item).FirstOrDefault();
 
-            
-                stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
+
+            stockItemElem.Element("Quantity").SetValue(int.Parse(stockItemElem.Element("Quantity").Value) + qnt);
 
             //if (stockItemElem.Element("Quantity").Value == "0")
             //{

@@ -9,7 +9,7 @@ namespace DLAPI
         {
             string dlPackageName = "DLXML";
             string dlNameSpace = "DL";
-            string dlClass = "DLXML";
+            string dlClass = "DLSQL";
 
             Assembly.Load(dlPackageName);
 

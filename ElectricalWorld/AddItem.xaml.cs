@@ -1,8 +1,6 @@
 ﻿using BLAPI;
-using Microsoft.Win32;
 using System;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 namespace ElectricalWorld
 {
@@ -13,7 +11,7 @@ namespace ElectricalWorld
     {
         BL.IBL bl = BLFactory.GetBL();
         PO.Item item = new PO.Item();
-        
+
 
         public AddItem()
         {
@@ -27,7 +25,7 @@ namespace ElectricalWorld
         {
             try
             {
-                bl.AddItem(new BO.Item 
+                bl.AddItem(new BO.Item
                 {
                     Brand = item.Brand,
                     ModelNumber = item.ModelNumber,
