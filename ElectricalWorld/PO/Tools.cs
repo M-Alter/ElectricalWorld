@@ -13,7 +13,6 @@ namespace PO
                 Brand = item.Brand,
                 ModelNumber = item.ModelNumber,
                 Description = item.Description,
-                Image = item.Image,
                 Price = item.Price,
                 Quantity = item.Quantity,
                 Categories = from cat in item.Categories
@@ -30,7 +29,6 @@ namespace PO
                 Brand = item.Brand,
                 ModelNumber = item.ModelNumber,
                 Description = item.Description,
-                Image = item.Image,
                 Price = item.Price,
                 Quantity = item.Quantity,
                 Categories = from cat in item.Categories
@@ -79,7 +77,7 @@ namespace PO
             return new Order
             {
                 OrderID = order.OrderID,
-                Customer = POCustomer(order.Customer),
+                //CustomerID = POCustomer(order.CustomerID),
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,
@@ -95,7 +93,7 @@ namespace PO
             return new BO.Order
             {
                 OrderID = order.OrderID,
-                Customer = BOCustomer(order.Customer),
+                CustomerID = order.CustomerID,
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,

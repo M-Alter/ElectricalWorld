@@ -25,11 +25,6 @@ namespace BO
         public string Description { get; set; }
 
         /// <summary>
-        /// image of the item
-        /// </summary>
-        public string Image { get; set; }
-
-        /// <summary>
         /// category of the item
         /// </summary>
         public IEnumerable<Category> Categories { get; set; }

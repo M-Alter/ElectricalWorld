@@ -27,7 +27,7 @@ namespace DO
         /// <summary>
         /// is the order paid
         /// </summary>
-        public bool Paid { get; set; }
+        public int Paid { get; set; }
 
     }
 }

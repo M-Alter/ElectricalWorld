@@ -7,7 +7,7 @@ namespace ElectricalWorld
     /// </summary>
     public partial class PaymentWindow : Window
     {
-        public PaymentWindow(double totalPrice)
+        public PaymentWindow(PO.Customer customer, double totalPrice)
         {
             InitializeComponent();
         }
@@ -15,6 +15,7 @@ namespace ElectricalWorld
         private void btnPay_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+
             Close();
         }
 

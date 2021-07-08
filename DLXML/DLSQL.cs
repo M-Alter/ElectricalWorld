@@ -36,11 +36,6 @@ namespace DL
             }
         }
 
-        public void AddImage(string itemID, string image)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddItem(Item item)
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
@@ -86,11 +81,6 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public void EditImage(string itemID, string image)
-        {
-            throw new NotImplementedException();
-        }
-
         public void EditItem(Item item)
         {
             throw new NotImplementedException();
@@ -108,7 +98,7 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                var prices =  cnn.Query<StockItem>($"Select * From StockItem WHERE ItemID ={itemID} and Quantity > 0 ", new DynamicParameters());
+                var prices = cnn.Query<StockItem>($"Select * From StockItem WHERE ItemID ={itemID} and Quantity > 0 ", new DynamicParameters());
                 return (from p in prices
                         orderby p.Date
                         select p.Price).FirstOrDefault();
@@ -119,7 +109,7 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                return cnn.Query<Customer>("Select * From Customer",new DynamicParameters());
+                return cnn.Query<Customer>("Select * From Customer", new DynamicParameters());
             }
         }
 
@@ -131,11 +121,7 @@ namespace DL
             }
         }
 
-        public IEnumerable<ItemImage> GetItemImages()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IEnumerable<Item> GetItems()
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
@@ -156,7 +142,8 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                return cnn.Query<Order>("Select * From Order", new DynamicParameters());
+
+                return cnn.Query<Order>("Select * From Orders", new DynamicParameters());
             }
         }
 
@@ -164,17 +151,12 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                var stocks = cnn.Query<StockItem>($"Select * StockItem where ItemID = {itemID}", new DynamicParameters());
+                var stocks = cnn.Query<StockItem>($"Select * FROM StockItem where ItemID = {itemID}", new DynamicParameters());
                 return stocks.Sum(s => s.Quantity);
             }
         }
-    
-        public void PayOrder(string orderID, bool paid)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void RemoveImage(string itemID)
+        public void PayOrder(string orderID, bool paid)
         {
             throw new NotImplementedException();
         }

@@ -55,7 +55,7 @@ namespace ElectricalWorld
         }
 
 
-        public static void EmailInvoice(PO.Order order)
+        public static void EmailInvoice(PO.Order order, PO.Customer customer)
         {
             XElement rootElem = LoadFile(@"EmailDetails.xml");
             string email = rootElem.Element("Email").Value;
@@ -68,7 +68,7 @@ namespace ElectricalWorld
             //add the source of the message
             message.From.Add(new MailboxAddress("Electrical World", email));
             //add the destination of the messeg
-            message.To.Add(new MailboxAddress(order.Customer.Name, order.Customer.Email));
+            message.To.Add(new MailboxAddress(customer.Name, customer.Email));
             //add a subject to the message
             message.Subject = "Invoice for order no. " + order.OrderID;
 
@@ -81,7 +81,7 @@ Your invoice for order no. {1} is attached.
 Thank you for your business - we appreciate it very much.
 
 Sincerely,
-Sruli", order.Customer.Name, order.OrderID);
+Sruli", customer.Name, order.OrderID);
 
             bodyBuilder.Attachments.Add(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + "INV_" + order.OrderID + @".pdf");
 
@@ -112,7 +112,7 @@ Sruli", order.Customer.Name, order.OrderID);
         }
 
 
-        public static void CreateInvoice(PO.Order order, bool sendEmail = true)
+        public static void CreateInvoice(PO.Order order, PO.Customer customer, bool sendEmail = true)
         {
             Document document = new Document();
 
@@ -249,18 +249,18 @@ Sruli", order.Customer.Name, order.OrderID);
 
             // Fill address in address text frame
             Paragraph paragraph1 = addressFrame.AddParagraph();
-            paragraph1.AddText(order.Customer.Name);
+            paragraph1.AddText(customer.Name);
             paragraph1.AddLineBreak();
-            if (order.Customer.Company != "")
+            if (customer.Company != "")
             {
-                paragraph1.AddText(order.Customer.Company);
+                paragraph1.AddText(customer.Company);
                 paragraph1.AddLineBreak();
             }
-            paragraph1.AddText(order.Customer.Address);
+            paragraph1.AddText(customer.Address);
             paragraph1.AddLineBreak();
-            paragraph1.AddText(order.Customer.City);
+            paragraph1.AddText(customer.City);
             paragraph1.AddLineBreak();
-            paragraph1.AddText(order.Customer.PostCode);
+            paragraph1.AddText(customer.PostCode);
 
 
             // Fill address in company text frame
@@ -398,7 +398,7 @@ Account Number: 21469371");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
 
-            //if (order.Customer.Email != "" && sendEmail)
+            //if (order.CustomerID.Email != "" && sendEmail)
             //    EmailInvoice(order/*, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName*/);
         }
     }

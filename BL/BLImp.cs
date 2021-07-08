@@ -47,8 +47,6 @@ namespace BL
                 Date = DateTime.Now,
                 Price = costPrice
             });
-            if (item.Image != null)
-                dl.AddImage(item.ItemID, item.Image);
         }
 
         public string AddOrder(Order order)
@@ -57,10 +55,10 @@ namespace BL
             dl.AddOrder(new DO.Order
             {
                 //OrderID = orderID,
-                CustomerID = order.Customer.CustomerID,
+                CustomerID = order.CustomerID,
                 OrderTime = DateTime.Now,
                 TotalPrice = order.TotalPrice,
-                Paid = order.Paid
+                Paid = order.Paid == true ? 1 : 0
             });
             foreach (var item in order.Items)
             {
@@ -151,8 +149,7 @@ namespace BL
                        Price = item.Price,
                        Quantity = dl.GetStockItem(item.ItemID),
                        Categories = from cat in dl.GetItemCategories(item.ItemID)
-                                    select (new Category { CategoryID = cat, CategoryName = dl.GetCategories().Where(ct => ct.CategoryID == cat).Select(ct => ct.CategoryName).FirstOrDefault() }),
-                       Image = dl.GetItemImages().Where(im => im.ItemID == item.ItemID).Select(im => im.Image).FirstOrDefault()
+                                    select (new Category { CategoryID = cat, CategoryName = dl.GetCategories().Where(ct => ct.CategoryID == cat).Select(ct => ct.CategoryName).FirstOrDefault() })
                    }
                    where filter(temp)
                    select temp;
@@ -164,10 +161,10 @@ namespace BL
                    let temp = new Order
                    {
                        OrderID = order.OrderID,
-                       Customer = GetCutomers(id => id.CustomerID == order.CustomerID).FirstOrDefault(),
+                       //CustomerID = GetCutomers(id => id.CustomerID == order.CustomerID).FirstOrDefault(),
                        OrderTime = order.OrderTime,
                        TotalPrice = order.TotalPrice,
-                       Paid = order.Paid,
+                       Paid = order.Paid == 1 ? true : false,
                        Profit = dl.GetOrderItems().Where(it => it.OrderID == order.OrderID).Select(it => it.Profit).Sum(),
                        Items = from item in dl.GetOrderItems()
                                where item.OrderID == order.OrderID

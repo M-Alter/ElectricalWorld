@@ -13,7 +13,7 @@ namespace PO
         /// <summary>
         /// customer of the order
         /// </summary>
-        public Customer Customer { get; set; }
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// time of the order

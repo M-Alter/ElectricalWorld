@@ -36,12 +36,6 @@ namespace ElectricalWorld
             this.Top = 0;
             this.WindowState = WindowState.Normal;
 
-            //foreach (var item in bl.GetItems(it => true))
-            //{
-            //    stockItems.Add(PO.Tools.POItem(item));
-            //}
-            //dgrdStock.DataContext = stockItems;
-
         }
 
         private void lvItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -67,16 +61,16 @@ namespace ElectricalWorld
             sales.Clear();
 
             foreach (var item in bl.GetOrders(ord =>
-                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
-                ord.Customer.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())
+                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) /*||
+                ord.CustomerID.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
+                ord.CustomerID.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.CustomerID.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+                ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())*/
                  )
                 )
             {
@@ -162,9 +156,10 @@ namespace ElectricalWorld
                 if (order.Paid)
                     order.Items = new List<PO.InvoiceItem>(order.Items.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -order.Items.Sum(it => it.Price) } }));
             order.TotalPrice = order.Items.Sum(it => it.Price);
+            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
             new Thread(() =>
                 {
-                    Tools.CreateInvoice(order);
+                    Tools.CreateInvoice(order  , PO.Tools.POCustomer(cust));
                 }).Start();
         }
 
@@ -173,7 +168,7 @@ namespace ElectricalWorld
             PO.Customer customer = (sender as ListView).SelectedItem as PO.Customer;
             custOrders.Clear();
             custOrders = new ObservableCollection<Order>();
-            foreach (var item in bl.GetOrders(order => order.Customer.CustomerID == customer.CustomerID))
+            foreach (var item in bl.GetOrders(order => order.CustomerID == customer.CustomerID))
             {
                 custOrders.Add(PO.Tools.POOrder(item));
             }
@@ -217,22 +212,30 @@ namespace ElectricalWorld
         {
             sales.Clear();
 
-            foreach (var item in bl.GetOrders(ord =>
-                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
-                ord.Customer.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.Customer.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())
-                 )
-                )
+
+            foreach (var item in bl.GetOrders(ord => ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower())))
             {
                 sales.Add(PO.Tools.POOrder(item));
             }
+
+            
+
+            //foreach (var item in bl.GetOrders(ord =>
+            //    ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
+            //    ord.CustomerID.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.CustomerID.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
+            //    ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())
+            //     )
+            //    )
+            //{
+            //    sales.Add(PO.Tools.POOrder(item));
+            //}
             lvSales.DataContext = sales;
         }
 
@@ -294,10 +297,14 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
+            {
+                var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+
                 new Task(() =>
                 {
-                    Tools.EmailInvoice(order);
+                    Tools.EmailInvoice(order, PO.Tools.POCustomer(cust));
                 }).Start();
+            }
         }
 
 

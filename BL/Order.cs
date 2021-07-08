@@ -10,10 +10,14 @@ namespace BO
         /// </summary>
         public string OrderID { get; set; }
 
+        ///// <summary>
+        ///// customer of the order
+        ///// </summary>
+        //public CustomerID CustomerID { get; set; }
         /// <summary>
         /// customer of the order
         /// </summary>
-        public Customer Customer { get; set; }
+        public string CustomerID { get; set; }
 
         /// <summary>
         /// time of the order

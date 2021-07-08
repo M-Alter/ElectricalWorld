@@ -47,31 +47,6 @@ namespace DLAPI
         /// <param name="item">item to mark</param>
         void RemoveItem(string itemID);
 
-        /// <summary>
-        /// add an image to an item
-        /// </summary>
-        /// <param name="itemID">of the item </param>
-        /// <param name="image">string of the image</param>
-        void AddImage(string itemID, string image);
-
-        /// <summary>
-        /// Edit an image to an item
-        /// </summary>
-        /// <param name="itemID">ID of the item </param>
-        /// <param name="image">string of the image</param>
-        void EditImage(string itemID, string image);
-
-        /// <summary>
-        /// Remove an image to an item
-        /// </summary>
-        /// <param name="itemID">ID of the item </param>
-        void RemoveImage(string itemID);
-
-        /// <summary>
-        /// get item images 
-        /// </summary>
-        /// <returns>a collection of all the images</returns>
-        IEnumerable<ItemImage> GetItemImages();
 
         /// <summary>
         /// add a new category
