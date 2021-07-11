@@ -5,6 +5,7 @@ using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using MimeKit;
 using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -57,9 +58,11 @@ namespace ElectricalWorld
 
         public static void EmailInvoice(PO.Order order, PO.Customer customer)
         {
-            XElement rootElem = LoadFile(@"EmailDetails.xml");
-            string email = rootElem.Element("Email").Value;
-            string password = rootElem.Element("Password").Value;
+            
+
+            string email = ConfigurationManager.AppSettings.Get("EmailAddress");
+            string password = ConfigurationManager.AppSettings.Get("EmailPassword");
+
 
             //string invoicePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\""INV_" + order.OrderID + @".pdf"";
 
@@ -351,14 +354,24 @@ Sruli", customer.Name, order.OrderID);
             row3.Cells[0].Format.Alignment = ParagraphAlignment.Right;
             row3.Cells[0].MergeRight = 3;
 
-            // Add the total due row
+            // Add the paid row
             Row row4 = table.AddRow();
-            row4.Cells[0].AddParagraph("Total Due");
             row4.Cells[0].Borders.Visible = false;
+            row4.Cells[0].AddParagraph("Amount Paid");
             row4.Cells[0].Format.Font.Bold = true;
             row4.Cells[0].Format.Alignment = ParagraphAlignment.Right;
             row4.Cells[0].MergeRight = 3;
-            row4.Cells[4].AddParagraph(order.TotalPrice.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+            row4.Cells[4].AddParagraph(order.Paid.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
+
+            // Add the total due row
+            Row row5 = table.AddRow();
+            row5.Cells[0].AddParagraph("Total Due");
+            row5.Cells[0].Borders.Visible = false;
+            row5.Cells[0].Format.Font.Bold = true;
+            row5.Cells[0].Format.Alignment = ParagraphAlignment.Right;
+            row5.Cells[0].MergeRight = 3;
+            row5.Cells[4].AddParagraph((order.TotalPrice - order.Paid).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
 
             // Set the borders of the specified cell range
             table.SetEdge(4, table.Rows.Count - 3, 1, 3, Edge.Box, BorderStyle.Single, 0.75);
@@ -398,8 +411,8 @@ Account Number: 21469371");
             pdfRenderer.PdfDocument.Save(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
             Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName);
 
-            //if (order.CustomerID.Email != "" && sendEmail)
-            //    EmailInvoice(order/*, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName*/);
+            if (order.Customer.Email != "" && sendEmail)
+                EmailInvoice(order, customer/*, Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\Invoice\" + fileName*/);
         }
     }
 }

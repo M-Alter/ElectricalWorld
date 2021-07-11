@@ -77,7 +77,7 @@ namespace PO
             return new Order
             {
                 OrderID = order.OrderID,
-                //CustomerID = POCustomer(order.CustomerID),
+                Customer = POCustomer(order.Customer),
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,
@@ -93,7 +93,7 @@ namespace PO
             return new BO.Order
             {
                 OrderID = order.OrderID,
-                CustomerID = order.CustomerID,
+                Customer = BOCustomer(order.Customer),
                 OrderTime = order.OrderTime,
                 TotalPrice = order.TotalPrice,
                 Paid = order.Paid,

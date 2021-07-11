@@ -17,6 +17,15 @@ namespace DLAPI
         /// <returns>a collction of all the customers</returns>
         IEnumerable<Customer> GetCutomers();
 
+        double GetPaidAmount(string orderID);
+        
+        /// <summary>
+        /// get a single customer
+        /// </summary>
+        /// <param name="customerID">id of the customer</param>
+        /// <returns>the customer with id <b>customerID</b></returns>
+        Customer GetSingleCutomer(string customerID);
+
         /// <summary>
         /// update details of the customer
         /// </summary>
@@ -27,7 +36,8 @@ namespace DLAPI
         /// add a new item
         /// </summary>
         /// <param name="item">item to add</param>
-        void AddItem(Item item);
+        /// <returns>the new ItemID</returns>
+        int AddItem(Item item);
 
         /// <summary>
         /// edit details of an item
@@ -106,19 +116,20 @@ namespace DLAPI
         /// <param name="customerID">customer of the order</param>
         /// <param name="time">time of the order</param>
         /// <param name="price">price of the order</param>
-        void AddOrder(Order order);
+        /// <returns>the new OrderID</returns>
+        int AddOrder(Order order);
 
         /// <summary>
         /// get all the orders
         /// </summary>
         /// <returns>a collection of all the orders</returns>
-        IEnumerable<Order> GetOrders();
+        IEnumerable<Order> GetOrders(string where = "");
 
         /// <summary>
         /// mark if an order is paid
         /// </summary>
-        /// <param name="paid">truenif paid</param>
-        void PayOrder(string orderID, bool paid);
+        /// <param name="amount">amount paid</param>
+        void PayOrder(string orderID, double amount);
 
         /// <summary>
         /// add a new stock item insctance

@@ -81,6 +81,7 @@
                                     <RowDefinition Height="50"/>
                                     <RowDefinition/>
                                     <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -137,12 +138,17 @@
                                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" >
                                     <Label Content="Total "/>
                                     <Label Content="{Binding TotalPrice}" Width="100"/>
-                                    
-                                    <Label Content="Paid"/>
-                                    <CheckBox x:Name="chkBoxPaid" IsChecked="{Binding Paid}" Click="chkBoxPaid_Click"/>
 
-                                <Button x:Name="btnReCreateInvoice" Content="ReCreate Invoice" Margin="20,0,0,0" Width="150"  Click="btnCreateInvoice_Click"/>
-                                <Button x:Name="btnSendEmail" Content="Send Email" Margin="20,0,0,0" Width="150" Background="Chocolate" Click="btnSendEmail_Click"/>
+                                    <Label Content="Paid"/>
+                                    <Label Content="{Binding Paid}" Width="100"/>
+                                    
+                                    <Label Content="Due"/>
+                                    <Label x:Name="lblAmountDue" Width="100"/>
+                                </WrapPanel>
+                                <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" >
+                                    <Button x:Name="btnReCreateInvoice" Content="ReCreate Invoice" Margin="20,0,0,0" Width="150"  Click="btnCreateInvoice_Click"/>
+                                    <Button x:Name="btnSendEmail" Content="Send Email" Margin="20,0,0,0" Width="150" Background="Chocolate" Click="btnSendEmail_Click"/>
+                                    <Button x:Name="btnPay" Content="Pay" Margin="20,0,0,0" Width="150" Background="Red" Click="btnPay_Click"/>
                                 </WrapPanel>
                             </Grid>
 

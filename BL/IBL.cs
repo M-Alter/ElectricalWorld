@@ -20,6 +20,14 @@ namespace BL
         IEnumerable<Customer> GetCutomers(Predicate<Customer> filter);
 
         /// <summary>
+        /// get a single customer by id
+        /// </summary>
+        /// <param name="customerID">customer id of the customer</param>
+        /// <returns>the customer with <b>customerID</b></returns>
+        Customer GetSingleCustomer(string customerID);
+
+
+        /// <summary>
         /// update details of the customer
         /// </summary>
         /// <param name="cust">update the customer to cust according to the cust CustomerID</param>
@@ -61,14 +69,14 @@ namespace BL
         /// </summary>
         /// <param name="filter">filter the orders</param>
         /// <returns>return a collection of all the orders that comply to the filter</returns>
-        IEnumerable<Order> GetOrders(Predicate<Order> filter);
+        IEnumerable<Order> GetOrders(Predicate<Order> filter, string where = "");
 
         /// <summary>
         /// set order as paid
         /// </summary>
         /// <param name="orderID">id of the order</param>
-        /// <param name="paid">true if paid</param>
-        void PayOrder(string orderID, bool paid);
+        /// <param name="amount">amount paid</param>
+        void PayOrder(string orderID, double amount);
 
         /// <summary>
         /// add stock to an existing item

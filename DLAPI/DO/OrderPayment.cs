@@ -1,4 +1,6 @@
-﻿namespace DO
+﻿using System;
+
+namespace DO
 {
     public class OrderPayment
     {
@@ -11,6 +13,11 @@
         /// amount paid
         /// </summary>
         public double AmountPaid { get; set; }
+
+        /// <summary>
+        /// date if payment
+        /// </summary>
+        public DateTime date;
 
 
     }

@@ -1,22 +1,83 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="17.9" version="17.9" Modules="simple" RootPath="." Language="en" Id="{E4A38F90-396B-4657-8E37-8D4A824A5A96}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="17.9" version="18.4" Modules="simple" RootPath="." Language="en" Id="{E4A38F90-396B-4657-8E37-8D4A824A5A96}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_CURRENT_YEAR" Value="2021" ValueLocId="-"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_BL.dll" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BL.dll_1" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_BouncyCastle.Crypto.dll" Value="..\packages\Portable.BouncyCastle.1.8.8\lib\net40"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll" Value="..\bin"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_1" Value="..\bin"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_2" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_3" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_DLXML.dll_1" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Dapper.dll" Value="..\packages\Dapper.2.0.90\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe.config" Value="..\bin"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_GlobalPayments.Api.dll" Value="..\packages\GlobalPayments.Api.1.7.34\lib\netstandard1.3"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MailKit.dll" Value="..\packages\MailKit.2.10.1\lib\net48"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll" Value="..\packages\MaterialDesignColors.1.2.7\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="..\packages\MaterialDesignThemes.3.2.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.Renderinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_MimeKit.dll" Value="..\packages\MimeKit.2.10.1\lib\net48"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll" Value="..\packages\Newtonsoft.Json.9.0.1\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_PdfSharp.Chartinggdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_PdfSharpgdi.dll" Value="..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.Desktop.dll" Value="..\packages\SkiaSharp.Views.1.68.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.Gtk.dll" Value="..\packages\SkiaSharp.Views.1.68.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.WPF.dll" Value="..\packages\SkiaSharp.Views.1.68.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_SkiaSharp.dll" Value="..\packages\SkiaSharp.1.68.0\lib\net45"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Buffers.dll" Value="..\packages\System.Buffers.4.5.1\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Configuration.ConfigurationManager.dll" Value="..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Data.SQLite.dll" Value="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.114.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Value="..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Security.AccessControl.dll" Value="..\packages\System.Security.AccessControl.5.0.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Security.Permissions.dll" Value="..\packages\System.Security.Permissions.5.0.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_System.Security.Principal.Windows.dll" Value="..\packages\System.Security.Principal.Windows.5.0.0\lib\net461"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ZedGraph.dll" Value="..\packages\ZedGraph.5.1.7\lib\net35-Client"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BL.dll" Value="BL.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1" Value="BL.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll" Value="BouncyCastle.Crypto.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll" Value="DLAPI.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1" Value="DLAPI.dll"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3" Value="DLAPI.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll_1" Value="DLXML.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Dapper.dll" Value="Dapper.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe" Value="Electrical World.exe"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config" Value="Electrical World.exe.config"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_GlobalPayments.Api.dll" Value="GlobalPayments.Api.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll" Value="MailKit.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll" Value="MaterialDesignColors.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll" Value="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Value="MigraDoc.DocumentObjectModel-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll" Value="MigraDoc.Rendering-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Value="MigraDoc.RtfRendering-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll" Value="MimeKit.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll" Value="Newtonsoft.Json.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll" Value="PdfSharp.Charting-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll" Value="PdfSharp-gdi.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Desktop.dll" Value="SkiaSharp.Views.Desktop.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Gtk.dll" Value="SkiaSharp.Views.Gtk.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.WPF.dll" Value="SkiaSharp.Views.WPF.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll" Value="SkiaSharp.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll" Value="System.Buffers.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Configuration.ConfigurationManager.dll" Value="System.Configuration.ConfigurationManager.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Data.SQLite.dll" Value="System.Data.SQLite.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Value="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Security.AccessControl.dll" Value="System.Security.AccessControl.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Security.Permissions.dll" Value="System.Security.Permissions.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll" Value="System.Security.Principal.Windows.dll"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ZedGraph.dll" Value="ZedGraph.dll"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Menachem Alter"/>
-    <ROW Property="ProductCode" Value="1033:{7F8177B7-8846-4F65-B38D-EFFD0D0C6EB5} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{2018C5E6-5445-416B-9C6F-4D5C9A33358B} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Electrical World"/>
-    <ROW Property="ProductVersion" Value="1.0.13" Type="32"/>
+    <ROW Property="ProductVersion" Value="2.0.0" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{546E05D1-6E4E-46AD-8604-790028C343A6}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -39,30 +100,46 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{2798A293-356A-40F5-ADEB-8FC2152C9367}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="BL.dll" ComponentId="{E2B145A6-CA14-4418-863B-4E1A8C2F7AE1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="BL.dll_1"/>
     <ROW Component="BL_PrimaryOutput" ComponentId="{D5FC9498-CE2F-4987-A0E9-65DFA5C9FC89}" Directory_="BL_Dir" Attributes="0" KeyPath="BL.dll"/>
     <ROW Component="BL_References" ComponentId="{10BFAA57-AFDC-4D5C-9C7E-021E9693C228}" Directory_="BL_Dir" Attributes="0" KeyPath="DLAPI.dll"/>
-    <ROW Component="BouncyCastle.Crypto.dll" ComponentId="{8E578699-4E65-433B-AECA-3FDBBD204AAF}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="BouncyCastle.Crypto.dll"/>
-    <ROW Component="DLAPI.dll" ComponentId="{7A83A933-BE5E-4C11-B8A6-8654D3F94175}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLAPI.dll_3"/>
     <ROW Component="DLAPI_PrimaryOutput" ComponentId="{FB051B9D-5F93-4C5F-BB0B-2CAD2257F169}" Directory_="DLAPI_Dir" Attributes="0" KeyPath="DLAPI.dll_1"/>
     <ROW Component="DLXML.dll" ComponentId="{038EB257-5D8C-4D4B-85ED-ED306EB20F23}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="DLXML.dll"/>
-    <ROW Component="DLXML_References" ComponentId="{B78FEBFD-4168-429D-8627-B2E121794405}" Directory_="DLXML_Dir" Attributes="0" KeyPath="DLAPI.dll_2"/>
-    <ROW Component="ElectricalWorld.exe" ComponentId="{EA549EC5-691E-4E9C-B6F3-64BBFB63A800}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.exe"/>
-    <ROW Component="MailKit.dll" ComponentId="{C16B98D3-88BE-4A71-8587-978B4A252896}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MailKit.dll"/>
-    <ROW Component="MaterialDesignColors.dll" ComponentId="{CE1873BF-697C-4FD3-A959-D2E48DECA2F9}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MaterialDesignColors.dll"/>
-    <ROW Component="MaterialDesignThemes.Wpf.dll" ComponentId="{52140F28-FF00-4B6E-A92A-FE1427EF2CD0}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MaterialDesignThemes.Wpf.dll"/>
-    <ROW Component="MigraDoc.DocumentObjectModelgdi.dll" ComponentId="{52E5A54C-47EF-47C4-9E2C-1F5C61FE9416}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.DocumentObjectModelgdi.dll"/>
-    <ROW Component="MigraDoc.Renderinggdi.dll" ComponentId="{C06913A9-AA5B-4CF3-A09E-F452647EB9D8}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.Renderinggdi.dll"/>
-    <ROW Component="MigraDoc.RtfRenderinggdi.dll" ComponentId="{6979F0DF-831D-4AB1-AAB0-BB8FBD33A042}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.RtfRenderinggdi.dll"/>
-    <ROW Component="MimeKit.dll" ComponentId="{605911BB-0A49-4843-BE9E-0BB9E681D3DA}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MimeKit.dll"/>
-    <ROW Component="PdfSharp.Chartinggdi.dll" ComponentId="{53BD6CBD-68C6-4F00-A919-DC3481A888DB}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="PdfSharp.Chartinggdi.dll"/>
-    <ROW Component="PdfSharpgdi.dll" ComponentId="{6DFE931C-C30C-4B8B-82C9-53FFA1773706}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="PdfSharpgdi.dll"/>
+    <ROW Component="DLXML_PrimaryOutput" ComponentId="{C56EAFF4-8308-4395-95D1-57E48DA26AA1}" Directory_="DLXML_Dir" Attributes="0" KeyPath="DLXML.dll_1"/>
+    <ROW Component="DLXML_References" ComponentId="{B78FEBFD-4168-429D-8627-B2E121794405}" Directory_="DLXML_Dir" Attributes="0" KeyPath="System.Data.SQLite.dll"/>
+    <ROW Component="Dapper.dll" ComponentId="{359D26D3-2CED-416A-9BE9-575E44D67322}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="Dapper.dll_1"/>
+    <ROW Component="ElectricalWorld.exe" ComponentId="{D41A25A1-1713-444E-B9D4-ED901A4F7A9F}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.exe_1"/>
+    <ROW Component="ElectricalWorld_References" ComponentId="{E2B145A6-CA14-4418-863B-4E1A8C2F7AE1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="BouncyCastle.Crypto.dll"/>
+    <ROW Component="ElectricalWorld_SymbolsOutput" ComponentId="{EA549EC5-691E-4E9C-B6F3-64BBFB63A800}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ElectricalWorld.exe"/>
+    <ROW Component="GlobalPayments.Api.dll" ComponentId="{82BC1A9D-013F-48F7-BF69-9C18BEC62D65}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="GlobalPayments.Api.dll_1"/>
+    <ROW Component="MailKit.dll" ComponentId="{C16B98D3-88BE-4A71-8587-978B4A252896}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MailKit.dll_1"/>
+    <ROW Component="MaterialDesignColors.dll" ComponentId="{CE1873BF-697C-4FD3-A959-D2E48DECA2F9}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MaterialDesignColors.dll_1"/>
+    <ROW Component="MaterialDesignThemes.Wpf.dll" ComponentId="{52140F28-FF00-4B6E-A92A-FE1427EF2CD0}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MaterialDesignThemes.Wpf.dll_1"/>
+    <ROW Component="MigraDoc.DocumentObjectModelgdi.dll" ComponentId="{CC981BFC-E035-491F-915C-3E8901FDAAEE}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.DocumentObjectModelgdi.dll_1"/>
+    <ROW Component="MigraDoc.Renderinggdi.dll" ComponentId="{470789AE-4E81-4F47-9986-67460AE9DEA2}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.Renderinggdi.dll_1"/>
+    <ROW Component="MigraDoc.RtfRenderinggdi.dll" ComponentId="{0E944045-04C0-4917-A9AE-F551ACB0206F}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MigraDoc.RtfRenderinggdi.dll_1"/>
+    <ROW Component="MimeKit.dll" ComponentId="{605911BB-0A49-4843-BE9E-0BB9E681D3DA}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="MimeKit.dll_1"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{029182CE-8419-4D26-AFFC-20961B04E8F2}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="Newtonsoft.Json.dll_1"/>
+    <ROW Component="PdfSharp.Chartinggdi.dll" ComponentId="{FDB0666D-7A99-4BA6-A81F-D50FA73403E5}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="PdfSharp.Chartinggdi.dll_1"/>
+    <ROW Component="PdfSharpgdi.dll" ComponentId="{9F4D372C-7803-403E-98F6-5A18FFE28410}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="PdfSharpgdi.dll_1"/>
+    <ROW Component="PrintingSupportLibrary.dll" ComponentId="{6D137AED-8079-4534-9AB8-63EA62D4D3FF}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="PrintingSupportLibrary.dll"/>
+    <ROW Component="PrintingSupportLibrary_x64.dll" ComponentId="{E102BD9F-16F8-47C6-9FE8-F30BFEED8D9F}" Directory_="ElectricalWorld_Dir" Attributes="256" KeyPath="PrintingSupportLibrary_x64.dll"/>
     <ROW Component="ProductInformation" ComponentId="{5FC62741-4F12-48E5-985E-B033E181573B}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="README.md" ComponentId="{1ADE8CDB-7309-4040-A87D-4C6D22492AD1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="README.md" Type="0"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{0DA45C09-A1E2-4AC2-89B8-FB33BA12E00B}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="System.Buffers.dll" ComponentId="{FBB8B094-62EB-415C-B41F-C973DDCAD92D}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Buffers.dll"/>
-    <ROW Component="System.Drawing.Common.dll" ComponentId="{91BB98DA-8F1A-45BB-B079-CA6B7F175727}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Drawing.Common.dll"/>
-    <ROW Component="WindowsBase.dll" ComponentId="{48D3D278-AD52-4774-AF50-FB0D9BCA8313}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="WindowsBase.dll"/>
+    <ROW Component="SkiaSharp.Views.Desktop.dll" ComponentId="{1753D78F-B965-4A1D-B3FF-06DDFA091B60}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="SkiaSharp.Views.Desktop.dll_1"/>
+    <ROW Component="SkiaSharp.Views.Gtk.dll" ComponentId="{18CE51CF-BFA3-45EE-AE79-9CC75E50567C}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="SkiaSharp.Views.Gtk.dll_1"/>
+    <ROW Component="SkiaSharp.Views.WPF.dll" ComponentId="{951CC1DD-4AB7-4FBC-970E-6432A45C0F37}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="SkiaSharp.Views.WPF.dll_1"/>
+    <ROW Component="SkiaSharp.dll" ComponentId="{C00F27BF-4010-41D6-9FF0-41B471BE1666}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="SkiaSharp.dll_1"/>
+    <ROW Component="System.Buffers.dll" ComponentId="{377AA89B-5A54-4AA3-841A-605D51FD0984}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Buffers.dll_1"/>
+    <ROW Component="System.Configuration.ConfigurationManager.dll" ComponentId="{886ACDA1-71C6-4320-BC52-D7EBCD241089}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Configuration.ConfigurationManager.dll_1"/>
+    <ROW Component="System.Data.SQLite.dll" ComponentId="{9B2B5783-1C1F-4517-8696-2D91A853D6C5}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Data.SQLite.dll_1"/>
+    <ROW Component="System.Diagnostics.DiagnosticSource.dll" ComponentId="{C577C583-C391-4421-94E9-73161C42A2B1}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Diagnostics.DiagnosticSource.dll_1"/>
+    <ROW Component="System.Security.AccessControl.dll" ComponentId="{424BD26D-37D0-476B-9D0D-E1A4F24AEB71}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Security.AccessControl.dll_1"/>
+    <ROW Component="System.Security.Permissions.dll" ComponentId="{8967C0FE-F186-4C60-B71A-C1ABB0E941BA}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Security.Permissions.dll_1"/>
+    <ROW Component="System.Security.Principal.Windows.dll" ComponentId="{C22EE234-004E-4E99-B879-1FB1C2790878}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="System.Security.Principal.Windows.dll_1"/>
+    <ROW Component="ZedGraph.dll" ComponentId="{DC9E213D-AC19-403F-8455-6F0EC2126B2A}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="ZedGraph.dll_1"/>
+    <ROW Component="libSkiaSharp.dll" ComponentId="{BFB50753-5852-4E8B-A2A8-A58339A2CBAC}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="libSkiaSharp.dll"/>
+    <ROW Component="libdymobarcode.dll" ComponentId="{A4BF1469-C0E8-48F7-9456-A329AC89C7BA}" Directory_="ElectricalWorld_Dir" Attributes="0" KeyPath="libdymobarcode.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -74,48 +151,128 @@
     <ROW File="DLAPI.dll_1" Component_="DLAPI_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_1&gt;" SelfReg="false"/>
     <ROW File="DLAPI.dll_2" Component_="DLXML_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_2&gt;" SelfReg="false"/>
     <ROW File="README.md" Component_="README.md" FileName="README.md" Attributes="0" SourcePath="..\README.md" SelfReg="false"/>
-    <ROW File="BL.dll_1" Component_="BL.dll" FileName="BL.dll" Attributes="0" SourcePath="..\bin\BL.dll" SelfReg="false"/>
-    <ROW File="BL.pdb" Component_="BL.dll" FileName="BL.pdb" Attributes="0" SourcePath="..\bin\BL.pdb" SelfReg="false"/>
-    <ROW File="BouncyCastle.Crypto.dll" Component_="BouncyCastle.Crypto.dll" FileName="BOUNCY~1.DLL|BouncyCastle.Crypto.dll" Attributes="0" SourcePath="..\bin\BouncyCastle.Crypto.dll" SelfReg="false"/>
+    <ROW File="BL.dll_1" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BL.dll_1&gt;" SelfReg="false"/>
+    <ROW File="BouncyCastle.Crypto.dll" Component_="ElectricalWorld_References" FileName="BOUNCY~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_BouncyCastle.Crypto.dll&gt;" SelfReg="false"/>
     <ROW File="BouncyCastle.Crypto.xml" Component_="README.md" FileName="BOUNCY~1.XML|BouncyCastle.Crypto.xml" Attributes="0" SourcePath="..\bin\BouncyCastle.Crypto.xml" SelfReg="false"/>
-    <ROW File="DLAPI.dll_3" Component_="DLAPI.dll" FileName="DLAPI.dll" Attributes="0" SourcePath="..\bin\DLAPI.dll" SelfReg="false"/>
-    <ROW File="DLAPI.pdb" Component_="DLAPI.dll" FileName="DLAPI.pdb" Attributes="0" SourcePath="..\bin\DLAPI.pdb" SelfReg="false"/>
+    <ROW File="DLAPI.dll_3" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLAPI.dll_3&gt;" SelfReg="false"/>
     <ROW File="DLXML.dll" Component_="DLXML.dll" FileName="DLXML.dll" Attributes="0" SourcePath="..\bin\DLXML.dll" SelfReg="false"/>
-    <ROW File="DLXML.pdb" Component_="DLXML.dll" FileName="DLXML.pdb" Attributes="0" SourcePath="..\bin\DLXML.pdb" SelfReg="false"/>
-    <ROW File="ElectricalWorld.exe" Component_="ElectricalWorld.exe" FileName="ELECTR~1.EXE|Electrical World.exe" Attributes="0" SourcePath="..\bin\Electrical World.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="ElectricalWorld.exe.config" Component_="README.md" FileName="ELECTR~1.CON|Electrical World.exe.config" Attributes="0" SourcePath="..\bin\Electrical World.exe.config" SelfReg="false"/>
-    <ROW File="ElectricalWorld.pdb" Component_="ElectricalWorld.exe" FileName="ELECTR~1.PDB|Electrical World.pdb" Attributes="0" SourcePath="..\bin\Electrical World.pdb" SelfReg="false"/>
-    <ROW File="MailKit.dll" Component_="MailKit.dll" FileName="MailKit.dll" Attributes="0" SourcePath="..\bin\MailKit.dll" SelfReg="false"/>
-    <ROW File="MailKit.pdb" Component_="MailKit.dll" FileName="MailKit.pdb" Attributes="0" SourcePath="..\bin\MailKit.pdb" SelfReg="false"/>
+    <ROW File="ElectricalWorld.exe" Component_="ElectricalWorld_SymbolsOutput" FileName="ELECTR~2.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.exe&gt;" SelfReg="false" DigSign="true"/>
+    <ROW File="ElectricalWorld.exe.config" Component_="ElectricalWorld_SymbolsOutput" FileName="ELECTR~2.CON|[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ElectricalWorld.exe.config&gt;" SelfReg="false"/>
+    <ROW File="MailKit.dll" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MailKit.dll&gt;" SelfReg="false"/>
     <ROW File="MailKit.xml" Component_="README.md" FileName="MailKit.xml" Attributes="0" SourcePath="..\bin\MailKit.xml" SelfReg="false"/>
-    <ROW File="MaterialDesignColors.dll" Component_="MaterialDesignColors.dll" FileName="MATERI~1.DLL|MaterialDesignColors.dll" Attributes="0" SourcePath="..\bin\MaterialDesignColors.dll" SelfReg="false"/>
-    <ROW File="MaterialDesignColors.pdb" Component_="MaterialDesignColors.dll" FileName="MATERI~1.PDB|MaterialDesignColors.pdb" Attributes="0" SourcePath="..\bin\MaterialDesignColors.pdb" SelfReg="false"/>
-    <ROW File="MaterialDesignThemes.Wpf.dll" Component_="MaterialDesignThemes.Wpf.dll" FileName="MATERI~2.DLL|MaterialDesignThemes.Wpf.dll" Attributes="0" SourcePath="..\bin\MaterialDesignThemes.Wpf.dll" SelfReg="false"/>
-    <ROW File="MaterialDesignThemes.Wpf.pdb" Component_="MaterialDesignThemes.Wpf.dll" FileName="MATERI~2.PDB|MaterialDesignThemes.Wpf.pdb" Attributes="0" SourcePath="..\bin\MaterialDesignThemes.Wpf.pdb" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.dll" Component_="ElectricalWorld_References" FileName="MATERI~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignColors.dll&gt;" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.dll" Component_="ElectricalWorld_References" FileName="MATERI~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll&gt;" SelfReg="false"/>
     <ROW File="MaterialDesignThemes.Wpf.xml" Component_="README.md" FileName="MATERI~1.XML|MaterialDesignThemes.Wpf.xml" Attributes="0" SourcePath="..\bin\MaterialDesignThemes.Wpf.xml" SelfReg="false"/>
-    <ROW File="MigraDoc.DocumentObjectModelgdi.dll" Component_="MigraDoc.DocumentObjectModelgdi.dll" FileName="MIGRAD~1.DLL|MigraDoc.DocumentObjectModel-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.DocumentObjectModel-gdi.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.DocumentObjectModelgdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll&gt;" SelfReg="false"/>
     <ROW File="MigraDoc.DocumentObjectModelgdi.xml" Component_="README.md" FileName="MIGRAD~1.XML|MigraDoc.DocumentObjectModel-gdi.xml" Attributes="0" SourcePath="..\bin\MigraDoc.DocumentObjectModel-gdi.xml" SelfReg="false"/>
-    <ROW File="MigraDoc.Renderinggdi.dll" Component_="MigraDoc.Renderinggdi.dll" FileName="MIGRAD~2.DLL|MigraDoc.Rendering-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.Rendering-gdi.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.Renderinggdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~1.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.Renderinggdi.dll&gt;" SelfReg="false"/>
     <ROW File="MigraDoc.Renderinggdi.xml" Component_="README.md" FileName="MIGRAD~2.XML|MigraDoc.Rendering-gdi.xml" Attributes="0" SourcePath="..\bin\MigraDoc.Rendering-gdi.xml" SelfReg="false"/>
-    <ROW File="MigraDoc.RtfRenderinggdi.dll" Component_="MigraDoc.RtfRenderinggdi.dll" FileName="MIGRAD~3.DLL|MigraDoc.RtfRendering-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.RtfRendering-gdi.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.RtfRenderinggdi.dll" Component_="ElectricalWorld_References" FileName="MIGRAD~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MigraDoc.RtfRenderinggdi.dll&gt;" SelfReg="false"/>
     <ROW File="MigraDoc.RtfRenderinggdi.xml" Component_="README.md" FileName="MIGRAD~3.XML|MigraDoc.RtfRendering-gdi.xml" Attributes="0" SourcePath="..\bin\MigraDoc.RtfRendering-gdi.xml" SelfReg="false"/>
-    <ROW File="MimeKit.dll" Component_="MimeKit.dll" FileName="MimeKit.dll" Attributes="0" SourcePath="..\bin\MimeKit.dll" SelfReg="false"/>
-    <ROW File="MimeKit.pdb" Component_="MimeKit.dll" FileName="MimeKit.pdb" Attributes="0" SourcePath="..\bin\MimeKit.pdb" SelfReg="false"/>
+    <ROW File="MimeKit.dll" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_MimeKit.dll&gt;" SelfReg="false"/>
     <ROW File="MimeKit.xml" Component_="README.md" FileName="MimeKit.xml" Attributes="0" SourcePath="..\bin\MimeKit.xml" SelfReg="false"/>
-    <ROW File="PdfSharp.Chartinggdi.dll" Component_="PdfSharp.Chartinggdi.dll" FileName="PDFSHA~1.DLL|PdfSharp.Charting-gdi.dll" Attributes="0" SourcePath="..\bin\PdfSharp.Charting-gdi.dll" SelfReg="false"/>
+    <ROW File="PdfSharp.Chartinggdi.dll" Component_="ElectricalWorld_References" FileName="PDFSHA~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_PdfSharp.Chartinggdi.dll&gt;" SelfReg="false"/>
     <ROW File="PdfSharp.Chartinggdi.xml" Component_="README.md" FileName="PDFSHA~1.XML|PdfSharp.Charting-gdi.xml" Attributes="0" SourcePath="..\bin\PdfSharp.Charting-gdi.xml" SelfReg="false"/>
-    <ROW File="PdfSharpgdi.dll" Component_="PdfSharpgdi.dll" FileName="PDFSHA~2.DLL|PdfSharp-gdi.dll" Attributes="0" SourcePath="..\bin\PdfSharp-gdi.dll" SelfReg="false"/>
+    <ROW File="PdfSharpgdi.dll" Component_="ElectricalWorld_References" FileName="PDFSHA~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_PdfSharpgdi.dll&gt;" SelfReg="false"/>
     <ROW File="PdfSharpgdi.xml" Component_="README.md" FileName="PDFSHA~2.XML|PdfSharp-gdi.xml" Attributes="0" SourcePath="..\bin\PdfSharp-gdi.xml" SelfReg="false"/>
-    <ROW File="System.Buffers.dll" Component_="System.Buffers.dll" FileName="SYSTEM~1.DLL|System.Buffers.dll" Attributes="0" SourcePath="..\bin\System.Buffers.dll" SelfReg="false"/>
+    <ROW File="System.Buffers.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Buffers.dll&gt;" SelfReg="false"/>
     <ROW File="System.Buffers.xml" Component_="README.md" FileName="SYSTEM~1.XML|System.Buffers.xml" Attributes="0" SourcePath="..\bin\System.Buffers.xml" SelfReg="false"/>
-    <ROW File="System.Drawing.Common.dll" Component_="System.Drawing.Common.dll" FileName="SYSTEM~2.DLL|System.Drawing.Common.dll" Attributes="0" SourcePath="..\bin\System.Drawing.Common.dll" SelfReg="false"/>
-    <ROW File="WindowsBase.dll" Component_="WindowsBase.dll" FileName="WINDOW~1.DLL|WindowsBase.dll" Attributes="0" SourcePath="..\bin\WindowsBase.dll" SelfReg="false"/>
+    <ROW File="DLXML.dll_1" Component_="DLXML_PrimaryOutput" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll_1]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_DLXML.dll_1&gt;" SelfReg="false"/>
+    <ROW File="Dapper.dll" Component_="DLXML_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Dapper.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Dapper.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Data.SQLite.dll" Component_="DLXML_References" FileName="SYSTEM~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Data.SQLite.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Data.SQLite.dll&gt;" SelfReg="false"/>
+    <ROW File="GlobalPayments.Api.dll" Component_="ElectricalWorld_References" FileName="GLOBAL~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_GlobalPayments.Api.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_GlobalPayments.Api.dll&gt;" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="ElectricalWorld_References" FileName="NEWTON~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Newtonsoft.Json.dll&gt;" SelfReg="false"/>
+    <ROW File="SkiaSharp.dll" Component_="ElectricalWorld_References" FileName="SKIASH~2.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SkiaSharp.dll&gt;" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Desktop.dll" Component_="ElectricalWorld_References" FileName="SKIASH~3.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Desktop.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SkiaSharp.Views.Desktop.dll&gt;" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Gtk.dll" Component_="ElectricalWorld_References" FileName="SKIASH~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Gtk.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SkiaSharp.Views.Gtk.dll&gt;" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.WPF.dll" Component_="ElectricalWorld_References" FileName="SKIASH~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.WPF.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_SkiaSharp.Views.WPF.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Configuration.ConfigurationManager.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~4.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Configuration.ConfigurationManager.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Configuration.ConfigurationManager.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Diagnostics.DiagnosticSource.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~5.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Diagnostics.DiagnosticSource.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Security.AccessControl.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~6.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.AccessControl.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Security.AccessControl.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Security.Permissions.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~7.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Permissions.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Security.Permissions.dll&gt;" SelfReg="false"/>
+    <ROW File="System.Security.Principal.Windows.dll" Component_="ElectricalWorld_References" FileName="SYSTEM~8.DLL|[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_System.Security.Principal.Windows.dll&gt;" SelfReg="false"/>
+    <ROW File="ZedGraph.dll" Component_="ElectricalWorld_References" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_ZedGraph.dll]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ZedGraph.dll&gt;" SelfReg="false"/>
+    <ROW File="Dapper.dll_1" Component_="Dapper.dll" FileName="Dapper.dll" Attributes="0" SourcePath="..\bin\Dapper.dll" SelfReg="false"/>
+    <ROW File="Dapper.xml" Component_="README.md" FileName="Dapper.xml" Attributes="0" SourcePath="..\bin\Dapper.xml" SelfReg="false"/>
+    <ROW File="ElectricalWorld.exe_1" Component_="ElectricalWorld.exe" FileName="ELECTR~1.EXE|Electrical World.exe" Attributes="0" SourcePath="..\bin\Electrical World.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="ElectricalWorld.exe.config_1" Component_="README.md" FileName="ELECTR~1.CON|Electrical World.exe.config" Attributes="0" SourcePath="..\bin\Electrical World.exe.config" SelfReg="false"/>
+    <ROW File="GlobalPayments.Api.dll_1" Component_="GlobalPayments.Api.dll" FileName="GLOBAL~1.DLL|GlobalPayments.Api.dll" Attributes="0" SourcePath="..\bin\GlobalPayments.Api.dll" SelfReg="false"/>
+    <ROW File="libdymobarcode.dll" Component_="libdymobarcode.dll" FileName="LIBDYM~1.DLL|libdymobarcode.dll" Attributes="0" SourcePath="..\bin\libdymobarcode.dll" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dll" Component_="libSkiaSharp.dll" FileName="LIBSKI~1.DLL|libSkiaSharp.dll" Attributes="0" SourcePath="..\bin\libSkiaSharp.dll" SelfReg="false"/>
+    <ROW File="libSkiaSharp.dylib" Component_="README.md" FileName="LIBSKI~1.DYL|libSkiaSharp.dylib" Attributes="0" SourcePath="..\bin\libSkiaSharp.dylib" SelfReg="false"/>
+    <ROW File="MailKit.dll_1" Component_="MailKit.dll" FileName="MailKit.dll" Attributes="0" SourcePath="..\bin\MailKit.dll" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.dll_1" Component_="MaterialDesignColors.dll" FileName="MATERI~2.DLL|MaterialDesignColors.dll" Attributes="0" SourcePath="..\bin\MaterialDesignColors.dll" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.dll_1" Component_="MaterialDesignThemes.Wpf.dll" FileName="MATERI~4.DLL|MaterialDesignThemes.Wpf.dll" Attributes="0" SourcePath="..\bin\MaterialDesignThemes.Wpf.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.DocumentObjectModelgdi.dll_1" Component_="MigraDoc.DocumentObjectModelgdi.dll" FileName="MIGRAD~3.DLL|MigraDoc.DocumentObjectModel-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.DocumentObjectModel-gdi.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.Renderinggdi.dll_1" Component_="MigraDoc.Renderinggdi.dll" FileName="MIGRAD~5.DLL|MigraDoc.Rendering-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.Rendering-gdi.dll" SelfReg="false"/>
+    <ROW File="MigraDoc.RtfRenderinggdi.dll_1" Component_="MigraDoc.RtfRenderinggdi.dll" FileName="MIGRAD~6.DLL|MigraDoc.RtfRendering-gdi.dll" Attributes="0" SourcePath="..\bin\MigraDoc.RtfRendering-gdi.dll" SelfReg="false"/>
+    <ROW File="MimeKit.dll_1" Component_="MimeKit.dll" FileName="MimeKit.dll" Attributes="0" SourcePath="..\bin\MimeKit.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll_1" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\bin\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.xml" Component_="README.md" FileName="NEWTON~1.XML|Newtonsoft.Json.xml" Attributes="0" SourcePath="..\bin\Newtonsoft.Json.xml" SelfReg="false"/>
+    <ROW File="PdfSharp.Chartinggdi.dll_1" Component_="PdfSharp.Chartinggdi.dll" FileName="PDFSHA~1.DLL|PdfSharp.Charting-gdi.dll" Attributes="0" SourcePath="..\bin\PdfSharp.Charting-gdi.dll" SelfReg="false"/>
+    <ROW File="PdfSharpgdi.dll_1" Component_="PdfSharpgdi.dll" FileName="PDFSHA~4.DLL|PdfSharp-gdi.dll" Attributes="0" SourcePath="..\bin\PdfSharp-gdi.dll" SelfReg="false"/>
+    <ROW File="PrintingSupportLibrary.dll" Component_="PrintingSupportLibrary.dll" FileName="PRINTI~1.DLL|PrintingSupportLibrary.dll" Attributes="0" SourcePath="..\bin\PrintingSupportLibrary.dll" SelfReg="false"/>
+    <ROW File="PrintingSupportLibrary_x64.dll" Component_="PrintingSupportLibrary_x64.dll" FileName="PRINTI~2.DLL|PrintingSupportLibrary_x64.dll" Attributes="0" SourcePath="..\bin\PrintingSupportLibrary_x64.dll" SelfReg="false"/>
+    <ROW File="SkiaSharp.dll_1" Component_="SkiaSharp.dll" FileName="SKIASH~1.DLL|SkiaSharp.dll" Attributes="0" SourcePath="..\bin\SkiaSharp.dll" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Desktop.dll_1" Component_="SkiaSharp.Views.Desktop.dll" FileName="SKIASH~6.DLL|SkiaSharp.Views.Desktop.dll" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.Desktop.dll" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Desktop.xml" Component_="README.md" FileName="SKIASH~1.XML|SkiaSharp.Views.Desktop.xml" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.Desktop.xml" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Gtk.dll_1" Component_="SkiaSharp.Views.Gtk.dll" FileName="SKIASH~7.DLL|SkiaSharp.Views.Gtk.dll" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.Gtk.dll" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.Gtk.xml" Component_="README.md" FileName="SKIASH~2.XML|SkiaSharp.Views.Gtk.xml" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.Gtk.xml" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.WPF.dll_1" Component_="SkiaSharp.Views.WPF.dll" FileName="SKIASH~8.DLL|SkiaSharp.Views.WPF.dll" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.WPF.dll" SelfReg="false"/>
+    <ROW File="SkiaSharp.Views.WPF.xml" Component_="README.md" FileName="SKIASH~3.XML|SkiaSharp.Views.WPF.xml" Attributes="0" SourcePath="..\bin\SkiaSharp.Views.WPF.xml" SelfReg="false"/>
+    <ROW File="SkiaSharp.xml" Component_="README.md" FileName="SKIASH~4.XML|SkiaSharp.xml" Attributes="0" SourcePath="..\bin\SkiaSharp.xml" SelfReg="false"/>
+    <ROW File="System.Buffers.dll_1" Component_="System.Buffers.dll" FileName="SYSTEM~1.DLL|System.Buffers.dll" Attributes="0" SourcePath="..\bin\System.Buffers.dll" SelfReg="false"/>
+    <ROW File="System.Configuration.ConfigurationManager.dll_1" Component_="System.Configuration.ConfigurationManager.dll" FileName="SYSTEM~2.DLL|System.Configuration.ConfigurationManager.dll" Attributes="0" SourcePath="..\bin\System.Configuration.ConfigurationManager.dll" SelfReg="false"/>
+    <ROW File="System.Configuration.ConfigurationManager.xml" Component_="README.md" FileName="SYSTEM~2.XML|System.Configuration.ConfigurationManager.xml" Attributes="0" SourcePath="..\bin\System.Configuration.ConfigurationManager.xml" SelfReg="false"/>
+    <ROW File="System.Data.SQLite.dll_1" Component_="System.Data.SQLite.dll" FileName="SYSTEM~9.DLL|System.Data.SQLite.dll" Attributes="0" SourcePath="..\bin\System.Data.SQLite.dll" SelfReg="false"/>
+    <ROW File="System.Data.SQLite.xml" Component_="README.md" FileName="SYSTEM~3.XML|System.Data.SQLite.xml" Attributes="0" SourcePath="..\bin\System.Data.SQLite.xml" SelfReg="false"/>
+    <ROW File="System.Diagnostics.DiagnosticSource.dll_1" Component_="System.Diagnostics.DiagnosticSource.dll" FileName="SYSTE~10.DLL|System.Diagnostics.DiagnosticSource.dll" Attributes="0" SourcePath="..\bin\System.Diagnostics.DiagnosticSource.dll" SelfReg="false"/>
+    <ROW File="System.Diagnostics.DiagnosticSource.xml" Component_="README.md" FileName="SYSTEM~4.XML|System.Diagnostics.DiagnosticSource.xml" Attributes="0" SourcePath="..\bin\System.Diagnostics.DiagnosticSource.xml" SelfReg="false"/>
+    <ROW File="System.Security.AccessControl.dll_1" Component_="System.Security.AccessControl.dll" FileName="SYSTE~11.DLL|System.Security.AccessControl.dll" Attributes="0" SourcePath="..\bin\System.Security.AccessControl.dll" SelfReg="false"/>
+    <ROW File="System.Security.AccessControl.xml" Component_="README.md" FileName="SYSTEM~5.XML|System.Security.AccessControl.xml" Attributes="0" SourcePath="..\bin\System.Security.AccessControl.xml" SelfReg="false"/>
+    <ROW File="System.Security.Permissions.dll_1" Component_="System.Security.Permissions.dll" FileName="SYSTE~12.DLL|System.Security.Permissions.dll" Attributes="0" SourcePath="..\bin\System.Security.Permissions.dll" SelfReg="false"/>
+    <ROW File="System.Security.Permissions.xml" Component_="README.md" FileName="SYSTEM~6.XML|System.Security.Permissions.xml" Attributes="0" SourcePath="..\bin\System.Security.Permissions.xml" SelfReg="false"/>
+    <ROW File="System.Security.Principal.Windows.dll_1" Component_="System.Security.Principal.Windows.dll" FileName="SYSTE~13.DLL|System.Security.Principal.Windows.dll" Attributes="0" SourcePath="..\bin\System.Security.Principal.Windows.dll" SelfReg="false"/>
+    <ROW File="System.Security.Principal.Windows.xml" Component_="README.md" FileName="SYSTEM~7.XML|System.Security.Principal.Windows.xml" Attributes="0" SourcePath="..\bin\System.Security.Principal.Windows.xml" SelfReg="false"/>
+    <ROW File="ZedGraph.dll_1" Component_="ZedGraph.dll" FileName="ZedGraph.dll" Attributes="0" SourcePath="..\bin\ZedGraph.dll" SelfReg="false"/>
+    <ROW File="ZedGraph.xml" Component_="README.md" FileName="ZedGraph.xml" Attributes="0" SourcePath="..\bin\ZedGraph.xml" SelfReg="false"/>
+    <ROW File="ElectricalWorld.db" Component_="README.md" FileName="ELECTR~1.DB|ElectricalWorld.db" Attributes="0" SourcePath="..\bin\ElectricalWorld.db" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_BL.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_BL.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_BL.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_BL.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_BouncyCastle.Crypto.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_BouncyCastle.Crypto.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_BouncyCastle.Crypto.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_1]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_2" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_2]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_2]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLAPI.dll_3" Path="[|AI_PROPPATH_DIR_PERBUILD_DLAPI.dll_3]\[|AI_PROPPATH_FILENAME_PERBUILD_DLAPI.dll_3]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_DLXML.dll_1" Path="[|AI_PROPPATH_DIR_PERBUILD_DLXML.dll_1]\[|AI_PROPPATH_FILENAME_PERBUILD_DLXML.dll_1]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Dapper.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Dapper.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Dapper.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ElectricalWorld.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ElectricalWorld.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_ElectricalWorld.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_ElectricalWorld.exe.config]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_GlobalPayments.Api.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_GlobalPayments.Api.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_GlobalPayments.Api.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MailKit.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MailKit.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MailKit.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignColors.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignColors.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignColors.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MaterialDesignThemes.Wpf.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MaterialDesignThemes.Wpf.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MaterialDesignThemes.Wpf.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.DocumentObjectModelgdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.Renderinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.Renderinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.Renderinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MigraDoc.RtfRenderinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MigraDoc.RtfRenderinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MigraDoc.RtfRenderinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_MimeKit.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_MimeKit.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_MimeKit.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Newtonsoft.Json.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_Newtonsoft.Json.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_Newtonsoft.Json.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_PdfSharp.Chartinggdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_PdfSharp.Chartinggdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharp.Chartinggdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_PdfSharpgdi.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_PdfSharpgdi.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_PdfSharpgdi.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SkiaSharp.Views.Desktop.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.Desktop.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Desktop.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SkiaSharp.Views.Gtk.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.Gtk.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.Gtk.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SkiaSharp.Views.WPF.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_SkiaSharp.Views.WPF.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.Views.WPF.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_SkiaSharp.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_SkiaSharp.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_SkiaSharp.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Buffers.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Buffers.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Buffers.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Configuration.ConfigurationManager.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Configuration.ConfigurationManager.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Configuration.ConfigurationManager.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Data.SQLite.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Data.SQLite.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Data.SQLite.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Diagnostics.DiagnosticSource.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Diagnostics.DiagnosticSource.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Diagnostics.DiagnosticSource.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Security.AccessControl.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Security.AccessControl.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.AccessControl.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Security.Permissions.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Security.Permissions.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Permissions.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_System.Security.Principal.Windows.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_System.Security.Principal.Windows.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_System.Security.Principal.Windows.dll]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_ZedGraph.dll" Path="[|AI_PROPPATH_DIR_PERBUILD_ZedGraph.dll]\[|AI_PROPPATH_FILENAME_PERBUILD_ZedGraph.dll]" Type="2" Content="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -209,25 +366,41 @@
     <ROW Feature_="MainFeature" Component_="BL_References"/>
     <ROW Feature_="MainFeature" Component_="DLAPI_PrimaryOutput"/>
     <ROW Feature_="MainFeature" Component_="DLXML_References"/>
-    <ROW Feature_="MainFeature" Component_="BL.dll"/>
-    <ROW Feature_="MainFeature" Component_="BouncyCastle.Crypto.dll"/>
-    <ROW Feature_="MainFeature" Component_="DLAPI.dll"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld_References"/>
     <ROW Feature_="MainFeature" Component_="DLXML.dll"/>
-    <ROW Feature_="MainFeature" Component_="ElectricalWorld.exe"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld_SymbolsOutput"/>
     <ROW Feature_="MainFeature" Component_="MailKit.dll"/>
     <ROW Feature_="MainFeature" Component_="README.md"/>
     <ROW Feature_="MainFeature" Component_="MaterialDesignColors.dll"/>
     <ROW Feature_="MainFeature" Component_="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="MimeKit.dll"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="DLXML_PrimaryOutput"/>
+    <ROW Feature_="MainFeature" Component_="Dapper.dll"/>
+    <ROW Feature_="MainFeature" Component_="ElectricalWorld.exe"/>
+    <ROW Feature_="MainFeature" Component_="GlobalPayments.Api.dll"/>
+    <ROW Feature_="MainFeature" Component_="libdymobarcode.dll"/>
+    <ROW Feature_="MainFeature" Component_="libSkiaSharp.dll"/>
     <ROW Feature_="MainFeature" Component_="MigraDoc.DocumentObjectModelgdi.dll"/>
     <ROW Feature_="MainFeature" Component_="MigraDoc.Renderinggdi.dll"/>
     <ROW Feature_="MainFeature" Component_="MigraDoc.RtfRenderinggdi.dll"/>
-    <ROW Feature_="MainFeature" Component_="MimeKit.dll"/>
+    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
     <ROW Feature_="MainFeature" Component_="PdfSharp.Chartinggdi.dll"/>
     <ROW Feature_="MainFeature" Component_="PdfSharpgdi.dll"/>
+    <ROW Feature_="MainFeature" Component_="PrintingSupportLibrary.dll"/>
+    <ROW Feature_="MainFeature" Component_="PrintingSupportLibrary_x64.dll"/>
+    <ROW Feature_="MainFeature" Component_="SkiaSharp.dll"/>
+    <ROW Feature_="MainFeature" Component_="SkiaSharp.Views.Desktop.dll"/>
+    <ROW Feature_="MainFeature" Component_="SkiaSharp.Views.Gtk.dll"/>
+    <ROW Feature_="MainFeature" Component_="SkiaSharp.Views.WPF.dll"/>
     <ROW Feature_="MainFeature" Component_="System.Buffers.dll"/>
-    <ROW Feature_="MainFeature" Component_="System.Drawing.Common.dll"/>
-    <ROW Feature_="MainFeature" Component_="WindowsBase.dll"/>
-    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="System.Configuration.ConfigurationManager.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.SQLite.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Security.AccessControl.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Security.Permissions.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Security.Principal.Windows.dll"/>
+    <ROW Feature_="MainFeature" Component_="ZedGraph.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -258,7 +431,8 @@
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="ElectricalWorld" Directory_="SHORTCUTDIR" Name="ELECTR~1|Electrical World" Component_="ElectricalWorld.exe" Target="[#ElectricalWorld.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="ElectricalWorld_Dir" CustomFlags="2"/>
+    <ROW Shortcut="ElectricalWorld" Directory_="SHORTCUTDIR" Name="ELECTR~1|Electrical World" Component_="ElectricalWorld_SymbolsOutput" Target="[#ElectricalWorld.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="ElectricalWorld_Dir" CustomFlags="2"/>
+    <ROW Shortcut="ElectricalWorld_1" Directory_="SHORTCUTDIR" Name="ELECTR~2|Electrical World" Component_="ElectricalWorld_SymbolsOutput" Target="[#ElectricalWorld.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>
@@ -272,5 +446,35 @@
     <ROW ProjectId="{1b76c313-9cbe-4f98-9610-60ed5f7ac9ee}" ProjectName="BL" OutputGroup="References" OutputFile="DLAPI.dll"/>
     <ROW ProjectId="{ed11aa00-399d-4541-bb35-061bd708176c}" ProjectName="DLAPI" OutputGroup="PrimaryOutput" OutputFile="DLAPI.dll_1"/>
     <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="References" OutputFile="DLAPI.dll_2"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="PrimaryOutput" OutputFile="DLXML.dll_1"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="References" OutputFile="Dapper.dll"/>
+    <ROW ProjectId="{abb4468b-2dd5-455c-87c3-9e49267800f0}" ProjectName="DLXML" OutputGroup="References" OutputFile="System.Data.SQLite.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="PrimaryOutput" OutputFile="ElectricalWorld.exe" OutputFileShortcut="ElectricalWorld"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="PrimaryOutput" OutputFile="ElectricalWorld.exe.config"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="BL.dll_1"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="BouncyCastle.Crypto.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="GlobalPayments.Api.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MailKit.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MaterialDesignColors.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MaterialDesignThemes.Wpf.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.DocumentObjectModelgdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.Renderinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MigraDoc.RtfRenderinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="MimeKit.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="Newtonsoft.Json.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="PdfSharpgdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="PdfSharp.Chartinggdi.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="SkiaSharp.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="SkiaSharp.Views.Desktop.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="SkiaSharp.Views.Gtk.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="SkiaSharp.Views.WPF.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Buffers.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Configuration.ConfigurationManager.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Security.AccessControl.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Security.Permissions.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="System.Security.Principal.Windows.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="ZedGraph.dll"/>
+    <ROW ProjectId="{4b96df44-6319-4a38-9c75-ab5569d30c4a}" ProjectName="ElectricalWorld" OutputGroup="References" OutputFile="DLAPI.dll_3"/>
   </COMPONENT>
 </DOCUMENT>

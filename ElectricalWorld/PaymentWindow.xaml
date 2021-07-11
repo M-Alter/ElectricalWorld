@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricalWorld"
         mc:Ignorable="d"
-        Title="PaymentWindow" Height="100" Width="100" WindowStartupLocation="CenterOwner">
+        Title="PaymentWindow" Height="200" Width="300" WindowStartupLocation="CenterOwner">
     <Grid>
-        <Button x:Name="btnPay" Content="Pay" Click="btnPay_Click" Background="Red"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <Label Content="Amount Due:" FontSize="20" Grid.Row="0" Height="50"/>
+            <Label Name="lblAmountDue" FontSize="20" Grid.Row="0" Height="50"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row=" 1">
+            <Label Content="Amount Paid" FontSize="20"  />
+            <TextBox x:Name="tboxAmountPaid" Margin="5" FontSize="20" Grid.Row="1" Height="35" Width="100" PreviewKeyDown="tboxAmountPaid_PreviewKeyDown" />
+        </WrapPanel>
+        <Button x:Name="btnPay" Content="Pay" Grid.Row="2" Click="btnPay_Click" Background="Red"/>
     </Grid>
 </Window>

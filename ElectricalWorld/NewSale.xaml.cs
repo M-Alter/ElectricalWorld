@@ -116,40 +116,12 @@ namespace ElectricalWorld
 
 
 
-        private void cmbCusts_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (backgroundWorkerCust.IsBusy == true)
-                backgroundWorkerCust.CancelAsync();
-            string input = (cmbCusts.Text + e.Text).ToLower();
-            while (backgroundWorkerCust.IsBusy) ;
-            backgroundWorkerCust.RunWorkerAsync(input);
-            
-           // custs.Clear();
-            cmbCusts.IsDropDownOpen = true;
-
-            
-
-            //foreach (var item in bl.GetCutomers(cust =>
-            //    cust.CustomerID.ToString().ToLower().Contains(input) /*||
-            //    cust.Name.ToLower().Contains(input) ||
-            //    cust.Company.ToLower().Contains(input) ||
-            //    cust.Phone.ToLower().Contains(input) ||
-            //    cust.Mobile.ToLower().Contains(input) ||
-            //    cust.Address.ToLower().Contains(input) ||
-            //    cust.PostCode.ToLower().Contains(input) ||
-            //    cust.Email.ToLower().Contains(input)*/
-            //    )
-            //    )
-            //{
-            //    custs.Add(PO.Tools.POCustomer(item));
-            //}
-            //cmbCusts.ItemsSource = custs;
-        }
+       
 
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            order.CustomerID = ((sender as ComboBox).SelectedItem as PO.Customer).CustomerID;
+            order.Customer = ((sender as ComboBox).SelectedItem as PO.Customer);
         }
 
         private void lvBasket_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -180,10 +152,10 @@ namespace ElectricalWorld
             order.OrderTime = DateTime.Now;
             order.TotalPrice = basket.Sum(it => it.Price);
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            //var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
             new Thread(() =>
             {
-                Tools.CreateInvoice(order, PO.Tools.POCustomer(cust), false);
+                Tools.CreateInvoice(order, order.Customer, false);
             }).Start();
             btnSend.IsEnabled = true;
             //Close();
@@ -192,14 +164,15 @@ namespace ElectricalWorld
         private void btnPay_Click(object sender, RoutedEventArgs e)
         {
 
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
-            PaymentWindow paymentWindow = new PaymentWindow(PO.Tools.POCustomer(cust), order.TotalPrice);
+            //var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            PaymentWindow paymentWindow = new PaymentWindow(order);
             paymentWindow.ShowDialog();
 
             if (paymentWindow.DialogResult == true)
             {
-                order.Items = new List<PO.InvoiceItem>(basket.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -basket.Sum(it => it.Price) } }));
-                order.Paid = true;
+                order.Items = new List<PO.InvoiceItem>(basket.ToList());
+                order.Items = new List<PO.InvoiceItem>(order.Items.ToList());
+                //order.Items.Append(new PO.Payment { Brand = "Paid", Price = order.Paid });
             }
             else
             {
@@ -208,10 +181,12 @@ namespace ElectricalWorld
             }
             order.OrderTime = DateTime.Now;
             order.TotalPrice = order.Items.Sum(it => it.Price);
+            if (paymentWindow.DialogResult == true)
+                order.Paid = paymentWindow.AmountPaid;
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            new Thread(() =>
+                new Thread(() =>
             {
-                Tools.CreateInvoice(order, PO.Tools.POCustomer(cust), false);
+                Tools.CreateInvoice(order, order.Customer, false);
             }).Start();
             btnSend.IsEnabled = true;
             //Close();
@@ -240,10 +215,10 @@ namespace ElectricalWorld
             order.OrderTime = DateTime.Now;
             order.TotalPrice = basket.Sum(it => it.Price);
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            //var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
             new Thread(() =>
             {
-                Tools.CreateInvoice(order, PO.Tools.POCustomer(cust), true);
+                Tools.CreateInvoice(order, order.Customer, true);
             }).Start();
 
             Close();
@@ -251,14 +226,14 @@ namespace ElectricalWorld
 
         private void btnPayAndSendEmail_Click(object sender, RoutedEventArgs e)
         {
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
-            PaymentWindow paymentWindow = new PaymentWindow(PO.Tools.POCustomer(cust), order.TotalPrice);
+            //var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            PaymentWindow paymentWindow = new PaymentWindow(order);
             paymentWindow.ShowDialog();
 
             if (paymentWindow.DialogResult == true)
             {
-                order.Items = new List<PO.InvoiceItem>(basket.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -basket.Sum(it => it.Price) } }));
-                order.Paid = true;
+                order.TotalPrice = order.Items.Sum(it => it.Price);
+                order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
             }
             else
             {
@@ -267,10 +242,12 @@ namespace ElectricalWorld
             }
             order.OrderTime = DateTime.Now;
             order.TotalPrice = order.Items.Sum(it => it.Price);
+            if (paymentWindow.DialogResult == true)
+                order.Paid = paymentWindow.AmountPaid;
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-            new Thread(() =>
+                new Thread(() =>
             {
-                Tools.CreateInvoice(order, PO.Tools.POCustomer(cust), true);
+                Tools.CreateInvoice(order, order.Customer, true);
             }).Start();
 
             Close();
@@ -288,12 +265,46 @@ namespace ElectricalWorld
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
-            if (cust.Email != "")
+            //var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            if (order.Customer.Email != "")
                 new Task(() =>
                 {
-                    Tools.EmailInvoice(order, PO.Tools.POCustomer(cust));
+                    Tools.EmailInvoice(order, order.Customer);
                 }).Start();
+        }
+
+        private void cmbCusts_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (!char.IsLetterOrDigit(((char)e.Key)))
+            {
+                e.Handled = true;
+                return;
+            }
+            //if (backgroundWorkerCust.IsBusy == true)
+            //    backgroundWorkerCust.CancelAsync();
+            string input = cmbCusts.Text.ToLower();
+            //while (backgroundWorkerCust.IsBusy) ;
+            //backgroundWorkerCust.RunWorkerAsync(input);
+
+            custs.Clear();
+            cmbCusts.IsDropDownOpen = true;
+
+            foreach (var item in bl.GetCutomers(cust =>
+                cust.CustomerID.ToString().ToLower().Contains(input) ||
+                cust.Name.ToLower().Contains(input) ||
+                cust.Company.ToLower().Contains(input) ||
+                cust.Phone.ToLower().Contains(input) ||
+                cust.Mobile.ToLower().Contains(input) ||
+                cust.Address.ToLower().Contains(input) ||
+                cust.PostCode.ToLower().Contains(input) ||
+                cust.Email.ToLower().Contains(input)
+                )
+                )
+            {
+                custs.Add(PO.Tools.POCustomer(item));
+            }
+            cmbCusts.ItemsSource = custs;
         }
     }
 }

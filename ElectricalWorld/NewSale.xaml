@@ -18,7 +18,7 @@
                 <Button x:Name="btnCustSearch" Content="Search" Click="btnCustSearch_Click"/>
             </WrapPanel>-->
             <WrapPanel>
-                <ComboBox x:Name="cmbCusts" IsEditable="True" Text="Choose a customer" FontSize="20" Width="250" PreviewTextInput="cmbCusts_PreviewTextInput" SelectionChanged="cmbCusts_SelectionChanged">
+                <ComboBox x:Name="cmbCusts" IsEditable="True" Text="Choose a customer" FontSize="20" Width="250" SelectionChanged="cmbCusts_SelectionChanged" PreviewKeyUp="cmbCusts_KeyUp">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>

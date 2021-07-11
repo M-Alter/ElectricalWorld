@@ -45,8 +45,6 @@ namespace ElectricalWorld
             {
                 grdItemDetails.DataContext = item;
                 tabControl.SelectedIndex = 3;
-                //ItemInfo itemInfo = new ItemInfo(item);
-                //itemInfo.Show();
             }
         }
 
@@ -61,17 +59,8 @@ namespace ElectricalWorld
             sales.Clear();
 
             foreach (var item in bl.GetOrders(ord =>
-                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) /*||
-                ord.CustomerID.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
-                ord.CustomerID.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.CustomerID.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-                ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())*/
-                 )
+                ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) 
+                 , " WHERE OrderID LIKE \"%" + tboxSalesSearch.Text.ToLower() + "%\"")
                 )
             {
                 sales.Add(PO.Tools.POOrder(item));
@@ -143,9 +132,8 @@ namespace ElectricalWorld
             if (order is PO.Order)
             {
                 grdOrderDetails.DataContext = order;
-                //lvOrderView.DataContext = order.Items;
-                //lblOrderDate.DataContext = order.OrderTime;
                 tabControl.SelectedIndex = 1;
+                lblAmountDue.Content = order.TotalPrice - order.Paid;
             }
         }
 
@@ -153,10 +141,10 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
-                if (order.Paid)
-                    order.Items = new List<PO.InvoiceItem>(order.Items.ToList().Concat(new List<PO.InvoiceItem> { new PO.Payment { Brand = "Paid", Price = -order.Items.Sum(it => it.Price) } }));
             order.TotalPrice = order.Items.Sum(it => it.Price);
-            var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+            order.Items = new List<PO.InvoiceItem>(order.Items.ToList());
+            //order.Items.Append(new Payment { Brand = "Paid", Price = order.Paid });
+            var cust = bl.GetSingleCustomer(order.Customer.CustomerID);
             new Thread(() =>
                 {
                     Tools.CreateInvoice(order  , PO.Tools.POCustomer(cust));
@@ -168,7 +156,7 @@ namespace ElectricalWorld
             PO.Customer customer = (sender as ListView).SelectedItem as PO.Customer;
             custOrders.Clear();
             custOrders = new ObservableCollection<Order>();
-            foreach (var item in bl.GetOrders(order => order.CustomerID == customer.CustomerID))
+            foreach (var item in bl.GetOrders(order => order.Customer.CustomerID == customer.CustomerID, " WHERE CustomerID = " + customer.CustomerID))
             {
                 custOrders.Add(PO.Tools.POOrder(item));
             }
@@ -213,29 +201,14 @@ namespace ElectricalWorld
             sales.Clear();
 
 
-            foreach (var item in bl.GetOrders(ord => ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower())))
+            foreach (var item in bl.GetOrders(ord => ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()), " WHERE OrderID LIKE \"%" + tboxSalesSearch.Text.ToLower() + "%\""))
             {
                 sales.Add(PO.Tools.POOrder(item));
             }
 
             
 
-            //foreach (var item in bl.GetOrders(ord =>
-            //    ord.OrderID.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.CustomerID.ToString().ToLower() == tboxSalesSearch.Text.ToLower() ||
-            //    ord.CustomerID.Name.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.Company.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.Phone.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.Mobile.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.PostCode.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.Address.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.CustomerID.Email.ToLower().Contains(tboxSalesSearch.Text.ToLower()) ||
-            //    ord.OrderID.ToString().ToLower().StartsWith(tboxSalesSearch.Text.ToLower())
-            //     )
-            //    )
-            //{
-            //    sales.Add(PO.Tools.POOrder(item));
-            //}
+            
             lvSales.DataContext = sales;
         }
 
@@ -274,14 +247,7 @@ namespace ElectricalWorld
             WindowState = WindowState.Minimized;
         }
 
-        private void chkBoxPaid_Click(object sender, RoutedEventArgs e)
-        {
-            PO.Order order = (PO.Order)(sender as CheckBox).DataContext;
-            if (order is PO.Order)
-            {
-                bl.PayOrder(order.OrderID, order.Paid);
-            }
-        }
+        
 
         private void btnAddStock_Click(object sender, RoutedEventArgs e)
         {
@@ -298,7 +264,7 @@ namespace ElectricalWorld
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
             {
-                var cust = bl.GetCutomers(c => c.CustomerID == order.CustomerID).FirstOrDefault();
+                var cust = bl.GetSingleCustomer(order.Customer.CustomerID);
 
                 new Task(() =>
                 {
@@ -307,6 +273,19 @@ namespace ElectricalWorld
             }
         }
 
+        private void btnPay_Click(object sender, RoutedEventArgs e)
+        {
+            PO.Order order = (PO.Order)(sender as Button).DataContext;
+            if (order is PO.Order)
+            {
+                PaymentWindow paymentWindow = new PaymentWindow(order);
+                paymentWindow.ShowDialog();
 
+                if (paymentWindow.DialogResult == true)
+                {
+
+                }
+            }
+        }
     }
 }

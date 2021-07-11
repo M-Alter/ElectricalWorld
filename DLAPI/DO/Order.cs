@@ -24,10 +24,7 @@ namespace DO
         /// </summary>
         public double TotalPrice { get; set; }
 
-        /// <summary>
-        /// is the order paid
-        /// </summary>
-        public int Paid { get; set; }
+        
 
     }
 }

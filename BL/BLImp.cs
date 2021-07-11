@@ -15,7 +15,6 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                //CustomerID = dl.GetNewCustomerID().ToString(@"00000"),
                 Name = cust.Name,
                 Company = cust.Company,
                 Address = cust.Address,
@@ -29,10 +28,8 @@ namespace BL
 
         public void AddItem(Item item, double costPrice)
         {
-            //string itemID = dl.GetNewItemID().ToString(@"00000");
-            dl.AddItem(new DO.Item
+            int itemID = dl.AddItem(new DO.Item
             {
-                //ItemID = itemID,
                 Brand = item.Brand,
                 Description = item.Description,
                 ModelNumber = item.ModelNumber,
@@ -42,7 +39,7 @@ namespace BL
             });
             dl.AddStockItem(new DO.StockItem
             {
-                //ItemID = itemID,
+                ItemID = itemID.ToString(),
                 Quantity = item.Quantity,
                 Date = DateTime.Now,
                 Price = costPrice
@@ -51,28 +48,28 @@ namespace BL
 
         public string AddOrder(Order order)
         {
-            //string orderID = dl.GetNewOrderID().ToString(@"000000");
-            dl.AddOrder(new DO.Order
+
+            int orderID = dl.AddOrder(new DO.Order
             {
-                //OrderID = orderID,
-                CustomerID = order.CustomerID,
+                CustomerID = order.Customer.CustomerID,
                 OrderTime = DateTime.Now,
-                TotalPrice = order.TotalPrice,
-                Paid = order.Paid == true ? 1 : 0
+                TotalPrice = order.TotalPrice
             });
             foreach (var item in order.Items)
             {
                 dl.AddOrderItem(new DO.OrderItem
                 {
-                    //OrderID = orderID,
+                    OrderID = orderID.ToString(),
                     ItemID = item.ItemID,
                     Price = item.Price,
                     Profit = item.Price - dl.GetCostPrice(item.ItemID)
                 });
                 dl.SubtractStock(item.ItemID, -1);
             }
-            //return orderID;
-            return null;
+            if (order.Paid > 0)
+                dl.PayOrder(orderID.ToString(), order.Paid);
+            return orderID.ToString();
+
         }
 
         public void AddStock(Item item, double costPrice)
@@ -155,16 +152,16 @@ namespace BL
                    select temp;
         }
 
-        public IEnumerable<Order> GetOrders(Predicate<Order> filter)
+        public IEnumerable<Order> GetOrders(Predicate<Order> filter, string whereSql = "")
         {
-            return from order in dl.GetOrders()
+            return from order in dl.GetOrders(whereSql)
                    let temp = new Order
                    {
                        OrderID = order.OrderID,
-                       //CustomerID = GetCutomers(id => id.CustomerID == order.CustomerID).FirstOrDefault(),
+                       Customer = GetSingleCustomer(order.CustomerID),
                        OrderTime = order.OrderTime,
                        TotalPrice = order.TotalPrice,
-                       Paid = order.Paid == 1 ? true : false,
+                       Paid = dl.GetPaidAmount(order.OrderID),
                        Profit = dl.GetOrderItems().Where(it => it.OrderID == order.OrderID).Select(it => it.Profit).Sum(),
                        Items = from item in dl.GetOrderItems()
                                where item.OrderID == order.OrderID
@@ -175,9 +172,27 @@ namespace BL
                    select (temp);
         }
 
-        public void PayOrder(string orderID, bool paid)
+        public Customer GetSingleCustomer(string customerID)
         {
-            dl.PayOrder(orderID, paid);
+            var cust = dl.GetSingleCutomer(customerID);
+            return new Customer
+            {
+                CustomerID = cust.CustomerID,
+                Name = cust.Name,
+                Company = cust.Company,
+                Address = cust.Address,
+                PostCode = cust.PostCode,
+                City = cust.City,
+                Email = cust.Email,
+                Phone = cust.Phone,
+                Mobile = cust.Mobile,
+                OrderIDs = dl.GetOrders().Where(order => order.CustomerID == cust.CustomerID).Select(order => order.OrderID)
+            };
+        }
+
+        public void PayOrder(string orderID, double amount)
+        {
+            dl.PayOrder(orderID, amount);
         }
 
         public void RemoveItem(string itemID)

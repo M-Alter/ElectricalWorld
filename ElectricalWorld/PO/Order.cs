@@ -13,7 +13,7 @@ namespace PO
         /// <summary>
         /// customer of the order
         /// </summary>
-        public string CustomerID { get; set; }
+        public Customer Customer { get; set; }
 
         /// <summary>
         /// time of the order
@@ -28,7 +28,7 @@ namespace PO
         /// <summary>
         /// is the order paid
         /// </summary>
-        public bool Paid { get; set; }
+        public double Paid { get; set; }
 
         /// <summary>
         /// items of the order

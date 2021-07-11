@@ -36,11 +36,12 @@ namespace DL
             }
         }
 
-        public void AddItem(Item item)
+        public int AddItem(Item item)
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
                 cnn.Execute("insert into Item (ItemID, Brand, ModelNumber, Description, IsActive, Price) values (@ItemID, @Brand, @ModelNumber, @Description, @IsActive, @Price) ", item);
+                return cnn.ExecuteScalar<int>("select seq FROM SQLITE_SEQUENCE WHERE name = \"Item\"");
             }
         }
 
@@ -52,11 +53,12 @@ namespace DL
             }
         }
 
-        public void AddOrder(Order order)
+        public int AddOrder(Order order)
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                cnn.Execute("insert into Order (OrderID, CustomerID, OrderTime, TotalPrice, Paid) values (@OrderID, @CustomerID, @OrderTime, @TotalPrice, @Paid)", order);
+                cnn.Execute("insert into Orders (CustomerID, OrderTime, TotalPrice) values (@CustomerID, @OrderTime, @TotalPrice)", order);
+                return cnn.ExecuteScalar<int>("select seq FROM SQLITE_SEQUENCE WHERE name = \"Orders\"");
             }
         }
 
@@ -78,12 +80,18 @@ namespace DL
 
         public void EditCustomer(Customer cust)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute($"UPDATE Customer SET CustomerID = \"{cust.CustomerID}\", Name = \"{cust.Name}\", Company = \"{cust.Company}\", Address = \"{cust.Address}\", PostCode = \"{cust.PostCode}\", City = \"{cust.City}\", Phone = \"{cust.Phone}\", Mobile = \"{cust.Mobile}\", Email = \"{cust.Email}\" WHERE CustomerID = \"{cust.CustomerID}\"");
+            }
         }
 
         public void EditItem(Item item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute($"UPDATE Item SET ItemID = \"{item.ItemID}\", Brand = \"{item.Brand}\", ModelNumber = \"{item.ModelNumber}\", Description = \"{item.Description}\", IsActive = \"{(item.IsActive? 1:0)}\", Price = \"{item.Price}\" WHERE ItemID = \"{item.ItemID}\"");
+            }
         }
 
         public IEnumerable<Category> GetCategories()
@@ -138,12 +146,27 @@ namespace DL
             }
         }
 
-        public IEnumerable<Order> GetOrders()
+        public IEnumerable<Order> GetOrders(string where = "")
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
+                return cnn.Query<Order>("Select * From Orders" + where, new DynamicParameters());
+            }
+        }
 
-                return cnn.Query<Order>("Select * From Orders", new DynamicParameters());
+        public double GetPaidAmount(string orderID)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.ExecuteScalar<double>($"Select sum(AmountPaid) From OrderPayment where OrderID = \"{orderID}\"", new DynamicParameters());
+            }
+        }
+
+        public Customer GetSingleCutomer(string customerID)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                return cnn.Query<Customer>($"Select * From Customer Where CustomerID = {customerID}", new DynamicParameters()).FirstOrDefault();
             }
         }
 
@@ -156,9 +179,12 @@ namespace DL
             }
         }
 
-        public void PayOrder(string orderID, bool paid)
+        public void PayOrder(string orderID, double amount)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute($"INSERT INTO OrderPayment (OrderID, OrderTime, AmountPaid) values ({orderID},{DateTime.Now.Ticks},{amount})");
+            }
         }
 
         public void RemoveItem(string itemID)
@@ -173,7 +199,11 @@ namespace DL
 
         public void SubtractStock(string itemID, int qnt)
         {
-            throw new NotImplementedException();
+            using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
+            {
+                cnn.Execute($"UPDATE StockItem set Quantity = (Quantity - 1) Where ItemId = \"{itemID}\" AND Date = (SELECT min(Date) FROM StockItem)");
+                cnn.Execute($"DELETE FROM StockItem WHERE Quantity = 0");
+            }
         }
     }
 }

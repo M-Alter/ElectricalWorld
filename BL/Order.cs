@@ -10,14 +10,15 @@ namespace BO
         /// </summary>
         public string OrderID { get; set; }
 
-        ///// <summary>
-        ///// customer of the order
-        ///// </summary>
-        //public CustomerID CustomerID { get; set; }
         /// <summary>
         /// customer of the order
         /// </summary>
-        public string CustomerID { get; set; }
+        public Customer Customer { get; set; }
+
+        ///// <summary>
+        ///// customer of the order
+        ///// </summary>
+        //public string CustomerID { get; set; }
 
         /// <summary>
         /// time of the order
@@ -32,7 +33,7 @@ namespace BO
         /// <summary>
         /// is the order paid
         /// </summary>
-        public bool Paid { get; set; }
+        public double Paid { get; set; }
 
         /// <summary>
         /// items of the order
