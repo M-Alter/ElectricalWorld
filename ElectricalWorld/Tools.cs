@@ -194,7 +194,7 @@ Sruli", customer.Name, order.OrderID);
             paragraph = section.AddParagraph();
             paragraph.Format.SpaceBefore = "8cm";
             paragraph.Style = "Reference";
-            paragraph.AddFormattedText("INVOICE #" + order.OrderID, TextFormat.Bold);
+            paragraph.AddFormattedText("INVOICE #00" + order.OrderID, TextFormat.Bold);
             paragraph.AddTab();
             //paragraph.AddText("London, ");
             //paragraph.AddDateField("dd.MM.yyyy");
@@ -259,8 +259,13 @@ Sruli", customer.Name, order.OrderID);
                 paragraph1.AddText(customer.Company);
                 paragraph1.AddLineBreak();
             }
-            paragraph1.AddText(customer.Address);
+            paragraph1.AddText(customer.Address1);
             paragraph1.AddLineBreak();
+            if (customer.Address2 != null && customer.Address2 != "")
+            {
+                paragraph1.AddText(customer.Address2);
+                paragraph1.AddLineBreak();
+            }
             paragraph1.AddText(customer.City);
             paragraph1.AddLineBreak();
             paragraph1.AddText(customer.PostCode);
@@ -286,8 +291,7 @@ Sruli", customer.Name, order.OrderID);
             var iter = order.Items.GetEnumerator();
             while (iter.MoveNext())
             {
-                if (iter.Current is PO.Item)
-                {
+                
                     var item = iter.Current as PO.Item;
                     double price = item.Price;
 
@@ -302,25 +306,25 @@ Sruli", customer.Name, order.OrderID);
                     row1.Cells[2].AddParagraph(item.ModelNumber);
                     row1.Cells[3].AddParagraph(item.Description);
                     row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
-                }
-                else
-                {
-                    var item = iter.Current as PO.Payment;
+                
+                //else
+                //{
+                //    var item = iter.Current as PO.Payment;
 
-                    Row row1 = table.AddRow();
-                    row1.TopPadding = 1.5;
-                    row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
-                    row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
-
-
-                    row1.Cells[1].AddParagraph("Paid");
-                    row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
-
-                    //row1.Cells[4].AddParagraph("-" + order.Items.Sum(it => it.Price).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+                //    Row row1 = table.AddRow();
+                //    row1.TopPadding = 1.5;
+                //    row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+                //    row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
 
 
-                    table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
-                }
+                //    row1.Cells[1].AddParagraph("Paid");
+                //    row1.Cells[4].AddParagraph(item.Price.ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
+                //    //row1.Cells[4].AddParagraph("-" + order.Items.Sum(it => it.Price).ToString("C", new CultureInfo("en-GB", false).NumberFormat));
+
+
+                //    table.SetEdge(0, table.Rows.Count - 2, 5, 2, Edge.Box, BorderStyle.Single, 0.75);
+                //}
 
 
 

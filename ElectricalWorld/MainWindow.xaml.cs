@@ -78,7 +78,7 @@ namespace ElectricalWorld
                 cust.Company.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Address.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                cust.Address1.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.PostCode.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Email.ToLower().Contains(tboxCustSearch.Text.ToLower())
                 )
@@ -141,13 +141,13 @@ namespace ElectricalWorld
         {
             PO.Order order = (PO.Order)(sender as Button).DataContext;
             if (order is PO.Order)
+            order.Items = new List<PO.Item>(order.Items.ToList());
             order.TotalPrice = order.Items.Sum(it => it.Price);
-            order.Items = new List<PO.InvoiceItem>(order.Items.ToList());
-            //order.Items.Append(new Payment { Brand = "Paid", Price = order.Paid });
+            
             var cust = bl.GetSingleCustomer(order.Customer.CustomerID);
             new Thread(() =>
                 {
-                    Tools.CreateInvoice(order  , PO.Tools.POCustomer(cust));
+                    Tools.CreateInvoice(order, PO.Tools.POCustomer(cust), false);
                 }).Start();
         }
 
@@ -222,7 +222,7 @@ namespace ElectricalWorld
                 cust.Company.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Address.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                cust.Address1.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.PostCode.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
                 cust.Email.ToLower().Contains(tboxCustSearch.Text.ToLower())
                 )

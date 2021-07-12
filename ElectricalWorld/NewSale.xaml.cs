@@ -34,8 +34,8 @@ namespace ElectricalWorld
             backgroundWorkerCust.WorkerSupportsCancellation = true;
             backgroundWorkerCust.DoWork += backgroundWorkerCust_DoWork;
             backgroundWorkerCust.RunWorkerCompleted += backgroundWorkerCust_RunWorkerCompleted;
-            
-            
+
+
         }
 
         private void backgroundWorkerCust_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -49,7 +49,7 @@ namespace ElectricalWorld
             BackgroundWorker worker = sender as BackgroundWorker;
             List<PO.Customer> bgListCust = new List<PO.Customer>();
 
-            
+
 
             foreach (var item in bl.GetCutomers(cust =>
                 cust.CustomerID.ToString().ToLower().Contains(e.Argument.ToString()) ||
@@ -57,7 +57,7 @@ namespace ElectricalWorld
                 cust.Company.ToLower().Contains(e.Argument.ToString()) ||
                 cust.Phone.ToLower().Contains(e.Argument.ToString()) ||
                 cust.Mobile.ToLower().Contains(e.Argument.ToString()) ||
-                cust.Address.ToLower().Contains(e.Argument.ToString()) ||
+                cust.Address1.ToLower().Contains(e.Argument.ToString()) ||
                 cust.PostCode.ToLower().Contains(e.Argument.ToString()) ||
                 cust.Email.ToLower().Contains(e.Argument.ToString())
                 )
@@ -116,7 +116,7 @@ namespace ElectricalWorld
 
 
 
-       
+
 
 
         private void cmbCusts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -168,26 +168,21 @@ namespace ElectricalWorld
             PaymentWindow paymentWindow = new PaymentWindow(order);
             paymentWindow.ShowDialog();
 
-            if (paymentWindow.DialogResult == true)
-            {
-                order.Items = new List<PO.InvoiceItem>(basket.ToList());
-                order.Items = new List<PO.InvoiceItem>(order.Items.ToList());
-                //order.Items.Append(new PO.Payment { Brand = "Paid", Price = order.Paid });
-            }
-            else
-            {
-                order.Items = from item in basket
-                              select item;
-            }
+            
+                order.Items = new List<PO.Item>(basket.ToList());
+            
+                //order.Items = from item in basket
+                //              select item;
+            
             order.OrderTime = DateTime.Now;
             order.TotalPrice = order.Items.Sum(it => it.Price);
             if (paymentWindow.DialogResult == true)
                 order.Paid = paymentWindow.AmountPaid;
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-                new Thread(() =>
-            {
-                Tools.CreateInvoice(order, order.Customer, false);
-            }).Start();
+            new Thread(() =>
+        {
+            Tools.CreateInvoice(order, order.Customer, false);
+        }).Start();
             btnSend.IsEnabled = true;
             //Close();
         }
@@ -245,10 +240,10 @@ namespace ElectricalWorld
             if (paymentWindow.DialogResult == true)
                 order.Paid = paymentWindow.AmountPaid;
             order.OrderID = bl.AddOrder(PO.Tools.BOOrder(order));
-                new Thread(() =>
-            {
-                Tools.CreateInvoice(order, order.Customer, true);
-            }).Start();
+            new Thread(() =>
+        {
+            Tools.CreateInvoice(order, order.Customer, true);
+        }).Start();
 
             Close();
         }
@@ -296,7 +291,7 @@ namespace ElectricalWorld
                 cust.Company.ToLower().Contains(input) ||
                 cust.Phone.ToLower().Contains(input) ||
                 cust.Mobile.ToLower().Contains(input) ||
-                cust.Address.ToLower().Contains(input) ||
+                cust.Address1.ToLower().Contains(input) ||
                 cust.PostCode.ToLower().Contains(input) ||
                 cust.Email.ToLower().Contains(input)
                 )

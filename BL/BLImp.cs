@@ -17,7 +17,8 @@ namespace BL
             {
                 Name = cust.Name,
                 Company = cust.Company,
-                Address = cust.Address,
+                Address1 = cust.Address1,
+                Address2 = cust.Address2,
                 PostCode = cust.PostCode,
                 City = cust.City,
                 Email = cust.Email,
@@ -68,7 +69,7 @@ namespace BL
             }
             if (order.Paid > 0)
                 dl.PayOrder(orderID.ToString(), order.Paid);
-            return orderID.ToString();
+            return orderID.ToString(@"000000");
 
         }
 
@@ -90,7 +91,8 @@ namespace BL
                 CustomerID = cust.CustomerID,
                 Name = cust.Name,
                 Company = cust.Company,
-                Address = cust.Address,
+                Address1 = cust.Address1,
+                Address2 = cust.Address2,
                 PostCode = cust.PostCode,
                 City = cust.City,
                 Email = cust.Email,
@@ -121,7 +123,8 @@ namespace BL
                        CustomerID = cust.CustomerID,
                        Name = cust.Name,
                        Company = cust.Company,
-                       Address = cust.Address,
+                       Address1 = cust.Address1,
+                       Address2 = cust.Address2,
                        PostCode = cust.PostCode,
                        City = cust.City,
                        Email = cust.Email,
@@ -180,7 +183,8 @@ namespace BL
                 CustomerID = cust.CustomerID,
                 Name = cust.Name,
                 Company = cust.Company,
-                Address = cust.Address,
+                Address1 = cust.Address1,
+                Address2 = cust.Address2,
                 PostCode = cust.PostCode,
                 City = cust.City,
                 Email = cust.Email,

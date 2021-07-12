@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectricalWorld"
         mc:Ignorable="d"
-        Title="AddCustomer" Height="450" Width="400">
+        Title="AddCustomer" Height="500" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,7 +18,8 @@
         <StackPanel>
             <Label Content="Name: "/>
             <Label Content="Company Name: "/>
-            <Label Content="Address: "/>
+            <Label Content="Address Line 1: "/>
+            <Label Content="Address Line 2: "/>
             <Label Content="Post-Code: "/>
             <Label Content="City: "/>
             <Label Content="Phone Number: "/>
@@ -28,7 +29,8 @@
         <StackPanel Grid.Column="1">
             <TextBox Text="{Binding Name, Mode=TwoWay}"/>
             <TextBox Text="{Binding Company, Mode=TwoWay}"/>
-            <TextBox Text="{Binding Address, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Address1, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Address2, Mode=TwoWay}"/>
             <TextBox Text="{Binding PostCode, Mode=TwoWay}"/>
             <TextBox Text="{Binding City, Mode=TwoWay}"/>
             <TextBox Text="{Binding Phone, Mode=TwoWay}"/>

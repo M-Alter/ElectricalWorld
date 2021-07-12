@@ -1,6 +1,4 @@
-﻿using GlobalPayments.Api;
-using GlobalPayments.Api.Entities;
-using GlobalPayments.Api.Services;
+﻿
 using System.Windows;
 using System.Windows.Input;
 
@@ -46,9 +44,9 @@ namespace ElectricalWorld
             //    AddressesMatch = false
             //};
 
-            //var billingAddress = new Address
+            //var billingAddress = new Address1
             //{
-            //    StreetAddress1 = cust.Address,
+            //    StreetAddress1 = cust.Address1,
             //    StreetAddress2 = "",
             //    StreetAddress3 = "",
             //    City = cust.City,
@@ -56,9 +54,9 @@ namespace ElectricalWorld
             //    Country = "826"
             //};
 
-            //var shippingAddress = new Address
+            //var shippingAddress = new Address1
             //{
-            //    StreetAddress1 = cust.Address,
+            //    StreetAddress1 = cust.Address1,
             //    StreetAddress2 = "",
             //    StreetAddress3 = "",
             //    City = cust.City,

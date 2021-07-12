@@ -2,7 +2,7 @@
 
 namespace PO
 {
-    public class Item : InvoiceItem
+    public class Item
     {
         /// <summary>
         /// private ID of the item <br>for internal use</br>

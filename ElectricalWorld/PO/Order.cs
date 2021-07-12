@@ -33,7 +33,7 @@ namespace PO
         /// <summary>
         /// items of the order
         /// </summary>
-        public IEnumerable<InvoiceItem> Items { get; set; }
+        public IEnumerable<Item> Items { get; set; }
 
         /// <summary>
         /// profit earned on this order

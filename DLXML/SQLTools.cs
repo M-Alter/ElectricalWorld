@@ -1,4 +1,6 @@
-﻿namespace DLSQL
+﻿using System;
+
+namespace DLSQL
 {
 
     public class SQLTools
@@ -9,7 +11,10 @@
         /// <returns></returns>
         public static string LoadConnection()
         {
-            return "Data Source = .\\ElectricalWorld.db;Version = 3;";
+            //return "Data Source = .\\ElectricalWorld.db;Version = 3;";
+            //string dir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\ElectricalWorld\";
+            return "Data Source = " + dir + @"\ElectricalWorld.db;Version = 3;";
         }
 
     }

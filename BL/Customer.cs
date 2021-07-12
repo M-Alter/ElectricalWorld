@@ -22,7 +22,12 @@ namespace BO
         /// <summary>
         /// address of the customer
         /// </summary>
-        public string Address { get; set; }
+        public string Address1 { get; set; }
+
+        /// <summary>
+        /// address of the customer
+        /// </summary>
+        public string Address2 { get; set; }
 
         /// <summary>
         /// post code of the customer

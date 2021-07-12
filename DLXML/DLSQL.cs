@@ -32,7 +32,7 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                cnn.Execute("insert into Customer (Name, Company, Address, PostCode, City, Phone, Mobile , Email) values (@Name, @Company, @Address, @PostCode, @City, @Phone, @Mobile , @Email)", cust);
+                cnn.Execute("insert into Customer (Name, Company, Address1, Address2, PostCode, City, Phone, Mobile , Email) values (@Name, @Company, @Address1, @Address2, @PostCode, @City, @Phone, @Mobile , @Email)", cust);
             }
         }
 
@@ -82,7 +82,7 @@ namespace DL
         {
             using (IDbConnection cnn = new SQLiteConnection(SQLTools.LoadConnection()))
             {
-                cnn.Execute($"UPDATE Customer SET CustomerID = \"{cust.CustomerID}\", Name = \"{cust.Name}\", Company = \"{cust.Company}\", Address = \"{cust.Address}\", PostCode = \"{cust.PostCode}\", City = \"{cust.City}\", Phone = \"{cust.Phone}\", Mobile = \"{cust.Mobile}\", Email = \"{cust.Email}\" WHERE CustomerID = \"{cust.CustomerID}\"");
+                cnn.Execute($"UPDATE Customer SET CustomerID = \"{cust.CustomerID}\", Name = \"{cust.Name}\", Company = \"{cust.Company}\", Address1 = \"{cust.Address1}\", Address2 = \"{cust.Address2}\", PostCode = \"{cust.PostCode}\", City = \"{cust.City}\", Phone = \"{cust.Phone}\", Mobile = \"{cust.Mobile}\", Email = \"{cust.Email}\" WHERE CustomerID = \"{cust.CustomerID}\"");
             }
         }
 

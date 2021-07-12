@@ -234,6 +234,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -241,22 +242,24 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Content="Name: " Grid.Row="0"/>
                                 <Label Content="Company Name: " Grid.Row="1"/>
-                                <Label Content="Address: " Grid.Row="2"/>
-                                <Label Content="Post-Code: " Grid.Row="3"/>
-                                <Label Content="City: " Grid.Row="4"/>
-                                <Label Content="Phone Number: " Grid.Row="5"/>
-                                <Label Content="Mobile: " Grid.Row="6"/>
-                                <Label Content="Email: " Grid.Row="7"/>
-                                <Button x:Name="btnCustSave" Content="Save" Width="80" Click="btnCustSave_Click" Grid.Row="8"/>
+                                <Label Content="Address Line 1: " Grid.Row="2"/>
+                                <Label Content="Address Line 2: " Grid.Row="3"/>
+                                <Label Content="Post-Code: " Grid.Row="4"/>
+                                <Label Content="City: " Grid.Row="5"/>
+                                <Label Content="Phone Number: " Grid.Row="6"/>
+                                <Label Content="Mobile: " Grid.Row="7"/>
+                                <Label Content="Email: " Grid.Row="8"/>
+                                <Button x:Name="btnCustSave" Content="Save" Width="80" Click="btnCustSave_Click" Grid.Row="9"/>
 
                                 <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"/>
                                 <TextBox Text="{Binding Company, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>
-                                <TextBox Text="{Binding Address, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"/>
-                                <TextBox Text="{Binding PostCode, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"/>
-                                <TextBox Text="{Binding City, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"/>
-                                <TextBox Text="{Binding Phone, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"/>
-                                <TextBox Text="{Binding Mobile, Mode=TwoWay}" Grid.Row="6" Grid.Column="1"/>
-                                <TextBox Text="{Binding Email, Mode=TwoWay}" Grid.Row="7" Grid.Column="1"/>
+                                <TextBox Text="{Binding Address1, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"/>
+                                <TextBox Text="{Binding Address2, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"/>
+                                <TextBox Text="{Binding PostCode, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"/>
+                                <TextBox Text="{Binding City, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"/>
+                                <TextBox Text="{Binding Phone, Mode=TwoWay}" Grid.Row="6" Grid.Column="1"/>
+                                <TextBox Text="{Binding Mobile, Mode=TwoWay}" Grid.Row="7" Grid.Column="1"/>
+                                <TextBox Text="{Binding Email, Mode=TwoWay}" Grid.Row="8" Grid.Column="1"/>
 
                             </Grid>
 
