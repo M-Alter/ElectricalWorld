@@ -214,23 +214,31 @@ namespace ElectricalWorld
 
         private void tboxCustSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            custs.Clear();
-
-            foreach (var item in bl.GetCutomers(cust =>
-                cust.CustomerID.ToString().ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Name.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Company.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Address1.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.PostCode.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
-                cust.Email.ToLower().Contains(tboxCustSearch.Text.ToLower())
-                )
-                )
+            try
             {
-                custs.Add(PO.Tools.POCustomer(item));
+                custs.Clear();
+
+                foreach (var item in bl.GetCutomers(cust =>
+                    cust.CustomerID.ToString().ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Name.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Company.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Phone.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Mobile.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Address1.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.PostCode.ToLower().Contains(tboxCustSearch.Text.ToLower()) ||
+                    cust.Email.ToLower().Contains(tboxCustSearch.Text.ToLower())
+                    )
+                    )
+                {
+                    custs.Add(PO.Tools.POCustomer(item));
+                }
+                lvCusts.DataContext = custs;
             }
-            lvCusts.DataContext = custs;
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace, "StackTrace");
+            }
         }
 
         private void btnCustSave_Click(object sender, RoutedEventArgs e)
@@ -283,7 +291,8 @@ namespace ElectricalWorld
 
                 if (paymentWindow.DialogResult == true)
                 {
-
+                    bl.PayOrder(order.OrderID, paymentWindow.AmountPaid);
+                    order.Paid += paymentWindow.AmountPaid;
                 }
             }
         }

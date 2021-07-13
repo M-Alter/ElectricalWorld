@@ -15,15 +15,15 @@ namespace BL
         {
             dl.AddCustomer(new DO.Customer
             {
-                Name = cust.Name,
-                Company = cust.Company,
-                Address1 = cust.Address1,
-                Address2 = cust.Address2,
-                PostCode = cust.PostCode,
-                City = cust.City,
-                Email = cust.Email,
-                Phone = cust.Phone,
-                Mobile = cust.Mobile
+                Name = cust.Name ?? "",
+                Company = cust.Company ?? "",
+                Address1 = cust.Address1 ?? "",
+                Address2 = cust.Address2 ?? "",
+                PostCode = cust.PostCode ?? "",
+                City = cust.City ?? "",
+                Email = cust.Email ?? "",
+                Phone = cust.Phone ?? "",
+                Mobile = cust.Mobile ?? ""
             });
         }
 
@@ -31,9 +31,9 @@ namespace BL
         {
             int itemID = dl.AddItem(new DO.Item
             {
-                Brand = item.Brand,
-                Description = item.Description,
-                ModelNumber = item.ModelNumber,
+                Brand = item.Brand ?? "",
+                Description = item.Description ?? "",
+                ModelNumber = item.ModelNumber ?? "",
                 Price = item.Price,
                 IsActive = true
 
